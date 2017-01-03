@@ -1,0 +1,32 @@
+.lender-left-nav {
+    height: 100%;
+    background-color: #1A2225;
+
+    .left-nav-item {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        padding: 20px 25px;
+
+        .label {
+            position: relative;
+            bottom: 5px;
+        }
+
+        .material-icons {
+            top: 1px;
+            margin-right: 20px;
+            color: $text-grey;
+        }
+    }
+
+    .left-nav-item.active {
+        background-color: #071820;
+        color: #B7BABC;
+        border-left: 3px solid $accent-blue;
+
+        .material-icons {
+            color: #B7BABC !important;
+        }
+    }
+}

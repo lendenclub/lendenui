@@ -1,1 +1,10 @@
+@import "variables.scss";
+@import "atomic.scss";
+
+
 @import "login/login.scss";
+
+//Lender Imports
+@import "lender/header.scss";
+@import "lender/left-nav.scss";
+@import "lender/invest.scss";

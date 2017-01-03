@@ -1,0 +1,32 @@
+.lender-header {
+    background-color: #0F1A20;
+    height: $header-height;
+
+    .app-logo {
+        display: inline-block;
+
+        img {
+            width: 35px;
+            padding: 10px 50px;
+        }
+    }
+
+    .amount-balance {
+        display: inline-block;
+        float: right;
+        padding-top: 12px;
+        div {
+            text-align: right;
+        }
+
+        .amount {
+            color: $text-green-label;
+        }
+    }
+
+    .user-circle {
+        display: inline-block;
+        float: right;
+        padding: 10px 20px;
+    }
+}
