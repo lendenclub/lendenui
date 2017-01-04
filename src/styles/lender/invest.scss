@@ -11,6 +11,25 @@
         }
     }
 
+    .filter-drawer {
+        padding: 10px;
+
+        .close-icon {
+            float: right;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        .drawer-content {
+            padding :10px;
+            
+            .header {
+                color: $text-grey;
+            }
+        }
+    }
+
     .invest-row {
         .risk-indicator {
             width: 4px;

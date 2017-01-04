@@ -3,6 +3,7 @@ import { Row, Col } from 'react-flexbox-grid';
 import FontIcon from 'material-ui/FontIcon';
 
 import InvestRow from '../../components/lender/InvestRow';
+import BorrowerFilter from '../../components/lender/BorrowerFilter';
 
 const iconStyle = {
     color: '#1370CB'
@@ -12,6 +13,7 @@ const iconStyle = {
 class Invest extends Component {
     constructor (props) {
         super();
+        this.state = { filterDrawerState: false };
     }
 
     componentDidMount() {
@@ -20,6 +22,10 @@ class Invest extends Component {
 
     toggleRowActive = (required_loan_id) => {
         this.props.updateRowActive(required_loan_id);
+    }
+
+    toggleFilterDrawer = () => {
+        this.setState({ filterDrawerState: !this.state.filterDrawerState})
     }
 
     render () {
@@ -48,9 +54,12 @@ class Invest extends Component {
                         Investment Amount
                     </Col>
                     <Col lg={1} className="text-align-right">
-                        <FontIcon className="material-icons" style={iconStyle}>tune</FontIcon>
+                        <FontIcon className="material-icons" style={iconStyle} onClick={this.toggleFilterDrawer.bind(this)}>tune</FontIcon>
                     </Col>
                 </Row>
+
+                <BorrowerFilter filterDrawerState={this.state.filterDrawerState} toggleFilterDrawer={this.toggleFilterDrawer.bind(this)} />
+
                 {this.props.lender.loans.map( (loan, idx) => {
                     loan.active = loan.active || false;
                     return (

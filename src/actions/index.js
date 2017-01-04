@@ -38,7 +38,7 @@ export const receiveLoans = (loans) => ({
 export const fetchLoans = () => (dispatch, getState) => {
     return fetch(`http://192.168.0.104:8000/invest-api`)
     .then( response => response.json() )
-    .then( json => dispatch(receiveLoans(json)) )
+    .then( json => dispatch(receiveLoans(json.loans)) )
 }
 
 export const updateRowActive = (loan_id) => ({
