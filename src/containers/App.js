@@ -6,9 +6,10 @@ const style = {
 
 class App extends Component {
     render () {
+        const { children, ...otherProps } = this.props;
         return (
             <div style={style}>
-                {this.props.children}
+                {React.cloneElement(children, otherProps)}
             </div>
         );
     }

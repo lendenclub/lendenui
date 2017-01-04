@@ -13,7 +13,7 @@ const tempData = [{
     interest: 12.5,
     tenure: 12,
     loan: 100000,
-    remaining: 100000,
+    remaining: 10000,
     loan_purpose: "Debt Consolidation",
     borrower_name: 'Ramesh'
 }, {
@@ -29,7 +29,7 @@ const tempData = [{
     interest: 15.5,
     tenure: 12,
     loan: 100000,
-    remaining: 100000,
+    remaining: 70000,
     loan_purpose: "Debt Consolidation",
     borrower_name: 'Suresh'
 }, {
@@ -37,7 +37,7 @@ const tempData = [{
     interest: 14.5,
     tenure: 14,
     loan: 100000,
-    remaining: 100000,
+    remaining: 90000,
     loan_purpose: "Debt Consolidation",
     borrower_name: 'Nilesh'
 }, {
@@ -45,7 +45,7 @@ const tempData = [{
     interest: 20.5,
     tenure: 12,
     loan: 100000,
-    remaining: 100000,
+    remaining: 20000,
     loan_purpose: "Debt Consolidation",
     borrower_name: 'Venkatesh'
 }, {
@@ -53,7 +53,7 @@ const tempData = [{
     interest: 28.5,
     tenure: 12,
     loan: 100000,
-    remaining: 100000,
+    remaining: 0,
     loan_purpose: "Debt Consolidation",
     borrower_name: 'Jitesh'
 }, {
@@ -61,7 +61,7 @@ const tempData = [{
     interest: 32.5,
     tenure: 12,
     loan: 100000,
-    remaining: 100000,
+    remaining: 40000,
     loan_purpose: "Debt Consolidation",
     borrower_name: 'Himesh'
 }, {
@@ -69,7 +69,7 @@ const tempData = [{
     interest: 12.5,
     tenure: 12,
     loan: 100000,
-    remaining: 100000,
+    remaining: 50000,
     loan_purpose: "Debt Consolidation",
     borrower_name: 'Akilesh'
 }, {
@@ -77,7 +77,7 @@ const tempData = [{
     interest: 18.5,
     tenure: 12,
     loan: 100000,
-    remaining: 100000,
+    remaining: 60000,
     loan_purpose: "Debt Consolidation",
     borrower_name: 'Bonesh'
 }, {
@@ -85,13 +85,35 @@ const tempData = [{
     interest: 12.5,
     tenure: 12,
     loan: 100000,
-    remaining: 100000,
+    remaining: 70000,
     loan_purpose: "Debt Consolidation",
     borrower_name: 'Ramesh2'
 }]
 
 // Note: If you are changing these column widths - you need to change in the row component also
 class Invest extends Component {
+    constructor (props) {
+        super();
+        this.state = { investData: tempData };
+    }
+
+    componentDidMount() {
+        this.props.fetchLoans();
+    }
+
+    toggleRowActive = (borrowerId) => {
+        var tempInvestData = this.state.investData;
+        tempInvestData.forEach( (item) => {
+            if (item.borrowerId === borrowerId) {
+                item.active = !item.active;
+            } else {
+                item.active = false;
+            }
+        });
+
+        this.setState( {investData: tempInvestData} );
+    }
+
     render () {
         return (
             <div className="lender-invest">
@@ -121,9 +143,10 @@ class Invest extends Component {
                         <FontIcon className="material-icons" style={iconStyle}>tune</FontIcon>
                     </Col>
                 </Row>
-                {tempData.map( (item, idx) => {
+                {this.state.investData.map( (item, idx) => {
+                    item.active = item.active || false;
                     return (
-                        <InvestRow key={item.borrowerId} data={item}/>
+                        <InvestRow key={item.borrowerId} data={item} toggleRowAction={this.toggleRowActive.bind(this)} rowActive={item.active}/>
                     )
                 })}
             </div>

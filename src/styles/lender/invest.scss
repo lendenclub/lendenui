@@ -19,12 +19,40 @@
             border-radius: 2px 0 0 2px;
         }
 
+        .collapsible-pane {
+            transition: all .5s ease !important;
+            overflow-y: hidden;
+            margin-left: 9px;
+            margin-right: 16px;
+            position: relative;
+            top: -15px;
+
+            .collapsible-content {
+                padding: 20px;
+            }
+        }
+
+        .collapsible-pane.show-collapsible {
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        .collapsible-pane.hide-collapsible {
+            max-height: 0;
+        }
+
         .row-item {
             margin: 15px 0;
             padding: 0 20px;
 
             .invest-data-column {
                 padding: 25px 0;
+
+                .progress-bar-container {
+                    position: relative;
+                    padding-right: 10px;
+                    top: 10px;
+                }
             }
 
             .invest-button-column {

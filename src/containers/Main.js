@@ -15,6 +15,9 @@ const muiTheme = getMuiTheme({
     },
     textField: {
         floatingLabelColor: '#9e9e9e'
+    },
+    raisedButton: {
+        disabledColor: '#2E454E'
     }
 });
 

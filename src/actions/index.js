@@ -26,3 +26,16 @@ export const loginUser = (username, password) => (dispatch, getState) => {
     dispatch(setUserLoggedIn(true));    // dispatching an action with relevant params
     dispatch(setUserCreds(responseObj));
 }
+
+/*
+    Invest Actions
+*/
+export const fetchLoans = () => (dispatch, getState) => {
+    console.log('check if loans are needed');
+    return fetch(`http://192.168.0.104:8000/invest-api`)
+    .then( (data) => {
+        debugger;
+    }).catch( () => {
+        debugger;
+    })
+}

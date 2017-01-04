@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from '../../assets/Logo-lendenclub.png';
 import Paper from 'material-ui/Paper';
 import FontIcon from 'material-ui/FontIcon';
 import Avatar from 'material-ui/Avatar';
@@ -12,10 +11,6 @@ class Header extends Component {
     render () {
         return (
             <Paper className="lender-header" style={style} zDepth={1}>
-                <div className="app-logo">
-                    <img src={logo} alt="logo" />
-                </div>
-
                 <div className="user-circle">
                     <Avatar
                         icon={<FontIcon className="material-icons">person</FontIcon>}

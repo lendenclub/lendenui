@@ -1,15 +1,9 @@
 .lender-header {
-    background-color: #0F1A20;
+    background-color: $header-bgcolor !important;
     height: $header-height;
-
-    .app-logo {
-        display: inline-block;
-
-        img {
-            width: 35px;
-            padding: 10px 50px;
-        }
-    }
+    position: fixed;
+    width: 100%;
+    z-index: 10;
 
     .amount-balance {
         display: inline-block;
