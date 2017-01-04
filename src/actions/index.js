@@ -30,12 +30,18 @@ export const loginUser = (username, password) => (dispatch, getState) => {
 /*
     Invest Actions
 */
+export const receiveLoans = (loans) => ({
+    type: 'UPDATE_LOANS',
+    loans
+})
+
 export const fetchLoans = () => (dispatch, getState) => {
-    console.log('check if loans are needed');
     return fetch(`http://192.168.0.104:8000/invest-api`)
-    .then( (data) => {
-        debugger;
-    }).catch( () => {
-        debugger;
-    })
+    .then( response => response.json() )
+    .then( json => dispatch(receiveLoans(json)) )
 }
+
+export const updateRowActive = (loan_id) => ({
+    type: 'UPDATE_ROW_ACTIVE',
+    loan_id
+})

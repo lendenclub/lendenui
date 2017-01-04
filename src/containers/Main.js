@@ -35,7 +35,7 @@ class Main extends Component {
 
 // use this to pass state as props to the component -  so when state changes, the component will re-render
 function mapStateToProps (state) {
-    return state.app;
+    return state;
 }
 
 function mapDispatchToProps (dispatch) {

@@ -51,13 +51,12 @@ class InvestRow extends Component {
     }
 
     onRowClicked = (e) => {
-        console.log(e.target);
-        this.props.toggleRowAction(this.props.data.borrowerId);
+        this.props.toggleRowAction(this.props.loan.required_loan_id);
     }
 
     render () {
-        let data = this.props.data,
-            riskStyle = this.computeRiskStyle(data.interest),
+        let loan = this.props.loan,
+            riskStyle = this.computeRiskStyle(loan.interest_rate),
             collapsiblePaperState = this.props.rowActive ? 'show-collapsible' : 'hide-collapsible',
             collapsiblePaperStyle = `collapsible-pane ${collapsiblePaperState}`;
 
@@ -68,31 +67,31 @@ class InvestRow extends Component {
                     <div className="risk-indicator" style={riskStyle}></div>
 
                     <Row className="row-item" onClick={this.onRowClicked}>
-                        <Col lg={1} className="invest-data-column">
-                            {data.interest}%
+                        <Col lg={1} className="invest-loan-column">
+                            {loan.interest_rate}%
                         </Col>
 
-                        <Col lg={1} className="invest-data-column">
-                            {data.tenure} months
+                        <Col lg={1} className="invest-loan-column">
+                            {loan.tenure} months
                         </Col>
 
-                        <Col lg={1} className="invest-data-column">
-                            {numeral(data.loan).format('₹0,0.00')}
+                        <Col lg={2} className="invest-loan-column">
+                            ₹ {numeral(loan.amount).format('0,0.00')}
                             <div className="progress-bar-container">
-                                <ProgressBar max={data.loan} value={data.loan - data.remaining} />
+                                <ProgressBar max={loan.amount} value={loan.amount - 50000} />
                             </div>
                         </Col>
 
-                        <Col lg={1} className="invest-data-column">
-                            {numeral(data.remaining).format('₹0,0.00')}
+                        <Col lg={1} className="invest-loan-column">
+                            ₹ {numeral(50000).format('0,0.00')}
                         </Col>
 
-                        <Col lg={2} className="invest-data-column flex-child-ellipsis">
-                            {data.loan_purpose}
+                        <Col lg={2} className="invest-loan-column flex-child-ellipsis text-capitalize">
+                            {loan.purpose.toLowerCase()}
                         </Col>
 
-                        <Col lg={2} className="invest-data-column">
-                            {data.borrowerId} {data.borrower_name}
+                        <Col lg={2} className="invest-loan-column text-capitalize">
+                            {loan.required_loan_id} / {loan.user.first_name}
                         </Col>
 
                         <Col lg={2}>
@@ -108,7 +107,7 @@ class InvestRow extends Component {
                             />
                         </Col>
 
-                        <Col lg={2} className="invest-button-column text-align-center">
+                        <Col lg={1} className="invest-button-column text-align-center">
                             <RaisedButton label="Invest" primary={true} type="submit" disabled={!this.props.rowActive}/>
                         </Col>
                     </Row>
