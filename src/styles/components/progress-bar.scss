@@ -1,0 +1,10 @@
+.progress-bar-holder {
+    width: 100%;
+    height: 3px;
+    background-color: black;
+
+    .progress-bar {
+        height: 100%;
+        background-color: #159789;
+    }
+}
