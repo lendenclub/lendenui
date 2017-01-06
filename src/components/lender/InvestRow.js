@@ -6,9 +6,10 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import { RiskColors } from '../../utils/RiskColors';
 import ProgressBar from '../ProgressBar';
+import InvestRowCollapsible from './InvestRowCollapsible';
 
 const paperStyle = {
-    backgroundColor: '#192930',
+    backgroundColor: '#2d434d',
     color: 'inherit',
     marginRight: '10px',
     position: 'relative',
@@ -17,20 +18,20 @@ const paperStyle = {
 
 const paperCollapsibleStyle = {
     color: 'inherit',
-    backgroundColor: '#081B24'
+    backgroundColor: '#11262E'
 }
 
 const inputTextStyle = {
     top: '-5px',
-    color: '#6E7580'
+    color: '#DCE2EC'
 }
 
 const floatingLabelStyle = {
-    color: '#6E7580'
+    color: '#DCE2EC'
 }
 
 const inputStyle = {
-    color: '#6E7580'
+    color: '#DCE2EC'
 }
 
 class InvestRow extends Component {
@@ -62,7 +63,7 @@ class InvestRow extends Component {
 
         return (
             <div className="invest-row">
-                <Paper style={paperStyle} zDepth={1}>
+                <Paper style={paperStyle} zDepth={0}>
 
                     <div className="risk-indicator" style={riskStyle}></div>
 
@@ -115,11 +116,7 @@ class InvestRow extends Component {
 
                 <Paper zDepth={1} style={paperCollapsibleStyle} className={collapsiblePaperStyle}>
                     <div className="collapsible-content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec suscipit, eros eu rhoncus pretium, ex purus vehicula nisi, a consectetur elit ex ut felis. Morbi sit amet augue sit amet lectus sagittis efficitur vehicula non eros. Fusce lacinia nisi ut dolor porttitor, sit amet pretium mauris vestibulum. Vivamus enim massa, tempor quis volutpat non, varius a dui. Suspendisse volutpat pulvinar lorem ac imperdiet. Proin eu tempor libero, non auctor metus. Nunc porttitor urna sed pellentesque placerat. Morbi turpis nisl, imperdiet id quam eget, luctus tristique nisl.
-
-                        Maecenas ac placerat elit. Phasellus pretium, sapien eget aliquam cursus, lectus ipsum consectetur risus, ac molestie orci ex vitae tortor. Quisque elementum neque non purus facilisis ultricies. Cras commodo nibh tempor ex condimentum, at commodo augue tristique. Proin sit amet erat eget sapien vestibulum lobortis et eget est. In dolor risus, feugiat id libero nec, congue suscipit neque. Vivamus ac libero ac velit sodales faucibus quis in nibh. Nulla congue mollis ipsum, eu gravida ligula pharetra eu. Donec maximus tortor id vestibulum iaculis. In sagittis diam bibendum libero sodales laoreet. Aliquam sed aliquet erat, eu porta elit. Fusce ultrices eleifend ante sit amet porta. Aenean quis augue ac justo vehicula euismod. In nec cursus enim. Quisque laoreet magna nisl, id interdum nulla elementum et.
-
-                        Duis nibh sem, fermentum eget placerat id, sodales sit amet nibh. Quisque id magna elit. Maecenas sed neque blandit, aliquet dui vitae, blandit felis. Aliquam porttitor aliquam dolor a facilisis. Suspendisse sed nisl sapien. Sed dapibus placerat nisl, a suscipit lectus varius vel. Donec lacinia convallis sollicitudin. Vivamus pulvinar est nec malesuada elementum. Nunc et arcu sed risus commodo volutpat.
+                        <InvestRowCollapsible loan={loan} />
                     </div>
                 </Paper>
             </div>

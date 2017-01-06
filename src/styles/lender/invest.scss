@@ -3,6 +3,7 @@
         padding: 24px 20px;
         border-bottom: 1px solid $border-grey;
         margin-right: 0;
+        color: $text-header-grey;
 
         .material-icons {
             line-height: 1px;
@@ -23,7 +24,7 @@
 
         .drawer-content {
             padding :10px;
-            
+
             .header {
                 color: $text-grey;
             }
@@ -45,19 +46,15 @@
             margin-right: 16px;
             position: relative;
             top: -15px;
-
-            .collapsible-content {
-                padding: 20px;
-            }
         }
 
         .collapsible-pane.show-collapsible {
-            max-height: 250px;
+            height: 350px;
             overflow-y: auto;
         }
 
         .collapsible-pane.hide-collapsible {
-            max-height: 0;
+            height: 0;
         }
 
         .row-item {

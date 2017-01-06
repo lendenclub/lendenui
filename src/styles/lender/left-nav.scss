@@ -13,15 +13,24 @@
         }
     }
 
+    .nav-list-item {
+        & > div > div {
+            padding: 0px !important;
+        }
+    }
+
     .left-nav-item {
         display: block;
         text-decoration: none;
         color: $text-grey;
         padding: 20px 25px;
+        background-color: transparent;
+        transition: background-color 0.4s ease 0.1s;
 
         .label {
             position: relative;
             bottom: 5px;
+            display: none;
         }
 
         .material-icons {
@@ -32,7 +41,8 @@
     }
 
     .left-nav-item.active {
-        background-color: #071820;
+        transition: background-color 0.5s ease 0s;
+        background-color: $body-bg-color;
         color: #B7BABC;
         border-left: 3px solid $accent-blue;
 
