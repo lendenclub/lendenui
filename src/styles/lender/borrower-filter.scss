@@ -1,0 +1,83 @@
+.borrower-filter {
+    & > div {
+        overflow: hidden !important;
+    }
+
+    .close-icon {
+        float: right;
+        color: $text-grey !important;
+        position: relative;
+        top: 20px;
+        right: 15px;
+        font-size: 20px !important;
+        cursor: pointer;
+    }
+
+    .main-header {
+        height: $header-height;
+        background-color: $header-bgcolor;
+        padding-left: 20px;
+        color: $text-grey;
+
+        span {
+            position: relative;
+            top: 20px;
+        }
+    }
+
+    .drawer-content {
+        color: $text-grey;
+        overflow-y: auto;
+        overflow-x: hidden;
+        height: 90%;
+        width: 100%;
+
+        .category {
+            .category-header {
+                padding-left: 20px;
+                padding-top: 15px;
+                height: 35px;
+                background-color: $light-grey-bgcolor;
+            }
+        }
+
+        .checkbox {
+            padding: 5px 10px 0 16px;
+        }
+
+        .interest-rate-category {
+            .category-content {
+                padding: 10px 0;
+
+                .risk-category {
+                    display: flex;
+                    justify-content: space-between;
+                    padding-right: 12px;
+
+                    .label .indicator {
+                        display: inline-block;
+                        width: 4px;
+                        height: 15px;
+                        position: relative;
+                        left: -8px;
+                        top: 2px;
+                    }
+                }
+            }
+        }
+
+        .loan-category {
+            .category-content {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+        }
+    }
+
+    .filter-bar {
+        position: fixed;
+        width: 100%;
+        padding: 10px 15px;
+        bottom: 0;
+    }
+}

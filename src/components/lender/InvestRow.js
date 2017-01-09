@@ -2,14 +2,12 @@ import React, { Component } from 'react';
 import { Row, Col } from 'react-flexbox-grid';
 import numeral from 'numeral';
 import Paper from 'material-ui/Paper';
-import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import { RiskColors } from '../../utils/RiskColors';
 import ProgressBar from '../ProgressBar';
 import InvestRowCollapsible from './InvestRowCollapsible';
 
 const paperStyle = {
-    backgroundColor: '#2d434d',
     color: 'inherit',
     marginRight: '10px',
     position: 'relative',
@@ -19,19 +17,6 @@ const paperStyle = {
 const paperCollapsibleStyle = {
     color: 'inherit',
     backgroundColor: '#11262E'
-}
-
-const inputTextStyle = {
-    top: '-5px',
-    color: '#DCE2EC'
-}
-
-const floatingLabelStyle = {
-    color: '#DCE2EC'
-}
-
-const inputStyle = {
-    color: '#DCE2EC'
 }
 
 class InvestRow extends Component {
@@ -63,7 +48,7 @@ class InvestRow extends Component {
 
         return (
             <div className="invest-row">
-                <Paper style={paperStyle} zDepth={0}>
+                <Paper style={paperStyle} zDepth={1}>
 
                     <div className="risk-indicator" style={riskStyle}></div>
 
@@ -92,24 +77,15 @@ class InvestRow extends Component {
                         </Col>
 
                         <Col lg={2} className="invest-loan-column text-capitalize">
-                            {loan.required_loan_id} / {loan.user.first_name}
+                            {loan.required_loan_id}
                         </Col>
 
-                        <Col lg={2}>
-                            <TextField
-                                floatingLabelText="Investment Amount"
-                                fullWidth={true}
-                                name="investmentAmount"
-                                value={this.state.investmentAmount}
-                                onChange={this.handleChange}
-                                style={inputTextStyle}
-                                floatingLabelStyle={floatingLabelStyle}
-                                inputStyle={inputStyle}
-                            />
+                        <Col lg={2} className="invest-loan-column text-capitalize">
+                            {loan.user.first_name}
                         </Col>
 
                         <Col lg={1} className="invest-button-column text-align-center">
-                            <RaisedButton label="Invest" primary={true} type="submit" disabled={!this.props.rowActive}/>
+                            <RaisedButton label="Invest" primary={true} type="submit" disabled={!this.props.rowActive} onClick={() => this.props.invest(loan)}/>
                         </Col>
                     </Row>
                 </Paper>

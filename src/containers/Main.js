@@ -10,14 +10,20 @@ const muiTheme = getMuiTheme({
     palette: {
         canvasColor: '#192930',
         textColor: '#ffffff',
-        primary1Color: '#249d5f',
+        primary1Color: '#4CAF50',
         borderColor: '#9e9e9e'
     },
     textField: {
         floatingLabelColor: '#9e9e9e'
     },
     raisedButton: {
-        disabledColor: '#2E454E'
+        disabledColor: '#2E454E',
+        secondaryColor: '#192930'
+    },
+    checkbox: {
+        boxColor: '#2d434d',
+        checkedColor: '#0099CC',
+        labelColor: '#B9B8B8'
     }
 });
 
