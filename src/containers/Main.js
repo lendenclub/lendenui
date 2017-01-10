@@ -20,6 +20,9 @@ const muiTheme = getMuiTheme({
         disabledColor: '#2E454E',
         secondaryColor: '#192930'
     },
+    flatButton: {
+        secondaryTextColor: '#B9B8B8'
+    },
     checkbox: {
         boxColor: '#2d434d',
         checkedColor: '#0099CC',

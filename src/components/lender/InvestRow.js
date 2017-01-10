@@ -37,7 +37,10 @@ class InvestRow extends Component {
     }
 
     onRowClicked = (e) => {
-        this.props.toggleRowAction(this.props.loan.required_loan_id);
+        // Dont open the accordion if the invest button is clicked
+        //TODO: Figure out a better solution - this will break if the button label changes
+        if (e.target.parentElement.innerText.trim() !== 'INVEST')
+            this.props.toggleRowAction(this.props.loan.required_loan_id);
     }
 
     render () {
@@ -85,7 +88,7 @@ class InvestRow extends Component {
                         </Col>
 
                         <Col lg={1} className="invest-button-column text-align-center">
-                            <RaisedButton label="Invest" primary={true} type="submit" disabled={!this.props.rowActive} onClick={() => this.props.invest(loan)}/>
+                            <RaisedButton label="Invest" primary={true} type="submit" onClick={() => this.props.invest(loan)} className="invest-button"/>
                         </Col>
                     </Row>
                 </Paper>

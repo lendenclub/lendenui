@@ -1,50 +1,20 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-flexbox-grid';
 import FontIcon from 'material-ui/FontIcon';
-import Dialog from 'material-ui/Dialog';
-import numeral from 'numeral';
 
 import InvestRow from '../../components/lender/InvestRow';
 import BorrowerFilter from '../../components/lender/BorrowerFilter';
+import InvestModal from '../../components/lender/InvestModal';
 
 const iconStyle = {
     color: '#1370CB'
-}
-
-const modalStyle = {
-    width: 'auto'
-}
-
-const InvestModal = ({loan, open}) => {
-    if (!loan) {
-        return null;
-    }
-
-    return (
-        <Dialog modal={true} open={open} contentStyle={modalStyle}>
-            <Row center="lg">
-                <Col lg={2}>Borrower</Col>
-                <Col lg={2}>Interest</Col>
-                <Col lg={2}>Tenure</Col>
-                <Col lg={2}>Loan</Col>
-                <Col lg={2}>Remaining</Col>
-            </Row>
-            <Row center="lg">
-                <Col lg={2}>{loan.user.first_name}</Col>
-                <Col lg={2}>{loan.interest_rate}%</Col>
-                <Col lg={2}>{loan.tenure} months</Col>
-                <Col lg={2}>₹ {numeral(loan.amount).format('0,0.00')}</Col>
-                <Col lg={2}>₹ {numeral(50000).format('0,0.00')}</Col>
-            </Row>
-        </Dialog>
-    )
 }
 
 // Note: If you are changing these column widths - you need to change in the row component also
 class Invest extends Component {
     constructor (props) {
         super();
-        this.state = { filterDrawerState: false, investModalOpen: false, selectedLoan: null };
+        this.state = { filterDrawerState: false, investModalOpen: false, selectedLoan: null, investAmount: '', password: '' };
     }
 
     componentDidMount() {
@@ -63,6 +33,21 @@ class Invest extends Component {
         this.setState({ investModalOpen: true, selectedLoan: loan });
     }
 
+    closeInvestModal () {
+        this.setState({ investModalOpen: false, selectedLoan: null, investAmount: '', password: ''});
+    }
+
+    handleInvestInputChange = (e) => {
+        this.setState({ [e.target.name]: e.target.value });
+    }
+
+    onInvest = (loan) => {
+        console.log(loan);
+        console.log(this.state.investAmount, this.state.password);
+    }
+
+
+    //TODO: Change the .bind(this) to arrow functions
     render () {
         return (
             <div className="lender-invest">
@@ -101,7 +86,15 @@ class Invest extends Component {
                         <InvestRow key={loan.user.user_id} loan={loan} toggleRowAction={this.toggleRowActive.bind(this)} rowActive={loan.active} invest={this.showInvestModal.bind(this)}/>
                     )
                 })}
-                <InvestModal loan={this.state.selectedLoan} open={this.state.investModalOpen}/>
+                <InvestModal
+                    loan={this.state.selectedLoan}
+                    open={this.state.investModalOpen}
+                    closeModal={() => this.closeInvestModal()}
+                    investAmount={this.state.investAmount}
+                    password={this.state.password}
+                    handleInvestInputChange={this.handleInvestInputChange}
+                    onInvest={(loan) => this.onInvest(loan)}
+                />
             </div>
         );
     }

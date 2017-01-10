@@ -59,3 +59,24 @@
         }
     }
 }
+
+.invest-modal {
+    .header-row {
+        padding: 20px;
+        border-bottom: 1px solid $border-grey;
+        margin: 0;
+    }
+
+    .data-row {
+        padding: 20px;
+        border-bottom: 1px solid $border-grey;
+        background-color: $header-bgcolor;
+        margin: 0;
+    }
+    .invest-inputs {
+        padding: 0 50px;
+    }
+    .action-button {
+        padding: 20px 35px;
+    }
+}
