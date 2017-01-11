@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Drawer from 'material-ui/Drawer';
 import FontIcon from 'material-ui/FontIcon';
 import Checkbox from 'material-ui/Checkbox';
-import { RiskCategories } from '../../utils/RiskColors';
+import { RiskCategories } from '../../../utils/RiskColors';
 import AutoComplete from 'material-ui/AutoComplete';
 import Chip from 'material-ui/Chip';
 import Paper from 'material-ui/Paper';

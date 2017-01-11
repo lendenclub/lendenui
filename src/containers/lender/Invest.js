@@ -3,9 +3,9 @@ import { Row, Col } from 'react-flexbox-grid';
 import FontIcon from 'material-ui/FontIcon';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 
-import InvestRow from '../../components/lender/InvestRow';
-import BorrowerFilter from '../../components/lender/BorrowerFilter';
-import InvestModal from '../../components/lender/InvestModal';
+import InvestRow from '../../components/lender/invest/InvestRow';
+import BorrowerFilter from '../../components/lender/invest/BorrowerFilter';
+import InvestModal from '../../components/lender/invest/InvestModal';
 
 const iconStyle = {
     color: '#1370CB'

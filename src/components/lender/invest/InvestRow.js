@@ -3,8 +3,8 @@ import { Row, Col } from 'react-flexbox-grid';
 import numeral from 'numeral';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
-import { RiskColors } from '../../utils/RiskColors';
-import ProgressBar from '../ProgressBar';
+import { RiskColors } from '../../../utils/RiskColors';
+import ProgressBar from '../../ProgressBar';
 import InvestRowCollapsible from './InvestRowCollapsible';
 
 const paperStyle = {
@@ -57,21 +57,13 @@ class InvestRow extends Component {
                     <div className="risk-indicator" style={riskStyle}></div>
 
                     <Row className="row-item" onClick={this.onRowClicked}>
-                        <Col lg={1} className="invest-loan-column">
-                            {loan.interest_rate}%
-                        </Col>
+                        <Col lg={1} className="invest-loan-column"> {loan.interest_rate}% </Col>
 
-                        <Col lg={1} className="invest-loan-column">
-                            {loan.tenure} months
-                        </Col>
+                        <Col lg={1} className="invest-loan-column"> {loan.tenure} months </Col>
 
-                        <Col lg={1} className="invest-loan-column text-capitalize">
-                            {loan.required_loan_id}
-                        </Col>
+                        <Col lg={1} className="invest-loan-column text-capitalize"> {loan.required_loan_id} </Col>
 
-                        <Col lg={2} className="invest-loan-column text-capitalize">
-                            {loan.user.first_name}
-                        </Col>
+                        <Col lg={2} className="invest-loan-column text-capitalize"> {loan.user.first_name} </Col>
 
                         <Col lg={2} className="invest-loan-column">
                             ₹ {numeral(loan.amount).format('0,0.00')}
@@ -80,17 +72,11 @@ class InvestRow extends Component {
                             </div>
                         </Col>
 
-                        <Col lg={2} className="invest-loan-column">
-                            ₹ {numeral(50000).format('0,0.00')}
-                        </Col>
+                        <Col lg={2} className="invest-loan-column"> ₹ {numeral(50000).format('0,0.00')} </Col>
 
-                        <Col lg={2} className="invest-loan-column flex-child-ellipsis text-capitalize">
-                            {loan.purpose.toLowerCase()}
-                        </Col>
+                        <Col lg={2} className="invest-loan-column flex-child-ellipsis text-capitalize"> {loan.purpose.toLowerCase()} </Col>
 
-                        <Col lg={1} className="invest-button-column text-align-center">
-                            <RaisedButton label="Invest" primary={true} type="submit" onClick={() => this.props.invest(loan)} className="invest-button"/>
-                        </Col>
+                        <Col lg={1} className="invest-button-column text-align-center"> <RaisedButton label="Invest" primary={true} type="submit" onClick={() => this.props.invest(loan)} className="invest-button"/> </Col>
                     </Row>
                 </Paper>
 

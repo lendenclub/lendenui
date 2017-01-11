@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import Responsive from 'react-responsive-decorator';
 import { bindActionCreators } from 'redux';
 import * as actionCreators from '../actions/index';
 
@@ -34,11 +35,21 @@ const muiTheme = getMuiTheme({
 });
 
 class Main extends Component {
+    componentDidMount () {
+        this.props.media({ maxWidth: 1230 }, () => {
+            this.setState({
+                isMobile: true
+            });
+        });
+    }
+
     render () {
+        let isMobile = this.state ? this.state.isMobile : false;
+        console.log('Mobile:', isMobile);
         return (
             <MuiThemeProvider muiTheme={muiTheme}>
                 <div>
-                    {React.cloneElement(this.props.children, this.props)}
+                    { React.cloneElement(this.props.children, {...this.props, isMobile}) }
                 </div>
             </MuiThemeProvider>
         );
@@ -54,4 +65,6 @@ function mapDispatchToProps (dispatch) {
     return bindActionCreators(actionCreators, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+
+//Responsive makes the media util available in all components
+export default Responsive(connect(mapStateToProps, mapDispatchToProps)(Main));
