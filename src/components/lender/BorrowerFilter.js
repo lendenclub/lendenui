@@ -7,6 +7,7 @@ import AutoComplete from 'material-ui/AutoComplete';
 import Chip from 'material-ui/Chip';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
 
 const allLoanCategories = [ 'Home Renovation', 'Debt Consolidation', 'Medical Emergency', 'Rental Deposit', 'Wedding Loan', 'Vacation Loan', 'Family Function Loan', 'Advance Salary']
 
@@ -43,9 +44,10 @@ const autoCompleteStyle = {
     marginTop: '-10px'
 }
 
-const autocompletMenuStyle = {
-    backgroundColor: '#182F39',
-    color: '#B9B8B8'
+const autocompletListStyle = {
+    color: '#B9B8B8',
+    height: '250px',
+    overflowY: 'auto'
 }
 
 class BorrowerFilter extends Component {
@@ -92,8 +94,9 @@ class BorrowerFilter extends Component {
                             <span>Borrower Filter</span>
                             <FontIcon className="material-icons close-icon" onClick={this.props.toggleFilterDrawer}>close</FontIcon>
                         </div>
-                        <div className="category-header">
-                            Risk Category
+                        <div className="category-header interest-rate-category-header">
+                            <div>Risk Category</div>
+                            <div>Interest Rate</div>
                         </div>
                         <div className="category-content">
                             {RiskCategories.map( (risk, idx) => {
@@ -101,6 +104,19 @@ class BorrowerFilter extends Component {
                                     <RiskCheckbox risk={risk} key={idx} />
                                 )
                             })}
+                        </div>
+                    </div>
+
+                    <div className="tenure category">
+                        <div className="category-header">
+                            Tenure
+                        </div>
+                        <div className="category-content">
+                            <Checkbox label="3 months - 6 months" className="checkbox"/>
+                            <Checkbox label="6 months - 9 months" className="checkbox"/>
+                            <Checkbox label="9 months - 12 months" className="checkbox"/>
+                            <Checkbox label="12 months - 15 months" className="checkbox"/>
+                            <Checkbox label="15 months - 18 months" className="checkbox"/>
                         </div>
                     </div>
 
@@ -119,7 +135,7 @@ class BorrowerFilter extends Component {
                                 onNewRequest={this.categorySelected.bind(this)}
                                 menuCloseDelay={100}
                                 style={autoCompleteStyle}
-                                menuStyle={autocompletMenuStyle}
+                                listStyle={autocompletListStyle}
                             />
                         {this.state.selectedLoanCategories.map( (item, index) => {
                             return (
@@ -131,23 +147,11 @@ class BorrowerFilter extends Component {
                         </div>
                     </div>
 
-                    <div className="tenure category">
-                        <div className="category-header">
-                            Tenure
-                        </div>
-                        <div className="category-content">
-                            <Checkbox label="3 months - 6 months" className="checkbox"/>
-                            <Checkbox label="6 months - 9 months" className="checkbox"/>
-                            <Checkbox label="9 months - 12 months" className="checkbox"/>
-                            <Checkbox label="12 months - 15 months" className="checkbox"/>
-                            <Checkbox label="15 months - 18 months" className="checkbox"/>
-                        </div>
-                    </div>
                 </div>
 
                 <Paper zDepth={2} className="filter-bar">
                     <RaisedButton label="Apply" primary={true} onClick={this.applyFilter} className="float-right"/>
-                    <RaisedButton label="Reset" secondary={true} onClick={this.applyFilter} className="float-left"/>
+                    <FlatButton label="Reset" secondary={true} onClick={this.applyFilter} className="float-left"/>
                 </Paper>
             </Drawer>
         )

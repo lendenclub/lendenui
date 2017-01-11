@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-flexbox-grid';
 import FontIcon from 'material-ui/FontIcon';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
 
 import InvestRow from '../../components/lender/InvestRow';
 import BorrowerFilter from '../../components/lender/BorrowerFilter';
@@ -48,6 +49,7 @@ class Invest extends Component {
 
 
     //TODO: Change the .bind(this) to arrow functions
+    //TODO: Change key to loan ID
     render () {
         return (
             <div className="lender-invest">
@@ -58,34 +60,39 @@ class Invest extends Component {
                     <Col lg={1}>
                         Tenure
                     </Col>
-                    <Col lg={2}>
-                        Loan
-                    </Col>
                     <Col lg={1}>
-                        Remaining
+                        Loan ID
+                    </Col>
+                    <Col lg={2}>
+                        Borrower's Name
+                    </Col>
+                    <Col lg={2}>
+                        Loan Amount
+                    </Col>
+                    <Col lg={2}>
+                        Remaining Amount
                     </Col>
                     <Col lg={2}>
                         Loan Purpose
                     </Col>
-                    <Col lg={2}>
-                        Loan ID
-                    </Col>
-                    <Col lg={2}>
-                        Borrower
-                    </Col>
-                    <Col lg={1} className="text-align-right">
-                        <FontIcon className="material-icons" style={iconStyle} onClick={this.toggleFilterDrawer.bind(this)}>tune</FontIcon>
+                    <Col lg={1} className="text-align-right position-relative">
+                        <FloatingActionButton backgroundColor='#1976D2' className="filter-floating-button" onClick={this.toggleFilterDrawer.bind(this)}>
+                            <FontIcon className="material-icons">filter_list</FontIcon>
+                        </FloatingActionButton>
                     </Col>
                 </Row>
 
                 <BorrowerFilter filterDrawerState={this.state.filterDrawerState} toggleFilterDrawer={this.toggleFilterDrawer.bind(this)} />
 
-                {this.props.lender.loans.map( (loan, idx) => {
-                    loan.active = loan.active || false;
-                    return (
-                        <InvestRow key={loan.user.user_id} loan={loan} toggleRowAction={this.toggleRowActive.bind(this)} rowActive={loan.active} invest={this.showInvestModal.bind(this)}/>
-                    )
-                })}
+                <div className="invest-table">
+                    {this.props.lender.loans.map( (loan, idx) => {
+                        loan.active = loan.active || false;
+                        return (
+                            <InvestRow key={idx} loan={loan} toggleRowAction={this.toggleRowActive.bind(this)} rowActive={loan.active} invest={this.showInvestModal.bind(this)}/>
+                        )
+                    })}
+                </div>
+
                 <InvestModal
                     loan={this.state.selectedLoan}
                     open={this.state.investModalOpen}

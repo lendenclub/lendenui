@@ -39,7 +39,6 @@
     padding-bottom: 15px;
 }
 
-
 /* FLOATS */
 .float-right {
     float: right;
@@ -47,4 +46,13 @@
 
 .float-left {
     float: left;
+}
+
+/* POSITIONS */
+.position-relative {
+    position: relative;
+}
+
+.display-inline {
+    display: inline-block;
 }

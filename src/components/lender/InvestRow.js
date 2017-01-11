@@ -14,9 +14,10 @@ const paperStyle = {
     marginLeft: '5px'
 }
 
+//TODO: Move the bg color to a css class
 const paperCollapsibleStyle = {
     color: 'inherit',
-    backgroundColor: '#11262E'
+    backgroundColor: '#OD222B'
 }
 
 class InvestRow extends Component {
@@ -64,6 +65,14 @@ class InvestRow extends Component {
                             {loan.tenure} months
                         </Col>
 
+                        <Col lg={1} className="invest-loan-column text-capitalize">
+                            {loan.required_loan_id}
+                        </Col>
+
+                        <Col lg={2} className="invest-loan-column text-capitalize">
+                            {loan.user.first_name}
+                        </Col>
+
                         <Col lg={2} className="invest-loan-column">
                             ₹ {numeral(loan.amount).format('0,0.00')}
                             <div className="progress-bar-container">
@@ -71,20 +80,12 @@ class InvestRow extends Component {
                             </div>
                         </Col>
 
-                        <Col lg={1} className="invest-loan-column">
+                        <Col lg={2} className="invest-loan-column">
                             ₹ {numeral(50000).format('0,0.00')}
                         </Col>
 
                         <Col lg={2} className="invest-loan-column flex-child-ellipsis text-capitalize">
                             {loan.purpose.toLowerCase()}
-                        </Col>
-
-                        <Col lg={2} className="invest-loan-column text-capitalize">
-                            {loan.required_loan_id}
-                        </Col>
-
-                        <Col lg={2} className="invest-loan-column text-capitalize">
-                            {loan.user.first_name}
                         </Col>
 
                         <Col lg={1} className="invest-button-column text-align-center">

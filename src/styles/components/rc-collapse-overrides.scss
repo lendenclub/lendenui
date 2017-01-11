@@ -26,12 +26,12 @@
     .rc-collapse-header {
         height: auto !important;
         line-height: 0 !important;
-        color: $text-grey !important;
+        color: $accordion-header-grey !important;
         padding-top: 10px;
 
         svg {
             vertical-align: middle;
-            color: $text-grey !important;
+            color: $accordion-header-grey !important;
         }
     }
 

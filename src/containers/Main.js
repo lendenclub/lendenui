@@ -8,7 +8,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 const muiTheme = getMuiTheme({
     palette: {
-        canvasColor: '#192930',
+        canvasColor: '#081B24',
         textColor: '#ffffff',
         primary1Color: '#4CAF50',
         borderColor: '#9e9e9e'
@@ -26,7 +26,10 @@ const muiTheme = getMuiTheme({
     checkbox: {
         boxColor: '#2d434d',
         checkedColor: '#0099CC',
-        labelColor: '#B9B8B8'
+        labelColor: '#97A29C'
+    },
+    chip: {
+      backgroundColor: '#182F39'
     }
 });
 
