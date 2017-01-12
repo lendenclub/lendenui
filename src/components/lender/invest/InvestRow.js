@@ -82,7 +82,7 @@ class InvestRow extends Component {
 
                 <Paper zDepth={1} style={paperCollapsibleStyle} className={collapsiblePaperStyle}>
                     <div className="collapsible-content">
-                        <InvestRowCollapsible loan={loan} />
+                        <InvestRowCollapsible loan={loan} isMobile={this.props.isMobile}/>
                     </div>
                 </Paper>
             </div>

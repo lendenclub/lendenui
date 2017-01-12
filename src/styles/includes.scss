@@ -6,8 +6,9 @@
 //Lender Imports
 @import "lender/header.scss";
 @import "lender/left-nav.scss";
-@import "lender/invest.scss";
-@import "lender/borrower-filter.scss";
+@import "lender/invest/invest.scss";
+@import "lender/invest/borrower-filter.scss";
+@import "lender/invest/invest-card.scss";
 
 //Component Imports
 @import "components/progress-bar.scss";

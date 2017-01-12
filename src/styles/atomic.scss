@@ -1,6 +1,10 @@
-.padding-main-content {
+.padding-main-content-desktop {
     padding-left: $left-padding-main-content;
     padding-top: $header-height;
+}
+
+.padding-main-content-mobile {
+    padding: calc(#{$header-height} + 10px) 5px 20px 5px;
 }
 
 .color-accent-blue {

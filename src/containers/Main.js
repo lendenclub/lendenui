@@ -35,17 +35,21 @@ const muiTheme = getMuiTheme({
 });
 
 class Main extends Component {
-    componentDidMount () {
+    componentWillMount () {
         this.props.media({ maxWidth: 1230 }, () => {
             this.setState({
                 isMobile: true
+            });
+        });
+        this.props.media({ minWidth: 1230 }, () => {
+            this.setState({
+                isMobile: false
             });
         });
     }
 
     render () {
         let isMobile = this.state ? this.state.isMobile : false;
-        console.log('Mobile:', isMobile);
         return (
             <MuiThemeProvider muiTheme={muiTheme}>
                 <div>

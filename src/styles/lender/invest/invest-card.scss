@@ -1,0 +1,17 @@
+.invest-card {
+    .collapsible-pane {
+        transition: all .5s ease !important;
+        overflow-y: hidden;
+        position: relative;
+        background-color: #0D222B;
+    }
+
+    .collapsible-pane.show-collapsible {
+        height: 350px;
+        overflow-y: auto;
+    }
+
+    .collapsible-pane.hide-collapsible {
+        height: 0;
+    }
+}

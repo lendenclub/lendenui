@@ -11,7 +11,7 @@
 
     .rc-collapse-content {
         background-color: transparent !important;
-        padding: 0 60px!important;
+        padding: 0 30px !important;
         color: $text-grey !important;
 
         .rc-collapse-content-box {
@@ -28,6 +28,7 @@
         line-height: 0 !important;
         color: $accordion-header-grey !important;
         padding-top: 10px;
+        text-indent: 0 !important;
 
         svg {
             vertical-align: middle;
@@ -36,7 +37,7 @@
     }
 
     .rc-collapse-item-active {
-        border-bottom: 1px solid #0a1d24;
+        border-bottom: 1px solid $border-grey;
 
         .rc-collapse-header {
             span {

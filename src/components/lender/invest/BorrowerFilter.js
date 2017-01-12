@@ -86,8 +86,10 @@ class BorrowerFilter extends Component {
     }
 
     render () {
+        let drawerWidth = this.props.isMobile ? 300 : 400;
+
         return (
-            <Drawer width={400} openSecondary={true} open={this.props.filterDrawerState} className="borrower-filter">
+            <Drawer width={drawerWidth} openSecondary={true} open={this.props.filterDrawerState} className="borrower-filter">
                 <div className="drawer-content">
                     <div className="interest-rate-category category">
                         <div className="main-header">
