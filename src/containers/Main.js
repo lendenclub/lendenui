@@ -11,7 +11,7 @@ const muiTheme = getMuiTheme({
     palette: {
         canvasColor: '#081B24',
         textColor: '#ffffff',
-        primary1Color: '#4CAF50',
+        primary1Color: '#118a70',
         borderColor: '#9e9e9e'
     },
     textField: {

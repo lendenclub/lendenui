@@ -12,7 +12,7 @@ const iconStyle = {
 }
 
 const leftNavDrawerStyle = {
-    backgroundColor: '#1A2225'
+    boxShadow: 'none'
 }
 
 const listStyle = {
@@ -25,7 +25,7 @@ class LeftNav extends Component {
             drawerWidth = isMobile ? 250 : 80,
             docked = !isMobile;
         return (
-            <Drawer style={leftNavDrawerStyle} width={drawerWidth} docked={docked} open={this.props.leftNavOpen} onRequestChange={this.props.toggleLeftNav}>
+            <Drawer containerStyle={leftNavDrawerStyle} width={drawerWidth} docked={docked} open={this.props.leftNavOpen} onRequestChange={this.props.toggleLeftNav}>
                 <div  className="lender-left-nav">
                     <div className="app-logo">
                         <img src={logo} alt="logo" />
@@ -45,9 +45,9 @@ class LeftNav extends Component {
                             </Link>
                         </ListItem>
                         <ListItem className="nav-list-item">
-                            <Link to={'/app/lender/loan-offer-status'} activeClassName="active" className="left-nav-item">
+                            <Link to={'/app/lender/my-investments'} activeClassName="active" className="left-nav-item">
                                 <FontIcon className="material-icons" style={iconStyle}>repeat_one</FontIcon>
-                                <MobileComponent><span className="tooltip">Loan Offer Status</span></MobileComponent>
+                                <MobileComponent><span className="tooltip">My Investments</span></MobileComponent>
                             </Link>
                         </ListItem>
                         <ListItem className="nav-list-item">

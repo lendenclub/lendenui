@@ -3,7 +3,7 @@
         transition: all .5s ease !important;
         overflow-y: hidden;
         position: relative;
-        background-color: #0D222B;
+        background-color: $accordion-bg-color;
     }
 
     .collapsible-pane.show-collapsible {

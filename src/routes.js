@@ -13,7 +13,7 @@ import Login from './containers/login/Login';
 import Lender from './containers/lender/Lender';
 import Invest from './containers/lender/Invest';
 import Dashboard from './containers/lender/Dashboard';
-import LoanOfferStatus from './containers/lender/LoanOfferStatus';
+import MyInvestments from './containers/lender/MyInvestments';
 import ReferAndEarn from './containers/lender/ReferAndEarn';
 import Account from './containers/lender/Account';
 
@@ -33,7 +33,7 @@ const routes = (
                     <Route path='lender' component={Lender}>
                         <Route path="invest" component={Invest}></Route>
                         <Route path="dashboard" component={Dashboard}></Route>
-                        <Route path="loan-offer-status" component={LoanOfferStatus}></Route>
+                        <Route path="my-investments" component={MyInvestments}></Route>
                         <Route path="refer-and-earn" component={ReferAndEarn}></Route>
                         <Route path="account" component={Account}></Route>
                     </Route>

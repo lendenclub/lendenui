@@ -7,10 +7,6 @@
     padding: calc(#{$header-height} + 10px) 5px 20px 5px;
 }
 
-.color-accent-blue {
-    color: $accent-blue;
-}
-
 .text-align-center {
     text-align: center;
 }
@@ -59,4 +55,18 @@
 
 .display-inline {
     display: inline-block;
+}
+
+/* Colors */
+.color-accent-blue {
+    color: $accent-blue;
+}
+
+.color-progress-blue {
+    color: $progress-blue
+}
+
+/* Borders */
+.border-right {
+    border-right: 1px solid $border-grey;
 }

@@ -1,0 +1,60 @@
+.my-investments {
+    .header-row {
+        padding: 25px 35px;
+        color: $text-header-grey;
+        border-bottom: 1px solid $dark-border-grey;
+        background-color: $page-header-bg-color;
+        margin: 0;
+    }
+
+    .my-investment-table {
+        margin: 30px 10px;
+
+        .my-investment-row {
+            margin-bottom: 15px;
+            cursor: pointer;
+
+            .row {
+                padding: 20px 25px;
+                background-color: $light-grey-bgcolor;
+                margin: 0;
+
+                .progress-bar-container {
+                    padding-top: 5px;
+                }
+            }
+
+            .collapsible-pane {
+                transition: all .5s ease !important;
+                overflow-y: hidden;
+                position: relative;
+                margin: 0 4px;
+                border-radius: 0;
+                background-color: $accordion-bg-color;
+
+                .my-investment-row-collapsible {
+                    padding: 20px;
+                }
+            }
+
+            .collapsible-pane.show-collapsible {
+                height: 350px;
+                overflow-y: auto;
+            }
+
+            .collapsible-pane.hide-collapsible {
+                height: 0;
+            }
+        }
+
+        .filter-nav {
+            position: fixed;
+            right: 0;
+            top: $header-height;
+            width: 120px;
+            height: 100%;
+            background-color: $dark-grey-bgcolor;
+            padding-top: 90px;
+        }
+    }
+}

@@ -14,6 +14,16 @@ const paperStyle = {
     marginLeft: '5px'
 }
 
+const riskIndicator = {
+    position: 'absolute',
+    width: 0,
+	height: 0,
+	borderTopWidth: '20px',
+    borderTopStyle: 'inset',
+	borderRight: '20px solid transparent'
+}
+
+//TODO: Make risk indicator a component
 //TODO: Move the bg color to a css class
 const paperCollapsibleStyle = {
     color: 'inherit',
@@ -31,10 +41,7 @@ class InvestRow extends Component {
     }
 
     computeRiskStyle = (interest) => {
-        let color = RiskColors(interest);
-        return {
-            backgroundColor: color
-        };
+        return RiskColors(interest);
     }
 
     onRowClicked = (e) => {
@@ -46,15 +53,16 @@ class InvestRow extends Component {
 
     render () {
         let loan = this.props.loan,
-            riskStyle = this.computeRiskStyle(loan.interest_rate),
             collapsiblePaperState = this.props.rowActive ? 'show-collapsible' : 'hide-collapsible',
             collapsiblePaperStyle = `collapsible-pane ${collapsiblePaperState}`;
+
+        riskIndicator.borderTopColor = this.computeRiskStyle(loan.interest_rate);
 
         return (
             <div className="invest-row">
                 <Paper style={paperStyle} zDepth={1}>
 
-                    <div className="risk-indicator" style={riskStyle}></div>
+                    <div style={riskIndicator}></div>
 
                     <Row className="row-item" onClick={this.onRowClicked}>
                         <Col lg={1} className="invest-loan-column"> {loan.interest_rate}% </Col>

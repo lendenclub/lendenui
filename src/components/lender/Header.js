@@ -7,7 +7,8 @@ import MobileComponent from '../MobileComponent';
 import { styleConstants } from '../../utils/StyleConstants';
 
 const style = {
-    color: 'inherit'
+    color: 'inherit',
+    boxShadow: 'none'
 };
 
 const navigatorStyle = {

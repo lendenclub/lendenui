@@ -41,12 +41,10 @@
 
     .left-nav-item.active {
         transition: background-color 0.5s ease 0s;
-        background-color: $body-bg-color;
-        color: #B7BABC;
-        border-left: 3px solid $accent-blue;
+        background-color: $accent-green;
 
         .material-icons {
-            color: #B7BABC !important;
+            color: white !important;
         }
     }
 }

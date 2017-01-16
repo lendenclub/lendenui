@@ -1,9 +1,10 @@
 .lender-invest {
     .header-row {
         padding: 24px 15px 24px 20px;
-        border-bottom: 1px solid $border-grey;
+        border-bottom: 1px solid $dark-border-grey;
         margin-right: 0;
         color: $text-header-grey;
+        background-color: $page-header-bg-color;
 
         .filter-floating-button {
             position: absolute;
@@ -23,13 +24,6 @@
     }
 
     .invest-row {
-        .risk-indicator {
-            width: 4px;
-            position: absolute;
-            height: 100%;
-            border-radius: 2px 0 0 2px;
-        }
-
         .collapsible-pane {
             transition: all .5s ease !important;
             overflow-y: hidden;
@@ -37,7 +31,7 @@
             margin-right: 16px;
             position: relative;
             top: -15px;
-            background-color: #0D222B;
+            background-color: $accordion-bg-color;
         }
 
         .collapsible-pane.show-collapsible {

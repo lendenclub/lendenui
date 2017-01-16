@@ -1,4 +1,4 @@
-function lenderActions (state = {loans: [] }, action) {
+function lenderActions (state = {loans: [], myInvestments: [] }, action) {
     switch (action.type) {
         case 'UPDATE_LOANS':
             return {
@@ -17,6 +17,25 @@ function lenderActions (state = {loans: [] }, action) {
             return {
                 ...state,
                 loans
+            }
+        case 'UPDATE_MY_INVESTMENTS':
+            return {
+                ...state,
+                myInvestments: action.myInvestments
+            }
+        //TODO: Refactor this and UPDATE_ROW_ACTIVE into one function
+        case 'UPDATE_MY_INVESTMENT_ROW_ACTIVE':
+            let myInvestments = state.myInvestments;
+            myInvestments.forEach( (myInvestment) => {
+                if (myInvestment.required_loan_id === action.loan_id) {
+                    myInvestment.active = !myInvestment.active;
+                } else {
+                    myInvestment.active = false;
+                }
+            });
+            return {
+                ...state,
+                myInvestments
             }
         default:
             return state;
