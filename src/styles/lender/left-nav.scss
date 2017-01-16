@@ -42,6 +42,7 @@
     .left-nav-item.active {
         transition: background-color 0.5s ease 0s;
         background-color: $accent-green;
+        color: white;
 
         .material-icons {
             color: white !important;

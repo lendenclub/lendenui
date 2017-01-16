@@ -46,15 +46,5 @@
                 height: 0;
             }
         }
-
-        .filter-nav {
-            position: fixed;
-            right: 0;
-            top: $header-height;
-            width: 120px;
-            height: 100%;
-            background-color: $dark-grey-bgcolor;
-            padding-top: 90px;
-        }
     }
 }

@@ -1,30 +1,28 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-flexbox-grid';
-import {List, ListItem} from 'material-ui/List';
-import { styleConstants } from '../../utils/StyleConstants';
-
 import MyInvestmentRow from '../../components/lender/my-investments/MyInvestmentRow';
+import WebComponent from '../../components/WebComponent';
+import MobileComponent from '../../components/MobileComponent';
+import MyInvestmentCard from '../../components/lender/my-investments/mobile/MyInvestmentCard';
+import MyInvestmentsFilter from '../../components/lender/my-investments/MyInvestmentsFilter';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import FontIcon from 'material-ui/FontIcon';
 
 const fillerHeader = {
     marginLeft: '-8px'
 }
 
-const myInvestmentFilterStyle = {
-    color: styleConstants.textGrey
+const floatingFilter = {
+    position: 'fixed',
+    bottom: '20px',
+    right: '15px',
+    zIndex: 100
 }
-
-const myInvestmentFilterStyleActive = {
-    backgroundColor: styleConstants.bodyBackgroundColor,
-    borderRight: `4px solid ${styleConstants.accentGreen}`,
-    color: 'white'
-}
-
-const myInvestmentFilters = ['All', 'In Process', 'Active', 'Closed']
 
 class MyInvestments extends Component {
     constructor () {
         super();
-        this.state = { myInvestmentsFilter: 'All'};
+        this.state = { myInvestmentsFilter: 'All', filterDrawerState: false};
     }
     componentDidMount () {
         this.props.fetchMyInvestments();
@@ -38,49 +36,66 @@ class MyInvestments extends Component {
         this.setState({myInvestmentsFilter: e.target.innerText.trim()})
     }
 
+    toggleFilterDrawer = () => {
+        this.setState({ filterDrawerState: !this.state.filterDrawerState})
+    }
+
     //TODO: Change key to loan ID
     render () {
         return (
-            <div className="my-investments">
-                <Row>
-                    <Col lg={11}>
-                        <Row className="header-row">
-                            <Col lg={1}>Borrower</Col>
-                            <Col lg={1}>Loan ID</Col>
-                            <Col lg={1}>Interest</Col>
-                            <Col lg={2}>Investment</Col>
-                            <Col lg={2}>EMI</Col>
-                            <Col lg={5}>Status</Col>
+            <div>
+                <WebComponent>
+                    <div className="my-investments">
+                        <Row>
+                            <Col lg={11}>
+                                <Row className="header-row">
+                                    <Col lg={1}>Borrower</Col>
+                                    <Col lg={1}>Loan ID</Col>
+                                    <Col lg={1}>Interest</Col>
+                                    <Col lg={2}>Investment</Col>
+                                    <Col lg={2}>EMI</Col>
+                                    <Col lg={5}>Status</Col>
+                                </Row>
+                            </Col>
+                            <Col lg={1} style={fillerHeader} className="header-row"></Col>
                         </Row>
-                    </Col>
-                    <Col lg={1} style={fillerHeader} className="header-row"></Col>
-                </Row>
 
-                <div className="my-investment-table">
-                    <Row>
-                        <Col lg={11}>
-                            {this.props.lender.myInvestments.map( (myInvestment, idx) => {
-                                myInvestment.active = myInvestment.active || false;
-                                return (
-                                    <MyInvestmentRow key={idx} myInvestment={myInvestment} toggleRowAction={this.toggleRowActive} rowActive={myInvestment.active} isMobile={this.props.isMobile}/>
-                                )
-                            })}
-                        </Col>
-                        <Col lg={1}>
-                            <div className="filter-nav">
-                                <List>
-                                    {myInvestmentFilters.map( (myInvestment, idx) => {
-                                        let activeStyle = (myInvestment === this.state.myInvestmentsFilter) ? {...myInvestmentFilterStyle, ...myInvestmentFilterStyleActive} : myInvestmentFilterStyle;
-
-                                            return (
-                                                <ListItem key={idx} style={activeStyle} className="nav-bar" primaryText={myInvestment} onClick={this.filterMyInvestments} />
-                                            )
+                        <div className="my-investment-table">
+                            <Row>
+                                <Col lg={11}>
+                                    {this.props.lender.myInvestments.map( (myInvestment, idx) => {
+                                        myInvestment.active = myInvestment.active || false;
+                                        return (
+                                            <MyInvestmentRow key={idx} myInvestment={myInvestment} toggleRowAction={this.toggleRowActive} rowActive={myInvestment.active} isMobile={this.props.isMobile}/>
+                                        )
                                     })}
-                                </List>
-                            </div>
-                        </Col>
-                    </Row>
-                </div>
+                                </Col>
+                                <Col lg={1}>
+                                    <div className="filter-nav">
+                                        <MyInvestmentsFilter selectedFilter={this.state.myInvestmentsFilter} filterMyInvestments={this.filterMyInvestments} isMobile={this.props.isMobile} />
+                                    </div>
+                                </Col>
+                            </Row>
+                        </div>
+                    </div>
+                </WebComponent>
+
+                <MobileComponent>
+                    <div className="my-investments">
+                        {this.props.lender.myInvestments.map( (myInvestment, idx) => {
+                            myInvestment.active = myInvestment.active || false;
+                            return (
+                                <MyInvestmentCard key={idx} myInvestment={myInvestment} toggleRowAction={this.toggleRowActive} rowActive={myInvestment.active} isMobile={this.props.isMobile} />
+                            )
+                        })}
+
+                        <MyInvestmentsFilter selectedFilter={this.state.myInvestmentsFilter} filterMyInvestments={this.filterMyInvestments} filterDrawerState={this.state.filterDrawerState} toggleFilterDrawer={this.toggleFilterDrawer} isMobile={this.props.isMobile} />
+
+                        <FloatingActionButton zDepth={2} backgroundColor='#1976D2' className="filter-floating-button" onClick={this.toggleFilterDrawer} style={floatingFilter}>
+                            <FontIcon className="material-icons">filter_list</FontIcon>
+                        </FloatingActionButton>
+                    </div>
+                </MobileComponent>
             </div>
         );
     }

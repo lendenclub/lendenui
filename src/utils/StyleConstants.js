@@ -8,5 +8,13 @@ export const styleConstants = {
     tableHeaderBGColor: '#23404a',
     bodyBackgroundColor: '#324a54',
     accentGreen: '#74a647',
-    lightGreyBGColor: '#172E37'
+    accentBlue: '#1976D2',
+    lightGreyBGColor: '#172E37',
+    darkGreyBGColor: '#23404a',
+
+    cardMoreHorizontal: {
+        textAlign: 'center',
+        height: '24px',
+        borderTop: '1px solid #2D434D'
+    }
 }

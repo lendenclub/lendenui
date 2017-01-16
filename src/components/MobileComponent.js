@@ -22,7 +22,7 @@ class MobileComponent extends Component {
         if (this.state.isMobile) {
             return React.cloneElement(children, otherProps)
         } else {
-            return (<div></div>);
+            return false;
         }
     }
 }

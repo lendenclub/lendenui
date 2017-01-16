@@ -4,11 +4,9 @@ import FontIcon from 'material-ui/FontIcon';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import WebComponent from '../../components/WebComponent';
 import MobileComponent from '../../components/MobileComponent';
-
 import InvestRow from '../../components/lender/invest/InvestRow';
 import BorrowerFilter from '../../components/lender/invest/BorrowerFilter';
 import InvestModal from '../../components/lender/invest/InvestModal';
-
 import InvestCard from '../../components/lender/invest/mobile/InvestCard';
 
 const iconStyle = {

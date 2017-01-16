@@ -1,9 +1,11 @@
-.invest-card {
+.my-investment-card {
     .collapsible-pane {
         transition: all .5s ease !important;
         overflow-y: hidden;
         position: relative;
         background-color: $accordion-bg-color;
+        margin: 0 1px;
+        box-shadow: none !important;
     }
 
     .collapsible-pane.show-collapsible {
