@@ -6,11 +6,13 @@ export const styleConstants = {
     borderColor: '#2D434D',
     accordionBGColor: '#OD222B',
     tableHeaderBGColor: '#23404a',
-    bodyBackgroundColor: '#324a54',
+    bodyBackgroundColor: '#3A5763',
     accentGreen: '#74a647',
     accentBlue: '#1976D2',
     lightGreyBGColor: '#172E37',
     darkGreyBGColor: '#23404a',
+    pageHeaderBGColor: '#284752',
+    cardBGColor: '#536C77',
 
     cardMoreHorizontal: {
         textAlign: 'center',

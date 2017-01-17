@@ -1,10 +1,11 @@
-function lenderActions (state = {loans: [], myInvestments: [] }, action) {
+function lenderActions (state = {loans: [], myInvestments: [], accountInfo: {} }, action) {
     switch (action.type) {
         case 'UPDATE_LOANS':
             return {
                 ...state,
                 loans: action.loans
             }
+
         case 'UPDATE_ROW_ACTIVE':
             let loans = state.loans;
             loans.forEach( (loan) => {
@@ -18,11 +19,13 @@ function lenderActions (state = {loans: [], myInvestments: [] }, action) {
                 ...state,
                 loans
             }
+
         case 'UPDATE_MY_INVESTMENTS':
             return {
                 ...state,
                 myInvestments: action.myInvestments
             }
+
         //TODO: Refactor this and UPDATE_ROW_ACTIVE into one function
         case 'UPDATE_MY_INVESTMENT_ROW_ACTIVE':
             let myInvestments = state.myInvestments;
@@ -37,6 +40,13 @@ function lenderActions (state = {loans: [], myInvestments: [] }, action) {
                 ...state,
                 myInvestments
             }
+
+        case 'UPDATE_ACCOUNT_INFO':
+            return {
+                ...state,
+                accountInfo: action.accountInfo
+            }
+
         default:
             return state;
     }

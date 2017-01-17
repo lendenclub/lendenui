@@ -9,10 +9,6 @@ import BorrowerFilter from '../../components/lender/invest/BorrowerFilter';
 import InvestModal from '../../components/lender/invest/InvestModal';
 import InvestCard from '../../components/lender/invest/mobile/InvestCard';
 
-const iconStyle = {
-    color: '#1370CB'
-}
-
 const floatingFilter = {
     position: 'fixed',
     bottom: '20px',

@@ -1,5 +1,6 @@
 import investMockData from '../data/invest';
 import myInvestmentsMockData from '../data/my-investments';
+import AccountMockData from '../data/account';
 // These actions are typically called from the components
 // You need to make api calls, get the data and pass it on to the reducers so that the reducer will update the states which inturn will cause a re-render of relevant components
 export const requestLogin = () => ({
@@ -66,3 +67,15 @@ export const updateMyInvestmentRowActive = (loan_id) => ({
     type: 'UPDATE_MY_INVESTMENT_ROW_ACTIVE',
     loan_id
 })
+
+/*
+    Lender Account
+*/
+export const receiveAccountInfo = (accountInfo) => ({
+    type: 'UPDATE_ACCOUNT_INFO',
+    accountInfo
+})
+
+export const fetchAccountInfo = () => (dispatch, getState) => {
+    dispatch(receiveAccountInfo(AccountMockData))
+}

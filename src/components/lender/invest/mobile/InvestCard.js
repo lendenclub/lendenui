@@ -7,7 +7,6 @@ import numeral from 'numeral';
 import RaisedButton from 'material-ui/RaisedButton';
 import Paper from 'material-ui/Paper';
 import InvestRowCollapsible from '../InvestRowCollapsible';
-import FontIcon from 'material-ui/FontIcon';
 
 const cardStyle = {
     backgroundColor: styleConstants.lightGrayBGColor,

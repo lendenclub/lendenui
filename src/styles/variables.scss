@@ -1,13 +1,25 @@
 $header-height: 60px;
 
-$body-bg-color: #324a54;
-$left-nav-bgcolor: #172E37;
-$header-bgcolor: #1E353E;
-$light-grey-bgcolor: #172E37;
+$color-palette-200: #536C77;
+$color-palette-300: #95989A;
+$color-palette-400: #3A5763;
+$color-palette-500: #284752;
+$color-palette-600: #1E353F;
+$color-palette-700: #172E37;
+
+$body-bg-color: $color-palette-400;
+$left-nav-bgcolor: $color-palette-700;
+$right-nav-bgcolor: $color-palette-500;
+$header-bgcolor: $color-palette-600;
+$collapsible-row-bgcolor: $color-palette-700;
+$accordion-bgcolor: $color-palette-500;
+$table-header: $color-palette-600;
+$table-bgcolor: $color-palette-400;
+$page-header-bgcolor: $color-palette-500;
+
+
 $dark-grey-bgcolor: #23404a;
-$accordion-bg-color: #223d47;
 $progress-blue: #0277BD;
-$page-header-bg-color: #284752;
 
 $left-padding-main-content: 80px;
 

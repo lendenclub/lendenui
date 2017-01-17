@@ -3,12 +3,16 @@
         padding: 25px 35px;
         color: $text-header-grey;
         border-bottom: 1px solid $dark-border-grey;
-        background-color: $page-header-bg-color;
+        background-color: $page-header-bgcolor;
         margin: 0;
+        position: fixed;
+        width: 100%;
+        z-index: 1000;
     }
 
     .my-investment-table {
         margin: 30px 10px;
+        margin-top: 90px;
 
         .my-investment-row {
             margin-bottom: 15px;
@@ -16,7 +20,7 @@
 
             .row {
                 padding: 20px 25px;
-                background-color: $light-grey-bgcolor;
+                background-color: $collapsible-row-bgcolor;
                 margin: 0;
 
                 .progress-bar-container {
@@ -30,7 +34,7 @@
                 position: relative;
                 margin: 0 4px;
                 border-radius: 0;
-                background-color: $accordion-bg-color;
+                background-color: $accordion-bgcolor;
 
                 .my-investment-row-collapsible {
                     padding: 20px;

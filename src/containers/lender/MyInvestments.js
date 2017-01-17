@@ -8,10 +8,6 @@ import MyInvestmentsFilter from '../../components/lender/my-investments/MyInvest
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import FontIcon from 'material-ui/FontIcon';
 
-const fillerHeader = {
-    marginLeft: '-8px'
-}
-
 const floatingFilter = {
     position: 'fixed',
     bottom: '20px',
@@ -57,7 +53,6 @@ class MyInvestments extends Component {
                                     <Col lg={5}>Status</Col>
                                 </Row>
                             </Col>
-                            <Col lg={1} style={fillerHeader} className="header-row"></Col>
                         </Row>
 
                         <div className="my-investment-table">

@@ -1,11 +1,11 @@
 .filter-nav {
     position: fixed;
     right: 0;
-    top: $header-height;
+    top: 130px;
     width: 120px;
     height: 100%;
-    background-color: $dark-grey-bgcolor;
-    padding-top: 90px;
+    background-color: $right-nav-bgcolor;
+    padding-top: 20px;
 }
 
 .my-investments-drawer-filter {

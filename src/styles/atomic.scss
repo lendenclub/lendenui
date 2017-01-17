@@ -70,3 +70,14 @@
 .border-right {
     border-right: 1px solid $border-grey;
 }
+
+
+.alternate-color-table {
+    tr:nth-child(odd) {
+        background-color: $color-palette-400 !important;
+    }
+    tr:nth-child(even) {
+        background-color: $color-palette-200 !important;
+    }
+
+}
