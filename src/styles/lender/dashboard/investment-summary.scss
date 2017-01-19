@@ -1,0 +1,45 @@
+.investment-summary {
+    .section-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 15px;
+
+        .section {
+            padding: 0 25px 0 25px;
+            border-right: 1px solid $color-palette-400;
+            &:last-child {
+                border: none;
+            }
+
+            .header {
+                padding: 10px 0;
+                color: $text-header-grey;
+            }
+
+            .content-container {
+                & > div:nth-child(odd) {
+                    background-color: $color-palette-400 !important;
+                }
+                & > div:nth-child(even) {
+                    background-color: $color-palette-200 !important;
+                }
+
+                .content {
+                    padding: 10px 0;
+                    display: flex;
+                    justify-content: space-between;
+
+                    .key-label {
+                        color: $text-header-grey;
+                        padding-left: 10px;
+                    }
+
+                    .value-label {
+                        color: $text-grey;
+                        padding-right: 10px;
+                    }
+                }
+            }
+        }
+    }
+}

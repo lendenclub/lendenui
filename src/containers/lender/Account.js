@@ -5,7 +5,6 @@ import AddFunds from '../../components/lender/account/AddFunds';
 import WithdrawFunds from '../../components/lender/account/WithdrawFunds';
 import { Row, Col } from 'react-flexbox-grid';
 import { styleConstants } from '../../utils/StyleConstants';
-import FontIcon from 'material-ui/FontIcon';
 import WebComponent from '../../components/WebComponent';
 import MobileComponent from '../../components/MobileComponent';
 
@@ -53,7 +52,6 @@ class Account extends Component {
     render () {
         let history = this.props.lender.accountInfo.history || [],
             isMobile = this.props.isMobile,
-            cardStyle = isMobile ? cardMobileStyle : cardDesktopStyle,
             addFundsStyle = isMobile ? addFundsMobileStyle : addFundsDesktopStyle,
             withdrawFundsStyle = isMobile ? withdrawFundsMobileStyle : withdrawFundsDesktopStyle,
             accountHistoryStyle = isMobile ? accountHistoryMobileStyle : accountHistoryDesktopStyle;

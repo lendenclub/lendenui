@@ -1,0 +1,27 @@
+.suggested-profiles {
+    height: 100%;
+
+    .header-row {
+        margin: 10px;
+        padding-left: 40px;
+        color: $text-header-grey;
+    }
+
+    .invest-view-row {
+        background-color: $collapsible-row-bgcolor;
+        margin: 10px;
+        color: $text-grey;
+        cursor: pointer;
+        position: relative;
+        padding-left: 40px;
+
+        .invest-column {
+            padding: 15px 10px;
+
+            .progress-bar-container {
+                padding-right: 20px;
+                padding-top: 4px;
+            }
+        }
+    }
+}

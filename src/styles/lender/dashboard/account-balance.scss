@@ -1,0 +1,51 @@
+.account-balance {
+    height: 100%;
+    
+    .c3 .c3-axis-x path, .c3 .c3-axis-x line {
+        stroke: transparent;
+    }
+
+    .c3-circle {
+        stroke-width: 2px;
+        stroke: #fff;
+    }
+
+    .c3 path, .c3 line, .tick {
+        text {
+            stroke: $text-header-grey;
+        }
+
+        line {
+            stroke: transparent;
+        }
+    }
+
+    .tooltip-container {
+        background-color: $left-nav-bgcolor;
+        padding: 5px;
+        width: 100px;
+        opacity: 0.8;
+
+        .tooltip-header {
+            color: $text-header-grey;
+        }
+
+        .value {
+            color: $text-grey;
+            font-size: 14px;
+        }
+    }
+
+    .header {
+        padding-left: 15px;
+        .label {
+            color: #63B51D;
+            font-size: 24px;
+        }
+
+        .sub-label {
+            font-size: 14px;
+            color: $text-grey;
+        }
+    }
+}

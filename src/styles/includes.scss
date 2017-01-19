@@ -20,6 +20,13 @@
 // Account
 @import "lender/account/account.scss";
 
+//Dashboard
+@import "lender/dashboard/dashboard.scss";
+@import "lender/dashboard/account-balance.scss";
+@import "lender/dashboard/annualized-returns.scss";
+@import "lender/dashboard/suggested-profiles.scss";
+@import "lender/dashboard/investment-summary.scss";
+
 //Component Imports
 @import "components/progress-bar.scss";
 @import "components/rc-collapse-overrides.scss";

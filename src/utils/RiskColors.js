@@ -1,30 +1,42 @@
 export const RiskColors = (interest) => {
-    if (interest <= 15) return '#009908'
-    else if (interest <= 20) return '#66ffd9'
-    else if (interest <= 25) return '#ffff66'
-    else if (interest <= 30) return '#ff6000'
-    else if (interest <= 35) return '#900000'
+    if (interest <= 15) return '#8BBE47'
+    else if (interest <= 20) return '#5A78CF'
+    else if (interest <= 25) return '#FDFB66'
+    else if (interest <= 30) return '#FFA61A'
+    else if (interest <= 35) return '#F76162'
     else return ''
 }
+
+export const RiskColorsArray = ['#8BBE47', '#5A78CF', '#FDFB66', '#FFA61A', '#F76162']
 
 export const RiskCategories = [{
     label: 'Very Low Risk',
     range: '12.5% - 15%',
-    color: '#009908'
+    min: 12.5,
+    max: 15,
+    color: '#8BBE47'
 }, {
     label: 'Low Risk',
     range: '15% - 18%',
-    color: '#66ffd9'
+    min: 15,
+    max: 18,
+    color: '#5A78CF'
 }, {
     label: 'Medium Risk',
     range: '18% - 22%',
-    color: '#ffff66'
+    min: 18,
+    max: 22,
+    color: '#FDFB66'
 }, {
     label: 'High Risk',
     range: '22% - 30%',
-    color: '#ff6000'
+    min: 22,
+    max: 30,
+    color: '#FFA61A'
 }, {
     label: 'Very High Risk',
     range: '30% - 35%',
-    color: '#900000'
+    min: 30,
+    max: 35,
+    color: '#F76162'
 }]
