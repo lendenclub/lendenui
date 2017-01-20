@@ -1,6 +1,6 @@
 .account-balance {
     height: 100%;
-    
+
     .c3 .c3-axis-x path, .c3 .c3-axis-x line {
         stroke: transparent;
     }
@@ -13,6 +13,7 @@
     .c3 path, .c3 line, .tick {
         text {
             stroke: $text-header-grey;
+            fill: $text-header-grey;
         }
 
         line {

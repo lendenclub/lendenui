@@ -6,7 +6,6 @@ import 'c3/c3.css';
 import { RiskColors, RiskCategories, RiskColorsArray } from '../../../utils/RiskColors';
 
 const cardStyle = {
-    margin: '0 5px',
     backgroundColor: styleConstants.cardBGColor
 }
 

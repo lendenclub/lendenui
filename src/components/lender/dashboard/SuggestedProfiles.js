@@ -13,7 +13,6 @@ const mockData = [
 ]
 
 const cardStyle = {
-    margin: '0 5px',
     backgroundColor: styleConstants.cardBGColor
 }
 

@@ -6,7 +6,6 @@ import 'c3/c3.css';
 import numeral from 'numeral';
 
 const cardStyle = {
-    margin: '0 5px',
     backgroundColor: styleConstants.cardBGColor
 }
 

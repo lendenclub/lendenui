@@ -1,0 +1,35 @@
+.my-investments-chart {
+    height: 100%;
+    .c3-chart-arc path {
+        stroke: transparent;
+    }
+
+    .c3-legend-item {
+        text {
+            stroke: $text-header-grey;
+            fill: $text-header-grey;
+        }
+    }
+
+    .c3-chart-arcs-title {
+        font-size: 35px;
+        stroke: $text-header-grey;
+        fill: $text-header-grey;
+    }
+
+    .tooltip-container {
+        background-color: $left-nav-bgcolor;
+        padding: 5px;
+        width: 150px;
+        opacity: 0.9;
+
+        .tooltip-header {
+            color: $text-header-grey;
+        }
+
+        .value {
+            color: $text-grey;
+            font-size: 14px;
+        }
+    }
+}

@@ -4,18 +4,12 @@ import { styleConstants } from '../../../utils/StyleConstants';
 import { Row, Col } from 'react-flexbox-grid';
 
 const cardStyle = {
-    margin: '15px 5px',
     backgroundColor: styleConstants.cardBGColor
 }
 
 const headerStyle = {
     padding: '15px',
     color: styleConstants.textHeaderGrey
-}
-
-const sectionContainer = {
-    display: 'flex',
-    justifyContent: 'space-between'
 }
 
 class InvestmentSummary extends Component {
