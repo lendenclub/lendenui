@@ -12,11 +12,6 @@ const cardStyle = {
     backgroundColor: styleConstants.cardBGColor
 }
 
-const headerStyle = {
-    padding: '15px',
-    color: styleConstants.textHeaderGrey
-}
-
 const tabStyle = {
     backgroundColor: 'transparent',
     borderBottom: `1px solid ${styleConstants.borderColor}`,
@@ -57,10 +52,6 @@ const monthlyReturnAxis = {
             count: 5
         }
     }
-}
-
-const subchart = {
-    show: true
 }
 
 const monthlyReturnTooltip = {
