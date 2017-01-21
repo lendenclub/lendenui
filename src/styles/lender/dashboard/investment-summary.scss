@@ -2,14 +2,15 @@
     .section-container {
         display: flex;
         justify-content: space-between;
-        padding: 0 15px 15px 15px;
+        margin: 0;
+        padding: 0 10px 10px 10px;
 
         .section {
-            padding: 0 25px 0 25px;
-            border-right: 1px solid $color-palette-400;
-            &:last-child {
-                border: none;
-            }
+            padding: 0 10px 0 10px;
+            border-radius: 5px;
+            background-color: $color-palette-400;
+            margin: 5px;
+            flex: 1;
 
             .header {
                 padding: 10px 0;
@@ -17,13 +18,6 @@
             }
 
             .content-container {
-                & > div:nth-child(odd) {
-                    background-color: $color-palette-400 !important;
-                }
-                & > div:nth-child(even) {
-                    background-color: $color-palette-200 !important;
-                }
-
                 .content {
                     padding: 10px 0;
                     display: flex;

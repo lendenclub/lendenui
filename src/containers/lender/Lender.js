@@ -16,7 +16,9 @@ class Lender extends Component {
     toggleLeftNav = () => {
         let leftNavOpen = this.state.leftNavOpen;
 
-        this.setState({ leftNavOpen: !leftNavOpen});
+        if (this.props.isMobile) {
+            this.setState({ leftNavOpen: !leftNavOpen});
+        }
     }
 
     render () {

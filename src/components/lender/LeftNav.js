@@ -33,31 +33,31 @@ class LeftNav extends Component {
 
                     <List style={listStyle}>
                         <ListItem className="nav-list-item">
-                            <Link to={'/app/lender/invest'} activeClassName="active" className="left-nav-item">
+                            <Link to={'/app/lender/invest'} activeClassName="active" className="left-nav-item" onClick={this.props.toggleLeftNav}>
                                 <FontIcon className="material-icons" style={iconStyle}>format_list_bulleted</FontIcon>
                                 <MobileComponent><span className="tooltip">Invest</span></MobileComponent>
                             </Link>
                         </ListItem>
                         <ListItem className="nav-list-item">
-                            <Link to={'/app/lender/dashboard'} activeClassName="active" className="left-nav-item">
+                            <Link to={'/app/lender/dashboard'} activeClassName="active" className="left-nav-item" onClick={this.props.toggleLeftNav}>
                                 <FontIcon className="material-icons" style={iconStyle}>dashboard</FontIcon>
                                 <MobileComponent><span className="tooltip">Dashboard</span></MobileComponent>
                             </Link>
                         </ListItem>
                         <ListItem className="nav-list-item">
-                            <Link to={'/app/lender/my-investments'} activeClassName="active" className="left-nav-item">
+                            <Link to={'/app/lender/my-investments'} activeClassName="active" className="left-nav-item" onClick={this.props.toggleLeftNav}>
                                 <FontIcon className="material-icons" style={iconStyle}>repeat_one</FontIcon>
                                 <MobileComponent><span className="tooltip">My Investments</span></MobileComponent>
                             </Link>
                         </ListItem>
                         <ListItem className="nav-list-item">
-                            <Link to={'/app/lender/refer-and-earn'} activeClassName="active" className="left-nav-item">
+                            <Link to={'/app/lender/refer-and-earn'} activeClassName="active" className="left-nav-item" onClick={this.props.toggleLeftNav}>
                                 <FontIcon className="material-icons" style={iconStyle}>person_add</FontIcon>
                                 <MobileComponent><span className="tooltip">Refer and Earn</span></MobileComponent>
                             </Link>
                         </ListItem>
                         <ListItem className="nav-list-item">
-                            <Link to={'/app/lender/account'} activeClassName="active" className="left-nav-item">
+                            <Link to={'/app/lender/account'} activeClassName="active" className="left-nav-item" onClick={this.props.toggleLeftNav}>
                                 <FontIcon className="material-icons" style={iconStyle}>account_balance_wallet</FontIcon>
                                 <MobileComponent><span className="tooltip">Account</span></MobileComponent>
                             </Link>

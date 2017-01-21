@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Card } from 'material-ui/Card';
 import { styleConstants } from '../../../utils/StyleConstants';
 import C3Chart from 'react-c3js';
+import d3 from 'd3';
 import 'c3/c3.css';
 import numeral from 'numeral';
 import {Tabs, Tab} from 'material-ui/Tabs';
@@ -21,6 +22,14 @@ const inkBarStyle = {
     backgroundColor: styleConstants.accentGreen
 }
 
+const chartMobileStyle = {
+    margin: '0 10px 0 0'
+}
+
+const chartDesktopStyle = {
+    margin: '0 10px 0 -10px'
+}
+
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
 /* Montly Return Chart Options */
@@ -34,7 +43,10 @@ const monthlyReturnData = {
     type: 'bar',
     groups: [
         ['Interest Paid', 'Principal Paid']
-    ]
+    ],
+    selection: {
+        draggable: true
+    }
 }
 
 const monthlyReturnColorArray = ['#1CB5B0', '#EBD24B']
@@ -43,35 +55,45 @@ const monthlyReturnColor = {
     pattern: monthlyReturnColorArray
 }
 
-const monthlyReturnAxis = {
+const monthlyReturnDefaultAxis = {
     x: {
         type: 'category'
     },
     y: {
         tick: {
-            count: 5
+            count: 5,
+            format: d3.format(".1s")
         }
     }
 }
 
 const monthlyReturnTooltip = {
     contents: function (d, defaultTitleFormat, defaultValueFormat, color) {
-        let interestPaid = d[0],
-            principalPaid = d[1],
-            month = months[interestPaid.x],
-            interestPaidColor = `background-color: ${monthlyReturnColorArray[0]}`,
-            principalPaidColor = `background-color: ${monthlyReturnColorArray[1]}`,
+        let month = months[d[0].x],
             html = `<div class="tooltip-container">
-            <div class="tooltip-header">
-                ${month}
-            </div>
-            <div class="value">
-                <div> <div style="${interestPaidColor}" class="indicator-box"></div> Interest Paid: ₹ ${numeral(interestPaid.value).format('0,0.00')} </div>
-                <div> <div style="${principalPaidColor}" class="indicator-box"></div> Principal Paid: ₹ ${numeral(principalPaid.value).format('0,0.00')} </div>
-            </div>
-        </div>`;
+                        <div class="tooltip-header">
+                            ${month}
+                        </div>
+                        <div class="value">`;
 
+        d.forEach( (item) => {
+            let backgroundColor = `background-color: ${color(item)}`;
+
+            html += `<div> <div style="${backgroundColor}" class="indicator-box"></div> ${item.name}: ₹ ${numeral(item.value).format('0,0.00')} </div>`;
+        });
+
+        html += '</div> </div>';
         return html;
+    }
+}
+
+const legend = {
+    item: {
+        onclick: function (id) {
+            this.api.toggle(id);
+            this.isTargetToShow(id) ? this.api.focus(id) : this.api.revert();
+            this.api.focus();
+        }
     }
 }
 
@@ -105,13 +127,14 @@ const totalInvestedAmountData = {
     }
 }
 
-const totalInvestedAmountAxis = {
+const totalInvestedAmountDefaultAxis = {
     x: {
         type: 'category'
     },
     y: {
         tick: {
-            count: 5
+            count: 5,
+            format: d3.format(".2s")
         }
     },
     y2: {
@@ -132,33 +155,27 @@ const totalInvestedAmountColor = {
 
 const totalInvestedAmountTooltip = {
     contents: function (d, defaultTitleFormat, defaultValueFormat, color) {
-        let veryLowRisk = d[0],
-            lowRisk = d[1],
-            mediumRisk = d[2],
-            highRisk = d[3],
-            veryHighRisk = d[4],
-            investmentCount = d[5],
-            month = months[veryLowRisk.x],
-            veryLowRiskColor = `background-color: ${RiskColorsArray[0]}`,
-            lowRiskColor = `background-color: ${RiskColorsArray[1]}`,
-            mediumRiskColor = `background-color: ${RiskColorsArray[2]}`,
-            highRiskColor = `background-color: ${RiskColorsArray[3]}`,
-            veryHighRiskColor = `background-color: ${RiskColorsArray[4]}`,
-            investmentCountColor = "background-color: #2AA5C4",
+        let month = months[d[0].x],
             html = `<div class="tooltip-container">
-            <div class="tooltip-header">
-                ${month}
-            </div>
-            <div class="value">
-                <div> <div style="${veryLowRiskColor}" class="indicator-box"></div> Very Low Risk: ₹ ${numeral(veryLowRisk.value).format('0,0.00')} </div>
-                <div> <div style="${lowRiskColor}" class="indicator-box"></div> Low Risk: ₹ ${numeral(lowRisk.value).format('0,0.00')} </div>
-                <div> <div style="${mediumRiskColor}" class="indicator-box"></div> Medium Risk: ₹ ${numeral(mediumRisk.value).format('0,0.00')} </div>
-                <div> <div style="${highRiskColor}" class="indicator-box"></div> High Risk: ₹ ${numeral(highRisk.value).format('0,0.00')} </div>
-                <div> <div style="${veryHighRiskColor}" class="indicator-box"></div> Very High Risk: ₹ ${numeral(veryHighRisk.value).format('0,0.00')} </div>
-                <div> <div style="${investmentCountColor}" class="indicator-box"></div> Investment Count: ${investmentCount.value} </div>
-            </div>
-        </div>`;
+                        <div class="tooltip-header">
+                            ${month}
+                        </div>
+                        <div class="value">`;
 
+        d.forEach( (item) => {
+            let backgroundColor = `background-color: ${color(item)}`,
+                formattedValue = null;
+
+            if (item.name === 'Montly Investment Count') {
+                formattedValue = item.value;
+            } else {
+                formattedValue = `₹ ${numeral(item.value).format('0,0.00')}`;
+            }
+
+            html += `<div> <div style="${backgroundColor}" class="indicator-box"></div> ${item.name}: ${formattedValue} </div>`;
+        });
+
+        html += '</div> </div>';
         return html;
     }
 }
@@ -178,19 +195,29 @@ class MonthlySplit extends Component {
     }
 
     render () {
+        let isMobile = this.props.isMobile,
+            monthlyReturnAxis = monthlyReturnDefaultAxis,
+            totalInvestedAmountAxis = totalInvestedAmountDefaultAxis,
+            chartContainerStyle = isMobile ? chartMobileStyle : chartDesktopStyle;
+
+        if (isMobile) {
+            monthlyReturnAxis.x.tick = { count: 5 };
+            totalInvestedAmountAxis.x.tick = { count: 5 };
+        }
+
         return (
             <Card style={cardStyle} className="monthly-cash-flow">
                 <Tabs onChange={this.handleTabChange} value={this.state.tabIndex} tabItemContainerStyle={tabStyle} inkBarStyle={inkBarStyle}>
-                    <Tab label="Monthly Replayments" value={0} />
+                    <Tab label="Monthly Repayments" value={0} />
                     <Tab label="Monthly Investments" value={1} />
                 </Tabs>
 
                 <SwipeableViews index={this.state.tabIndex} onChangeIndex={this.handleTabChange} >
-                    <div style={ {margin: '0 10px 0 -10px'} }>
-                        <C3Chart data={monthlyReturnData} size={ {height: 250} } padding={{top: 10}} bar={bar} color={monthlyReturnColor} axis={monthlyReturnAxis} tooltip={monthlyReturnTooltip}/>
+                    <div style={chartContainerStyle}>
+                        <C3Chart data={monthlyReturnData} size={ {height: 250} } padding={{top: 10}} bar={bar} color={monthlyReturnColor} axis={monthlyReturnAxis} tooltip={monthlyReturnTooltip} legend={legend}/>
                     </div>
-                    <div  style={ {margin: '0 10px 0 -10px'} }>
-                        <C3Chart data={totalInvestedAmountData} size={ {height: 250} } padding={{top: 10}} color={totalInvestedAmountColor} axis={totalInvestedAmountAxis} bar={bar} tooltip={totalInvestedAmountTooltip}/>
+                    <div  style={chartContainerStyle}>
+                        <C3Chart data={totalInvestedAmountData} size={ {height: 250} } padding={{top: 10}} color={totalInvestedAmountColor} axis={totalInvestedAmountAxis} bar={bar} tooltip={totalInvestedAmountTooltip} legend={legend}/>
                     </div>
                 </SwipeableViews>
             </Card>
