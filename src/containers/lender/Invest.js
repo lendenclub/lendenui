@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'react-flexbox-grid';
 import FontIcon from 'material-ui/FontIcon';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import WebComponent from '../../components/WebComponent';
@@ -7,6 +6,7 @@ import MobileComponent from '../../components/MobileComponent';
 import InvestRow from '../../components/lender/invest/InvestRow';
 import BorrowerFilter from '../../components/lender/invest/BorrowerFilter';
 import InvestModal from '../../components/lender/invest/InvestModal';
+import InvestHeaderRow from '../../components/lender/invest/InvestHeaderRow';
 import InvestCard from '../../components/lender/invest/mobile/InvestCard';
 
 const floatingFilter = {
@@ -60,34 +60,7 @@ class Invest extends Component {
             <div>
                 <WebComponent>
                     <div className="lender-invest">
-                        <Row className="header-row">
-                            <Col lg={1}>
-                                Interest
-                            </Col>
-                            <Col lg={1}>
-                                Tenure
-                            </Col>
-                            <Col lg={1}>
-                                Loan ID
-                            </Col>
-                            <Col lg={2} md={5}>
-                                Borrower's Name
-                            </Col>
-                            <Col lg={2}>
-                                Loan Amount
-                            </Col>
-                            <Col lg={2}>
-                                Remaining Amount
-                            </Col>
-                            <Col lg={2}>
-                                Loan Purpose
-                            </Col>
-                            <Col lg={1} className="text-align-right position-relative">
-                                <FloatingActionButton backgroundColor='#1976D2' className="filter-floating-button" onClick={this.toggleFilterDrawer.bind(this)}>
-                                    <FontIcon className="material-icons">filter_list</FontIcon>
-                                </FloatingActionButton>
-                            </Col>
-                        </Row>
+                        <InvestHeaderRow showFilterIcon={true} toggleFilterDrawer={this.toggleFilterDrawer}/>
 
                         <BorrowerFilter filterDrawerState={this.state.filterDrawerState} toggleFilterDrawer={this.toggleFilterDrawer.bind(this)} />
 

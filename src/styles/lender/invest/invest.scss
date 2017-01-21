@@ -1,18 +1,18 @@
 .lender-invest {
     .header-row {
-        padding: 24px 15px 24px 20px;
+        padding: 24px 27px;
         border-bottom: 1px solid $dark-border-grey;
-        margin-right: 0;
+        margin: 0;
         color: $text-header-grey;
         background-color: $page-header-bgcolor;
         position: fixed;
-        width: 100%;
+        width: calc(100% - 134px);
         top: $header-height;
         z-index: 1000;
 
         .filter-floating-button {
             position: absolute;
-            right: 100px;
+            right: 30px;
             top: 15px;
 
             .material-icons {
@@ -27,7 +27,14 @@
         margin-top: 100px;
     }
 
+    .invest-paper {
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+
     .invest-row {
+        margin: 15px 0;
+
         .collapsible-pane {
             transition: all .5s ease !important;
             overflow-y: hidden;
@@ -48,14 +55,11 @@
         }
 
         .row-item {
-            margin: 15px 0;
-            padding: 0;
             background-color: $collapsible-row-bgcolor;
             cursor: pointer;
+            padding: 15px 0;
 
             .invest-loan-column {
-                padding: 20px 0 0 15px;
-
                 .progress-bar-container {
                     position: relative;
                     padding-right: 55px;
@@ -63,8 +67,12 @@
                 }
             }
 
+            .interest-column {
+                padding-left: 20px;
+            }
+
             .invest-button-column {
-                padding: 15px 0;
+                // padding: 15px 0;
             }
         }
     }

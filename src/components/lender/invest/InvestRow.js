@@ -9,15 +9,14 @@ import InvestRowCollapsible from './InvestRowCollapsible';
 
 const paperStyle = {
     color: 'inherit',
-    marginRight: '10px',
-    position: 'relative',
-    marginLeft: '5px'
+    position: 'relative'
 }
 
 const riskIndicator = {
     position: 'absolute',
     width: 0,
 	height: 0,
+    left: '-8px',
 	borderTopWidth: '20px',
     borderTopStyle: 'inset',
 	borderRight: '20px solid transparent'
@@ -60,12 +59,12 @@ class InvestRow extends Component {
 
         return (
             <div className="invest-row">
-                <Paper style={paperStyle} zDepth={1}>
+                <Paper style={paperStyle} zDepth={1} className="invest-paper">
 
                     <div style={riskIndicator}></div>
 
                     <Row className="row-item" onClick={this.onRowClicked}>
-                        <Col lg={1} className="invest-loan-column"> {loan.interest_rate}% </Col>
+                        <Col lg={1} className="invest-loan-column interest-column"> {loan.interest_rate}% </Col>
 
                         <Col lg={1} className="invest-loan-column"> {loan.tenure} months </Col>
 

@@ -16,6 +16,7 @@ import Dashboard from './containers/lender/Dashboard';
 import MyInvestments from './containers/lender/MyInvestments';
 import ReferAndEarn from './containers/lender/ReferAndEarn';
 import Account from './containers/lender/Account';
+import LoanProfile from './containers/lender/LoanProfile';
 
 
 // Provider gets the store and passes it down to the children and grandchildren components
@@ -32,6 +33,7 @@ const routes = (
                 <Route path='app' component={App}>
                     <Route path='lender' component={Lender}>
                         <Route path="invest" component={Invest}></Route>
+                        <Route path='invest/:loan_id' component={LoanProfile}></Route>
                         <Route path="dashboard" component={Dashboard}></Route>
                         <Route path="my-investments" component={MyInvestments}></Route>
                         <Route path="refer-and-earn" component={ReferAndEarn}></Route>
