@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Card } from 'material-ui/Card';
 import { styleConstants } from '../../../utils/StyleConstants';
-import { Row, Col } from 'react-flexbox-grid';
 
 const cardStyle = {
     backgroundColor: styleConstants.cardBGColor
@@ -20,7 +19,7 @@ class InvestmentSummary extends Component {
     render () {
         let isMobile = this.props.isMobile,
             sectionStyle = isMobile ? sectionMobileStyle : {};
-            
+
         return (
             <Card style={cardStyle} className="investment-summary">
                 <div style={headerStyle}>Investment Summary</div>
