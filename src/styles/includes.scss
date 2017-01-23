@@ -9,8 +9,11 @@
 
 // Invest Imports
 @import "lender/invest/invest.scss";
+@import "lender/invest/invest-header.scss";
+@import "lender/invest/invest-row.scss";
 @import "lender/invest/borrower-filter.scss";
 @import "lender/invest/invest-card.scss";
+@import "lender/invest/borrower-info.scss";
 
 // My Investment Imports
 @import "lender/my-investments/my-investments.scss";

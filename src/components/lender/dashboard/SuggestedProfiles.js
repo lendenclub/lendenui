@@ -69,7 +69,7 @@ const keyValueHolder = {
 /* Components */
 const HeaderRow = () => {
     return (
-        <Row className="header-row">
+        <Row className="suggested-profiles-header-row">
             <Col lg={2}>Interest Rate</Col>
             <Col lg={2}>Tenure</Col>
             <Col lg={3}>Loan Amount</Col>

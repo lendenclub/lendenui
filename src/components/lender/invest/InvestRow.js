@@ -12,13 +12,17 @@ const paperStyle = {
     position: 'relative'
 }
 
+const investButtonStyle = {
+    minWidth: '75px'
+}
+
 const riskIndicator = {
     position: 'absolute',
     width: 0,
 	height: 0,
     left: '-8px',
 	borderTopWidth: '20px',
-    borderTopStyle: 'inset',
+    borderTopStyle: 'solid',
 	borderRight: '20px solid transparent'
 }
 
@@ -83,7 +87,7 @@ class InvestRow extends Component {
 
                         <Col lg={2} className="invest-loan-column flex-child-ellipsis text-capitalize"> {loan.purpose.toLowerCase()} </Col>
 
-                        <Col lg={1} className="invest-button-column text-align-center"> <RaisedButton label="Invest" primary={true} type="submit" onClick={() => this.props.invest(loan)} className="invest-button"/> </Col>
+                        <Col lg={1} className="invest-button-column text-align-center"> <RaisedButton style={investButtonStyle} label="Invest" primary={true} type="submit" onClick={() => this.props.invest(loan)} className="invest-button"/> </Col>
                     </Row>
                 </Paper>
 

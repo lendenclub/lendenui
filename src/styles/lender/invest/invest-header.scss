@@ -1,0 +1,23 @@
+.header-row {
+    padding: 24px 27px;
+    border-bottom: 1px solid $dark-border-grey;
+    margin: 0;
+    color: $text-header-grey;
+    background-color: $page-header-bgcolor;
+    position: fixed;
+    width: calc(100% - 134px);
+    top: $header-height;
+    z-index: 1000;
+
+    .filter-floating-button {
+        position: absolute;
+        right: 30px;
+        top: 15px;
+
+        .material-icons {
+            line-height: 1px;
+            top: 2px;
+            cursor: pointer;
+        }
+    }
+}

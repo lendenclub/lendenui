@@ -1,0 +1,48 @@
+.invest-row {
+    margin: 15px 0;
+
+    .invest-paper {
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+
+    .collapsible-pane {
+        transition: all .5s ease !important;
+        overflow-y: hidden;
+        margin: 0 25px;
+        position: relative;
+        background-color: $accordion-bgcolor;
+    }
+
+    .collapsible-pane.show-collapsible {
+        height: 350px;
+        overflow-y: auto;
+    }
+
+    .collapsible-pane.hide-collapsible {
+        height: 0;
+    }
+
+    .row-item {
+        background-color: $collapsible-row-bgcolor;
+        cursor: pointer;
+        padding: 10px 0;
+
+        .invest-loan-column {
+            align-self: center;
+            .progress-bar-container {
+                position: relative;
+                padding-right: 55px;
+                top: 5px;
+            }
+        }
+
+        .interest-column {
+            padding-left: 20px;
+        }
+
+        .invest-button-column {
+            // padding: 15px 0;
+        }
+    }
+}

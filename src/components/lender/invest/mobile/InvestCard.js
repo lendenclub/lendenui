@@ -28,7 +28,7 @@ const riskIndicator = {
     width: 0,
 	height: 0,
 	borderTopWidth: '25px',
-    borderTopStyle: 'inset',
+    borderTopStyle: 'solid',
 	borderRight: '25px solid transparent'
 }
 
@@ -71,12 +71,13 @@ class InvestCard extends Component {
     render () {
         let loan = this.props.loan,
             collapsiblePaperState = this.props.rowActive ? 'show-collapsible' : 'hide-collapsible',
-            collapsiblePaperStyle = `collapsible-pane ${collapsiblePaperState}`;
+            collapsiblePaperStyle = `collapsible-pane ${collapsiblePaperState}`,
+            investCardStyle = this.props.style ? {...cardStyle, ...this.props.style} : cardStyle;
 
         riskIndicator.borderTopColor = this.computeRiskStyle(loan.interest_rate);
 
         return (
-            <Card style={cardStyle} className="invest-card">
+            <Card style={investCardStyle} className="invest-card">
                 <div onClick={this.onCardClicked}>
                     <div style={cardHeaderStyle} className="text-capitalize">
                         <div style={riskIndicator}></div>

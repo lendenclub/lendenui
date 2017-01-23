@@ -30,9 +30,13 @@ class InvestHeaderRow extends Component {
                         Loan Purpose
                     </Col>
                     <Col lg={1} className="text-align-right position-relative">
-                        <FloatingActionButton backgroundColor='#1976D2' className="filter-floating-button" onClick={this.props.toggleFilterDrawer}>
-                            <FontIcon className="material-icons">filter_list</FontIcon>
-                        </FloatingActionButton>
+
+                        {this.props.showFilterIcon ? (
+                            <FloatingActionButton backgroundColor='#1976D2' className="filter-floating-button" onClick={this.props.toggleFilterDrawer}>
+                                <FontIcon className="material-icons">filter_list</FontIcon>
+                            </FloatingActionButton>
+                        ) : ''}
+
                     </Col>
                 </Row>
             </div>
