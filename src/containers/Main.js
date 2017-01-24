@@ -31,7 +31,7 @@ const muiTheme = getMuiTheme({
     },
     chip: {
       backgroundColor: '#182F39'
-    }
+  }
 });
 
 class Main extends Component {

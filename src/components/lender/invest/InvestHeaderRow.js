@@ -6,7 +6,7 @@ import FontIcon from 'material-ui/FontIcon';
 class InvestHeaderRow extends Component {
     render () {
         return (
-            <div className="header-row">
+            <div className="invest-header-row">
                 <Row>
                     <Col lg={1}>
                         Interest

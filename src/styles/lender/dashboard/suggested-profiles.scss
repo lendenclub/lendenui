@@ -3,7 +3,7 @@
 
     .suggested-profiles-header-row {
         margin: 10px;
-        padding-left: 40px;
+        padding-left: 10px;
         color: $text-header-grey;
     }
 
@@ -13,7 +13,7 @@
         color: $text-grey;
         cursor: pointer;
         position: relative;
-        padding-left: 40px;
+        padding-left: 10px;
         transition: all 0.2s ease;
 
         &:hover {

@@ -7,6 +7,7 @@ import ProfileAssetAllocation from '../../components/lender/dashboard/ProfileAss
 import MonthlySplit from '../../components/lender/dashboard/MonthlySplit';
 import MyInvestments from '../../components/lender/dashboard/MyInvestments';
 import PortfolioSummary from '../../components/lender/dashboard/PortfolioSummary';
+import ReferCode from '../../components/lender/dashboard/ReferCode';
 import { Row, Col } from 'react-flexbox-grid';
 
 const desktopDashboardStyle = {
@@ -34,8 +35,11 @@ class Dashboard extends Component {
                     <Col lg={3} xs={12} style={colStyle}>
                         <AnnualizedReturns />
                     </Col>
-                    <Col lg={6} xs={12} style={colStyle}>
+                    <Col lg={3} xs={12} style={colStyle}>
                         <SuggestedProfiles />
+                    </Col>
+                    <Col lg={3} xs={12} style={colStyle}>
+                        <ReferCode />
                     </Col>
                 </Row>
 

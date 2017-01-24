@@ -14,7 +14,6 @@ import Lender from './containers/lender/Lender';
 import Invest from './containers/lender/Invest';
 import Dashboard from './containers/lender/Dashboard';
 import MyInvestments from './containers/lender/MyInvestments';
-import ReferAndEarn from './containers/lender/ReferAndEarn';
 import Account from './containers/lender/Account';
 import LoanProfile from './containers/lender/LoanProfile';
 
@@ -36,7 +35,6 @@ const routes = (
                         <Route path='invest/:loan_id' component={LoanProfile}></Route>
                         <Route path="dashboard" component={Dashboard}></Route>
                         <Route path="my-investments" component={MyInvestments}></Route>
-                        <Route path="refer-and-earn" component={ReferAndEarn}></Route>
                         <Route path="account" component={Account}></Route>
                     </Route>
                 </Route>

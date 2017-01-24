@@ -51,12 +51,6 @@ class LeftNav extends Component {
                             </Link>
                         </ListItem>
                         <ListItem className="nav-list-item">
-                            <Link to={'/app/lender/refer-and-earn'} activeClassName="active" className="left-nav-item" onClick={this.props.toggleLeftNav}>
-                                <FontIcon className="material-icons" style={iconStyle}>person_add</FontIcon>
-                                <MobileComponent><span className="tooltip">Refer and Earn</span></MobileComponent>
-                            </Link>
-                        </ListItem>
-                        <ListItem className="nav-list-item">
                             <Link to={'/app/lender/account'} activeClassName="active" className="left-nav-item" onClick={this.props.toggleLeftNav}>
                                 <FontIcon className="material-icons" style={iconStyle}>account_balance_wallet</FontIcon>
                                 <MobileComponent><span className="tooltip">Account</span></MobileComponent>
