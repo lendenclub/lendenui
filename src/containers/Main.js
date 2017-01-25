@@ -25,9 +25,9 @@ const muiTheme = getMuiTheme({
         secondaryTextColor: '#B9B8B8'
     },
     checkbox: {
-        boxColor: '#2d434d',
+        boxColor: '#284752',
         checkedColor: '#0099CC',
-        labelColor: '#97A29C'
+        labelColor: '#A6A6A6'
     },
     chip: {
       backgroundColor: '#182F39'

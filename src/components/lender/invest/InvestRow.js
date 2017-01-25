@@ -36,7 +36,7 @@ const paperCollapsibleStyle = {
 class InvestRow extends Component {
     constructor (props) {
         super(props);
-        this.state = { investmentAmount: ''};
+        this.state = { investmentAmount: '', buttonDisabled: true};
     }
 
     handleChange = (e) => {
@@ -50,8 +50,32 @@ class InvestRow extends Component {
     onRowClicked = (e) => {
         // Dont open the accordion if the invest button is clicked
         //TODO: Figure out a better solution - this will break if the button label changes
-        if (e.target.parentElement.innerText.trim() !== 'INVEST')
+        if (e.target.parentElement.innerText.trim() !== 'INVEST') {
             this.props.toggleRowAction(this.props.loan.required_loan_id);
+            this.setState({
+                buttonDisabled: this.props.rowActive
+            });
+        }
+    }
+
+    enableButton = (event) => {
+        this.setState({
+            buttonDisabled: false
+        })
+    }
+
+    disableButton = (event) => {
+        if (!this.props.rowActive) {
+            this.setState({
+                buttonDisabled: true
+            })
+        }
+    }
+
+    componentWillReceiveProps (nextProps) {
+        this.setState({
+            buttonDisabled: !nextProps.rowActive
+        });
     }
 
     render () {
@@ -87,7 +111,18 @@ class InvestRow extends Component {
 
                         <Col lg={2} className="invest-loan-column flex-child-ellipsis text-capitalize"> {loan.purpose.toLowerCase()} </Col>
 
-                        <Col lg={1} className="invest-button-column text-align-center"> <RaisedButton style={investButtonStyle} label="Invest" primary={true} type="submit" onClick={() => this.props.invest(loan)} className="invest-button"/> </Col>
+                        <Col lg={1} className="invest-button-column text-align-center">
+                            <RaisedButton
+                                style={investButtonStyle}
+                                label="Invest" primary={true}
+                                disabled={this.state.buttonDisabled}
+                                onMouseLeave={this.disableButton}
+                                onMouseEnter={this.enableButton}
+                                type="submit"
+                                onClick={() => this.props.invest(loan)}
+                                className="invest-button"
+                            />
+                        </Col>
                     </Row>
                 </Paper>
 

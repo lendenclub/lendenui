@@ -1,6 +1,7 @@
 .borrower-filter {
     & > div {
         overflow: hidden !important;
+        background-color: $body-bg-color !important;
     }
 
     .close-icon {
@@ -34,18 +35,20 @@
         overflow-x: hidden;
         height: 90%;
         width: 100%;
+        background-color: $body-bg-color;
 
         .category {
             .category-header {
                 padding-left: 20px;
                 padding-top: 15px;
                 height: 35px;
-                background-color: $color-palette-700;
+                background-color: $color-palette-500;
                 color: $text-header-grey;
             }
 
             .category-content {
                 color: $text-grey;
+                background-color: $body-bg-color;
             }
         }
 
@@ -99,7 +102,7 @@
         width: 100%;
         padding: 10px 15px;
         bottom: 0;
-        background-color: $header-bgcolor;
+        background-color: $header-bgcolor !important;
         border-top: 1px solid $color-palette-700;
     }
 }

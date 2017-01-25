@@ -12,6 +12,29 @@
         margin: 0 25px;
         position: relative;
         background-color: $accordion-bgcolor;
+
+        .c3-chart-arc path {
+            stroke: transparent;
+        }
+
+        .c3-chart-arcs-title {
+            font-size: 35px;
+            stroke: $text-header-grey;
+            fill: $text-header-grey;
+        }
+
+        .c3-legend-item {
+            text {
+                stroke: $text-header-grey;
+                fill: $text-header-grey;
+            }
+        }
+
+        .tooltip-container {
+            background-color: $left-nav-bgcolor;
+            padding: 5px;
+            width: 150px;
+        }
     }
 
     .collapsible-pane.show-collapsible {
@@ -43,6 +66,10 @@
 
         .invest-button-column {
             // padding: 15px 0;
+            & button div {
+                pointer-events: none;
+            }
+
         }
     }
 }

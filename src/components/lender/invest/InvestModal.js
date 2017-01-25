@@ -5,12 +5,13 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import numeral from 'numeral';
-
+import { styleConstants } from '../../../utils/StyleConstants';
 import MobileComponent from '../../MobileComponent';
 import WebComponent from '../../WebComponent';
 
 const modalBodyStyle = {
-    padding: 0
+    padding: 0,
+    backgroundColor: styleConstants.bodyBackgroundColor
 }
 
 const headerStyle = {
@@ -40,20 +41,16 @@ class InvestModal extends Component {
                 <WebComponent>
                     <div>
                         <Row center="lg" className="header-row">
-                            <Col lg={2} sm={2} xs={2}>Loan ID</Col>
-                            <Col lg={2} sm={2} xs={2}>Borrower</Col>
-                            <Col lg={2} sm={2} xs={2}>Interest</Col>
-                            <Col lg={2} sm={2} xs={2}>Tenure</Col>
-                            <Col lg={2} sm={2} xs={2}>Loan</Col>
-                            <Col lg={2} sm={2} xs={2}>Remaining</Col>
+                            <Col lg={3} sm={3} xs={3}>Loan ID</Col>
+                            <Col lg={3} sm={3} xs={3}>Interest</Col>
+                            <Col lg={3} sm={3} xs={3}>Tenure</Col>
+                            <Col lg={3} sm={3} xs={3}>Loan</Col>
                         </Row>
                         <Row center="lg" className="data-row">
-                            <Col lg={2} sm={2} xs={2}>{loan.required_loan_id}</Col>
-                            <Col lg={2} sm={2} xs={2} className="text-capitalize">{loan.user.first_name}</Col>
-                            <Col lg={2} sm={2} xs={2}>{loan.interest_rate}%</Col>
-                            <Col lg={2} sm={2} xs={2}>{loan.tenure} months</Col>
-                            <Col lg={2} sm={2} xs={2}>₹ {numeral(loan.amount).format('0,0.00')}</Col>
-                            <Col lg={2} sm={2} xs={2}>₹ {numeral(50000).format('0,0.00')}</Col>
+                            <Col lg={3} sm={3} xs={3}>{loan.required_loan_id}</Col>
+                            <Col lg={3} sm={3} xs={3}>{loan.interest_rate}%</Col>
+                            <Col lg={3} sm={3} xs={3}>{loan.tenure} months</Col>
+                            <Col lg={3} sm={3} xs={3}>₹ {numeral(loan.amount).format('0,0.00')}</Col>
                         </Row>
                     </div>
                 </WebComponent>

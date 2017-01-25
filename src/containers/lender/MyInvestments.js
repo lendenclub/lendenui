@@ -53,6 +53,7 @@ class MyInvestments extends Component {
                                     <Col lg={5}>Status</Col>
                                 </Row>
                             </Col>
+                            <Col lg={1} className="filler-header"> &nbsp; </Col>
                         </Row>
 
                         <div className="my-investment-table">

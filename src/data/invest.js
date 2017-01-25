@@ -130,6 +130,7 @@ const mockData = {
     }]
 }
 
-const investMockData = [...mockData.loans, ...mockData.loans, ...mockData.loans, ...mockData.loans, ...mockData.loans];
+// const investMockData = [...mockData.loans, ...mockData.loans, ...mockData.loans, ...mockData.loans, ...mockData.loans];
+const investMockData = [...mockData.loans];
 
 export default investMockData;

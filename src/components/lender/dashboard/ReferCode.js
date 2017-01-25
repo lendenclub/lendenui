@@ -12,13 +12,17 @@ const cardStyle = {
     backgroundColor: styleConstants.cardBGColor
 }
 
+const containerStyle = {
+    height: '100%'
+}
+
 const headerStyle = {
     padding: '15px',
     color: styleConstants.textHeaderGrey
 }
 
 const iconSelectedStyle = {
-    color: styleConstants.accentBlue
+    color: styleConstants.accentGreen
 }
 
 const iconStyle = {
@@ -84,7 +88,7 @@ class ReferCode extends Component {
 
 
         return (
-            <Card className="refer-and-earn" style={cardStyle}>
+            <Card className="refer-and-earn" style={cardStyle} containerStyle={containerStyle}>
                 <div style={headerStyle}>Refer Code</div>
 
                 <div className="refer-code">
@@ -104,7 +108,7 @@ class ReferCode extends Component {
                         </IconButton>
                     </div>
 
-                    <Row style={ {width: '100%'} }>
+                    <Row style={ {width: '100%', alignItems: 'flex-end'} }>
                         <Col lg={11}>
                             <TextField
                                 floatingLabelText={inputLabel}
@@ -117,18 +121,17 @@ class ReferCode extends Component {
                         </Col>
                         <Col lg={1} style={noPadding}>
                             <IconButton style={noPadding}>
-                                <Avatar size="30" icon={<FontIcon className="material-icons" style={sendIconStyle}>send</FontIcon>} backgroundColor={styleConstants.accentBlue}/>
+                                <Avatar size={30} icon={<FontIcon className="material-icons" style={sendIconStyle}>send</FontIcon>} backgroundColor={styleConstants.accentBlue}/>
                             </IconButton>
                         </Col>
                     </Row>
-
-                    <div className="footer">
-                        <div className="t-and-c"> *T&C Applied </div>
-                        <div className="more-info-link" onClick={this.toggleTCModel}> More Info </div>
-                    </div>
-
-                    <TermsAndConditionsModal open={this.state.tcModalOpen} closeModal={this.toggleTCModel} />
                 </div>
+                <div className="footer">
+                    <div className="t-and-c"> *T&C Applied </div>
+                    <div className="more-info-link" onClick={this.toggleTCModel}> More Info </div>
+                </div>
+
+                <TermsAndConditionsModal open={this.state.tcModalOpen} closeModal={this.toggleTCModel} />
             </Card>
         );
     }
