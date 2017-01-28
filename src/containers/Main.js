@@ -6,6 +6,7 @@ import * as actionCreators from '../actions/index';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import LoadingPage from '../components/LoadingPage';
 
 const muiTheme = getMuiTheme({
     palette: {
@@ -53,6 +54,7 @@ class Main extends Component {
         return (
             <MuiThemeProvider muiTheme={muiTheme}>
                 <div>
+                    <LoadingPage showLoader={this.props.app.showLoader} />
                     { React.cloneElement(this.props.children, {...this.props, isMobile}) }
                 </div>
             </MuiThemeProvider>

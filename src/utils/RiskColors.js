@@ -22,7 +22,7 @@ export const RiskCategories = [{
     max: 18,
     color: '#5A78CF'
 }, {
-    label: 'Medium Risk',
+    label: 'Moderate Risk',
     range: '18% - 22%',
     min: 18,
     max: 22,

@@ -42,11 +42,6 @@ const noPadding = {
     padding: 0
 }
 
-const inputBarStyle = {
-    display: 'flex',
-    justifyContent: 'space-between'
-}
-
 class ReferCode extends Component {
     constructor () {
         super();
@@ -83,8 +78,7 @@ class ReferCode extends Component {
         let selectedMode = this.state.selectedMode,
             inputLabel = this.state.selectedMode === 'email' ? 'Email ID' : 'Mobile Number',
             emailStyle = selectedMode === 'email' ? iconSelectedStyle : iconStyle,
-            phoneStyle = selectedMode === 'phone' ? iconSelectedStyle : iconStyle,
-            props = this.props;
+            phoneStyle = selectedMode === 'phone' ? iconSelectedStyle : iconStyle;
 
 
         return (

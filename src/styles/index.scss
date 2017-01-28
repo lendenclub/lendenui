@@ -14,11 +14,11 @@ html {
         font-weight: 300;
         letter-spacing: 0.3px;
         overflow-x: hidden;
-        overflow-y: scroll;
+        overflow-y: auto;
         -webkit-overflow-scrolling: touch;
     }
 
-    body, #root, [data-reactroot] {
+    body, #root, body > #app > div[data-reactroot] {
         height: 100%;
     }
 }

@@ -1,0 +1,33 @@
+.universal-loader-container {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 10000;
+
+}
+
+.universal-load-bar {
+  position: relative;
+  margin-top: 0;
+  width: 100%;
+  height: 3px;
+  background-color: transparent;
+}
+
+.load-bar {
+  content: "";
+  display: inline;
+  position: absolute;
+  width: 0;
+  height: 100%;
+  left: 50%;
+  text-align: center;
+  background-color: #74a647;
+  animation: loading 1s linear infinite;
+}
+
+@keyframes loading {
+    from {left: 0; width: 0;z-index:100;}
+    50% {left: 0; width: 50%; z-index: 10;}
+    to {left: 0; width: 100%;}
+}

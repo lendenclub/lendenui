@@ -1,4 +1,5 @@
 const mockData = {
+        record_count: 109,
         loans: [{
     	"user": {
     		"user_id": "88GRM7PPTV",
@@ -45,8 +46,24 @@ const mockData = {
     		"registration_fees": "1500",
     		"registration_fees_confirmation": true
     	},
+        "credit_details": {
+            "credit_score": "750",
+            "cibil_score": "ABOVE 750",
+            "lenden_score": "80",
+            "total_number_of_loans_till_date": "5",
+            "number_of_current_loans": "1",
+            "number_of_credit_cards": "0",
+            "sum_of_all_credit_card_limits": null,
+            "first_loan_availment_date": "2011-04-01",
+            "current_delinquency": null,
+            "delinquent_amount": null,
+            "months_since_last_delinquency": null,
+            "bank_defaulter": "NO",
+            "default_date": null
+        },
     	"required_loan_id": "4F57CT4K",
     	"amount": 125000.0,
+        "amount_remaining": 50000,
     	"purpose": "HOME RENOVATION",
     	"tenure": 15,
     	"description": "I wan this loan for home renovation work.",
@@ -109,8 +126,24 @@ const mockData = {
     		"registration_fees": "1500",
     		"registration_fees_confirmation": true
     	},
+        "credit_details": {
+            "credit_score": "750",
+            "cibil_score": "ABOVE 750",
+            "lenden_score": "80",
+            "total_number_of_loans_till_date": "5",
+            "number_of_current_loans": "1",
+            "number_of_credit_cards": "0",
+            "sum_of_all_credit_card_limits": null,
+            "first_loan_availment_date": "2011-04-01",
+            "current_delinquency": null,
+            "delinquent_amount": null,
+            "months_since_last_delinquency": null,
+            "bank_defaulter": "NO",
+            "default_date": null
+        },
     	"required_loan_id": "VTL3ORU3",
     	"amount": 75000.0,
+        "amount_remaining": 50000,
     	"purpose": "BUSINESS PURPOSE",
     	"tenure": 18,
     	"description": "I need this loan for new side business of stationary start with my friend.",
@@ -130,7 +163,7 @@ const mockData = {
     }]
 }
 
-// const investMockData = [...mockData.loans, ...mockData.loans, ...mockData.loans, ...mockData.loans, ...mockData.loans];
-const investMockData = [...mockData.loans];
+const investMockData = [...mockData.loans, ...mockData.loans, ...mockData.loans, ...mockData.loans, ...mockData.loans];
+// const investMockData = [...mockData.loans];
 
 export default investMockData;

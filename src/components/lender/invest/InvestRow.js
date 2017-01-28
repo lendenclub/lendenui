@@ -16,7 +16,7 @@ const investButtonStyle = {
     minWidth: '75px'
 }
 
-const riskIndicator = {
+const riskIndicatorBaseStyle = {
     position: 'absolute',
     width: 0,
 	height: 0,
@@ -81,9 +81,8 @@ class InvestRow extends Component {
     render () {
         let loan = this.props.loan,
             collapsiblePaperState = this.props.rowActive ? 'show-collapsible' : 'hide-collapsible',
-            collapsiblePaperStyle = `collapsible-pane ${collapsiblePaperState}`;
-
-        riskIndicator.borderTopColor = this.computeRiskStyle(loan.interest_rate);
+            collapsiblePaperStyle = `collapsible-pane ${collapsiblePaperState}`,
+            riskIndicator = {...riskIndicatorBaseStyle, borderTopColor: this.computeRiskStyle(loan.interest_rate)};
 
         return (
             <div className="invest-row">
@@ -103,11 +102,11 @@ class InvestRow extends Component {
                         <Col lg={2} className="invest-loan-column">
                             ₹ {numeral(loan.amount).format('0,0.00')}
                             <div className="progress-bar-container">
-                                <ProgressBar max={loan.amount} value={loan.amount - 50000} />
+                                <ProgressBar max={loan.amount} value={loan.amount - loan.amount_remaining} />
                             </div>
                         </Col>
 
-                        <Col lg={2} className="invest-loan-column"> ₹ {numeral(50000).format('0,0.00')} </Col>
+                        <Col lg={2} className="invest-loan-column"> ₹ {numeral(loan.amount_remaining).format('0,0.00')} </Col>
 
                         <Col lg={2} className="invest-loan-column flex-child-ellipsis text-capitalize"> {loan.purpose.toLowerCase()} </Col>
 

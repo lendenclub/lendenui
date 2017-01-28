@@ -1,9 +1,10 @@
-function lenderActions (state = {loans: [], myInvestments: [], accountInfo: {} }, action) {
+function lenderActions (state = {totalLoans: 0, loans: [], myInvestments: [], accountInfo: {} }, action) {
     switch (action.type) {
         case 'UPDATE_LOANS':
             return {
                 ...state,
-                loans: action.loans
+                loans: action.loans,
+                totalLoans: action.totalLoans
             }
 
         case 'UPDATE_ROW_ACTIVE':

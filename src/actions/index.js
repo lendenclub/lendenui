@@ -3,6 +3,11 @@ import myInvestmentsMockData from '../data/my-investments';
 import AccountMockData from '../data/account';
 // These actions are typically called from the components
 // You need to make api calls, get the data and pass it on to the reducers so that the reducer will update the states which inturn will cause a re-render of relevant components
+export const pageLoading = (status) => ({
+    type: 'PAGE_LOADING',
+    status
+})
+
 export const requestLogin = () => ({
     type: 'NEED_LOGIN'
 })
@@ -33,22 +38,28 @@ export const loginUser = (username, password) => (dispatch, getState) => {
 /*
     Invest Actions
 */
-export const receiveLoans = (loans) => ({
+export const receiveLoans = (response) => ({
     type: 'UPDATE_LOANS',
-    loans
+    loans: response.loans,
+    totalLoans: response.record_count
 })
 
-export const fetchLoans = () => (dispatch, getState) => {
-    // return fetch(`http://192.168.0.104:8000/invest-api`)
-    // .then( response => response.json() )
-    // .then( json => dispatch(receiveLoans(tempData)) )
-    dispatch(receiveLoans(investMockData))
+export const fetchLoans = (filterQuery) => (dispatch, getState) => {
+    dispatch(pageLoading(true));
+    return fetch(`http://192.168.0.102:8000/api/invest-api?${filterQuery}`)
+    .then( response => response.json() )
+    .then( json => {
+        dispatch(pageLoading(false));
+        dispatch(receiveLoans(json.response))
+    });
 }
 
-export const updateRowActive = (loan_id) => ({
-    type: 'UPDATE_ROW_ACTIVE',
-    loan_id
-})
+export const updateRowActive = (loan_id) => {
+    return {
+        type: 'UPDATE_ROW_ACTIVE',
+        loan_id
+    }
+}
 
 
 /*

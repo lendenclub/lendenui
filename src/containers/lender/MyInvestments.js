@@ -42,19 +42,16 @@ class MyInvestments extends Component {
             <div>
                 <WebComponent>
                     <div className="my-investments">
-                        <Row>
-                            <Col lg={11}>
-                                <Row className="header-row">
-                                    <Col lg={1}>Borrower</Col>
-                                    <Col lg={1}>Loan ID</Col>
-                                    <Col lg={1}>Interest</Col>
-                                    <Col lg={2}>Investment</Col>
-                                    <Col lg={2}>EMI</Col>
-                                    <Col lg={5}>Status</Col>
-                                </Row>
-                            </Col>
-                            <Col lg={1} className="filler-header"> &nbsp; </Col>
-                        </Row>
+                        <div className="header-row">
+                            <Row className="row">
+                                <Col lg={1}>Borrower</Col>
+                                <Col lg={1}>Loan ID</Col>
+                                <Col lg={1}>Interest</Col>
+                                <Col lg={2}>Investment</Col>
+                                <Col lg={2}>EMI</Col>
+                                <Col lg={5}>Status</Col>
+                            </Row>
+                        </div>
 
                         <div className="my-investment-table">
                             <Row>

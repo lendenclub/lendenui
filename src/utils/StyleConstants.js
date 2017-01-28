@@ -4,6 +4,7 @@ export const styleConstants = {
     textGrey: '#A6A6A6',
     textHeaderGrey: '#ced0d4',
     borderColor: '#2D434D',
+    accordionBorder: '#25373e',
     accordionBGColor: '#OD222B',
     tableHeaderBGColor: '#23404a',
     bodyBackgroundColor: '#3A5763',
@@ -13,6 +14,7 @@ export const styleConstants = {
     darkGreyBGColor: '#23404a',
     pageHeaderBGColor: '#284752',
     cardBGColor: '#536C77',
+    primaryColor: '#118a70',
 
     cardMoreHorizontal: {
         textAlign: 'center',

@@ -41,6 +41,21 @@ const loanProfile = {
         "created_date": "2016-11-09T10:42:10.705660Z",
         "updated_date": "2016-11-09T12:27:48.771210Z"
     },
+    "credit_details": {
+        "credit_score": "750",
+        "cibil_score": "ABOVE 750",
+        "lenden_score": "80",
+        "total_number_of_loans_till_date": "5",
+        "number_of_current_loans": "1",
+        "number_of_credit_cards": "0",
+        "sum_of_all_credit_card_limits": null,
+        "first_loan_availment_date": "2011-04-01",
+        "current_delinquency": null,
+        "delinquent_amount": null,
+        "months_since_last_delinquency": null,
+        "bank_defaulter": "NO",
+        "default_date": null
+    },
     "registration_fees": "1500",
     "registration_fees_confirmation": true
 },

@@ -1,14 +1,18 @@
 .my-investments {
     // Be very careful in changing any of the padding/margins as its position fixed
     .header-row {
-        padding: 25px 35px;
         color: $text-header-grey;
         border-bottom: 1px solid $dark-border-grey;
         background-color: $page-header-bgcolor;
         margin: 0;
         position: fixed;
-        width: calc(100% - 210px);
+        width: calc(100% - 80px);
         z-index: 1000;
+        top: $header-height;
+
+        .row {
+            margin: 25px 155px 25px 25px;
+        }
     }
 
     .filler-header {

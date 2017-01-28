@@ -5,9 +5,10 @@ import FontIcon from 'material-ui/FontIcon';
 
 class InvestHeaderRow extends Component {
     render () {
+        let backgroundColor = this.props.filterQuery ? '#FF9800' : '#1976D2';
         return (
             <div className="invest-header-row">
-                <Row>
+                <Row className="row">
                     <Col lg={1}>
                         Interest
                     </Col>
@@ -32,7 +33,7 @@ class InvestHeaderRow extends Component {
                     <Col lg={1} className="text-align-right position-relative">
 
                         {this.props.showFilterIcon ? (
-                            <FloatingActionButton backgroundColor='#1976D2' className="filter-floating-button" onClick={this.props.toggleFilterDrawer}>
+                            <FloatingActionButton backgroundColor={backgroundColor} className="filter-floating-button" onClick={this.props.toggleFilterDrawer}>
                                 <FontIcon className="material-icons">filter_list</FontIcon>
                             </FloatingActionButton>
                         ) : ''}

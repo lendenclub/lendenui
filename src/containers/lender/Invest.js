@@ -3,6 +3,7 @@ import FontIcon from 'material-ui/FontIcon';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import WebComponent from '../../components/WebComponent';
 import MobileComponent from '../../components/MobileComponent';
+import UltimatePaginationMaterialUi from '../../components/Pagination';
 import InvestRow from '../../components/lender/invest/InvestRow';
 import BorrowerFilter from '../../components/lender/invest/BorrowerFilter';
 import InvestModal from '../../components/lender/invest/InvestModal';
@@ -20,11 +21,36 @@ const floatingFilter = {
 class Invest extends Component {
     constructor (props) {
         super();
-        this.state = { filterDrawerState: false, investModalOpen: false, selectedLoan: null, investAmount: '', password: '' };
+        this.state = {
+            filterDrawerState: false,
+            investModalOpen: false,
+            selectedLoan: null,
+            investAmount: '',
+            password: '',
+            offset: 0,
+            limit: 15,
+            totalRecords: 0,
+            currentPage: 1,
+            totalPages: 1,
+            totalLoans: 0
+        };
     }
 
-    componentDidMount() {
-        this.props.fetchLoans();
+    componentWillMount () {
+        this.fetchLoans();
+    }
+
+    componentWillReceiveProps (nextProps) {
+        this.setState({
+            totalRecords: nextProps.lender.totalLoans,
+            totalPages: Math.ceil(nextProps.lender.totalLoans / this.state.limit)
+        })
+    }
+
+    componentDidUpdate (prevProps, prevState) {
+        if ((this.state.offset !== prevState.offset) || (this.state.filterQuery !== prevState.filterQuery)) {
+            this.fetchLoans();
+        }
     }
 
     toggleRowActive = (required_loan_id) => {
@@ -52,6 +78,34 @@ class Invest extends Component {
         console.log(this.state.investAmount, this.state.password);
     }
 
+    onPageNumberChange = (pageNumber) => {
+        this.setState({
+            currentPage: pageNumber,
+            offset: (pageNumber - 1) * this.state.limit
+        });
+    }
+
+    applyFilter = (filterQuery = '') => {
+        this.setState({
+            filterQuery: filterQuery,
+            offset: 0,
+            limit: 20,
+            totalRecords: 0,
+            currentPage: 1,
+            totalPages: 1,
+            totalLoans: 0,
+            filterDrawerState: false
+        });
+    }
+
+    fetchLoans = () => {
+        var query = `l=${this.state.limit}&o=${this.state.offset}`;
+        if (this.state.filterQuery) {
+            query += `&${this.state.filterQuery}`;
+        }
+        this.props.fetchLoans(query);
+    }
+
 
     //TODO: Change the .bind(this) to arrow functions
     //TODO: Change key to loan ID
@@ -60,9 +114,9 @@ class Invest extends Component {
             <div>
                 <WebComponent>
                     <div className="lender-invest">
-                        <InvestHeaderRow showFilterIcon={true} toggleFilterDrawer={this.toggleFilterDrawer}/>
+                        <InvestHeaderRow showFilterIcon={true} filterQuery={this.state.filterQuery} toggleFilterDrawer={this.toggleFilterDrawer}/>
 
-                        <BorrowerFilter filterDrawerState={this.state.filterDrawerState} toggleFilterDrawer={this.toggleFilterDrawer.bind(this)} />
+                        <BorrowerFilter filterDrawerState={this.state.filterDrawerState} applyFilter={this.applyFilter} toggleFilterDrawer={this.toggleFilterDrawer.bind(this)} />
 
                         <div className="invest-table">
                             {this.props.lender.loans.map( (loan, idx) => {
@@ -72,6 +126,8 @@ class Invest extends Component {
                                 )
                             })}
                         </div>
+
+                        <UltimatePaginationMaterialUi currentPage={this.state.currentPage} totalPages={this.state.totalPages} onChange={this.onPageNumberChange.bind(this)} />
 
                     </div>
                 </WebComponent>
@@ -93,7 +149,7 @@ class Invest extends Component {
                             <FontIcon className="material-icons">filter_list</FontIcon>
                         </FloatingActionButton>
 
-                        <BorrowerFilter filterDrawerState={this.state.filterDrawerState} toggleFilterDrawer={this.toggleFilterDrawer.bind(this)} isMobile={this.props.isMobile}/>
+                        <BorrowerFilter filterDrawerState={this.state.filterDrawerState} applyFilter={this.applyFilter} toggleFilterDrawer={this.toggleFilterDrawer.bind(this)} isMobile={this.props.isMobile}/>
 
                         {this.props.lender.loans.map( (loan, idx) => {
                             loan.active = loan.active || false;
