@@ -24,9 +24,9 @@ class Lender extends Component {
     render () {
         const { children, ...otherProps } = this.props;
         return (
-            <div style={style}>
+            <div className="lender" style={style}>
                 <Header {...otherProps} toggleLeftNav={this.toggleLeftNav}/>
-
+                
                 <LeftNav {...otherProps} leftNavOpen={this.state.leftNavOpen} toggleLeftNav={this.toggleLeftNav} />
 
                 <div className={ this.props.isMobile ? "padding-main-content-mobile" : "padding-main-content-desktop"}>

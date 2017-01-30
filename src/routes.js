@@ -26,10 +26,10 @@ const routes = (
 
             <Route path="/" component={Main}>
 
-                <Route path='/login' component={Login}></Route>
-
-                {/* Lender Routes */}
                 <Route path='app' component={App}>
+                    <Route path='login' component={Login}></Route>
+
+                    {/* Lender Routes */}
                     <Route path='lender' component={Lender}>
                         <Route path="invest" component={Invest}></Route>
                         <Route path='invest/:loan_id' component={LoanProfile}></Route>

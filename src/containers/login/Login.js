@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
-import logo from '../../assets/lendenclub.png';
-
+import logo from '../../assets/login-logo.png';
+import { Link } from 'react-router';
 import { Row, Col } from 'react-flexbox-grid';
-
 import { Card, CardText } from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
-
-const buttonStyle = {
-    width: '100%'
-}
 
 class Login extends Component {
     constructor (props) {
@@ -29,43 +24,44 @@ class Login extends Component {
 
     render () {
         return (
-            <Card className="card-center-holder">
+            <div className="card-center-holder">
                 <div className="app-logo">
                     <img src={logo} alt="logo" />
                 </div>
-                <CardText>
-                    <form onSubmit={this.handleSubmit}>
-                        <Row center="xs">
-                            <Col xs={12} md={7} lg={6}>
-                                <TextField
-                                    floatingLabelText="Email or Mobile Number"
-                                    fullWidth={true}
-                                    name="username"
-                                    value={this.state.username}
-                                    onChange={this.handleChange}
-                                />
-                            </Col>
-                        </Row>
-                        <Row center="xs">
-                            <Col xs={12} md={7} lg={6}>
-                                <TextField
-                                    floatingLabelText="Password"
-                                    type="password"
-                                    name="password"
-                                    fullWidth={true}
-                                    value={this.state.password}
-                                    onChange={this.handleChange}
-                                />
-                            </Col>
-                        </Row>
-                        <Row center="xs">
-                            <Col xs={12} md={7} lg={6}>
-                                <RaisedButton label="Login" primary={true} style={buttonStyle} type="submit"/>
-                            </Col>
-                        </Row>
-                    </form>
-                </CardText>
-            </Card>
+                <form onSubmit={this.handleSubmit}>
+                    <Row center="xs">
+                        <Col xs={12} md={5} lg={5}>
+                            <TextField
+                                floatingLabelText="Email or Mobile Number"
+                                fullWidth={true}
+                                name="username"
+                                value={this.state.username}
+                                onChange={this.handleChange}
+                            />
+                        </Col>
+                    </Row>
+                    <Row center="xs">
+                        <Col xs={12} md={5} lg={5}>
+                            <TextField
+                                floatingLabelText="Password"
+                                type="password"
+                                name="password"
+                                fullWidth={true}
+                                value={this.state.password}
+                                onChange={this.handleChange}
+                            />
+                        </Col>
+                    </Row>
+
+                    <div className="login-button">
+                        <RaisedButton label="Login" primary={true} type="submit"/>
+                    </div>
+
+                    <div className="signup-bar">
+                        Not a member yet? <Link className="href-link" to={'/app/signup'}> Register Now </Link>
+                    </div>
+                </form>
+            </div>
         )
     }
 }

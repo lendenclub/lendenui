@@ -19,6 +19,10 @@ const navigatorStyle = {
 }
 
 class Header extends Component {
+    componentWillMount () {
+        // this.fetchUser();
+    }
+
     render () {
         return (
             <Paper className="lender-header" style={style} zDepth={1}>
