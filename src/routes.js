@@ -8,6 +8,7 @@ import Main from './containers/Main';
 import App from './containers/App';
 // import Index from './components/Index';
 import Login from './containers/login/Login';
+import Signup from './containers/signup/Signup';
 
 // Lender Imports
 import Lender from './containers/lender/Lender';
@@ -28,6 +29,7 @@ const routes = (
 
                 <Route path='app' component={App}>
                     <Route path='login' component={Login}></Route>
+                    <Route path='signup' component={Signup}></Route>
 
                     {/* Lender Routes */}
                     <Route path='lender' component={Lender}>

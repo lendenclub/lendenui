@@ -18,7 +18,7 @@ html {
         -webkit-overflow-scrolling: touch;
     }
 
-    body, #root, body > #app > div[data-reactroot] {
+    body, #root, body > #app > div[data-reactroot], body > #root >  div[data-reactroot] {
         height: 100%;
     }
 }

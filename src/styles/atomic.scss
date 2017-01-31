@@ -15,6 +15,10 @@
     text-align: right;
 }
 
+.text-align-left {
+    text-align: left;
+}
+
 .flex-child-ellipsis {
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -83,6 +87,7 @@
 }
 
 .href-link {
-    color: $accent-blue;
+    color: $accent-green;
     text-decoration: none;
+    font-weight: 400;
 }
