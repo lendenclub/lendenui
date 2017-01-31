@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import handshake from '../../assets/handshake@2x.png'
-import headerLogo from '../../assets/Logo-lendenclub.png';
 import logo from '../../assets/login-logo.png';
 import individual from '../../assets/individual@2x.png';
 import institutional from '../../assets/institutional@2x.png';
