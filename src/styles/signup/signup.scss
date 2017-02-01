@@ -90,6 +90,28 @@
             }
         }
 
+        .opt-form {
+            text-align: center;
+
+            .header {
+                font-size: 18px;
+                color: $text-header-grey;
+                padding: 10px;
+            }
+            .info {
+                padding: 10px;
+                color: $text-grey;
+            }
+            .otp-input {
+                text-align: center;
+                padding-top: 20px;
+
+                .login-button {
+                    padding-top: 20px;
+                }
+            }
+        }
+
         .signin-bar {
             padding: 20px;
             text-align: center;

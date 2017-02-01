@@ -33,13 +33,18 @@ const errorMessages = {
     phoneNumberError: "Please enter a valid phone number"
 }
 
-const LenderHeader = ({type}) => {
+const LenderHeader = ({type, showOTPForm}) => {
     let text = type === 'lender' ? 'Register as' : 'Register yourself as';
-    return (
-        <div className="register-header">
-            {text}
-        </div>
-    )
+
+    if (!showOTPForm) {
+        return (
+            <div className="register-header">
+                {text}
+            </div>
+        )
+    } else {
+        return false;
+    }
 }
 
 const BorrowerHeader = ( {type, setType} ) => {
@@ -91,20 +96,24 @@ const LenderButton = ( {type, subType, setType, setSubType} ) => {
     }
 }
 
-const AlreadyMember = () => {
-    return (
-        <div className="signin-bar">
-            Already a member? <Link className="href-link" to={'/app/login'}> Sign In </Link>
-        </div>
-    )
+const AlreadyMember = ( {showOTPForm} ) => {
+    if (!showOTPForm) {
+        return (
+            <div className="signin-bar">
+                Already a member? <Link className="href-link" to={'/app/login'}> Sign In </Link>
+            </div>
+        )
+    } else {
+        return false;
+    }
 }
 
-const SignupForm = ( {type, subType, enableButton, disableButton, submitForm, notifyFormError, canSubmit, email, phone, password, register, onChange} ) => {
+const SignupForm = ( {type, subType, enableButton, disableButton, submitForm, notifyFormError, canSubmit, email, phone, password, register, onChange, showOTPForm} ) => {
     let baseText = 'You are signing up as ',
         contextText = type === 'lender' ? (subType === 'individual' ? 'Individual Lender' : 'Institutional Lender') : 'Borrower',
         headerText = `${baseText} ${contextText}!`;
 
-    if ((type === 'lender' && subType !== '') || type === 'borrower') {
+    if ( ((type === 'lender' && subType !== '') || type === 'borrower') && !showOTPForm) {
         return (
             <div className="signup-form">
                 <div className="header">
@@ -163,11 +172,9 @@ const SignupForm = ( {type, subType, enableButton, disableButton, submitForm, no
                     </Row>
 
                     <div className="login-button">
-                        <RaisedButton label="Register" primary={true} type="submit" disabled={!canSubmit}/>
+                        <RaisedButton label="Continue" primary={true} type="submit" disabled={!canSubmit}/>
                     </div>
                 </Formsy.Form>
-
-                <AlreadyMember />
             </div>
         )
     } else {
@@ -175,31 +182,76 @@ const SignupForm = ( {type, subType, enableButton, disableButton, submitForm, no
     }
 }
 
-const UserType = ( {type, subType, setType, setSubType} ) => {
+const UserType = ( {type, subType, setType, setSubType, showOTPForm} ) => {
     if ((type === 'lender' && subType !== '') || type === 'borrower') {
         return false;
     } else {
         return (
             <div>
                 <div className="user-type-form">
-                    <LenderHeader type={type} />
+                    <LenderHeader type={type} showOTPForm={showOTPForm}/>
 
                     <div className="button-holder">
                         <LenderButton type={type} subType={subType} setType={setType.bind(this, 'lender')} setSubType={setSubType}/>
                         <BorrowerHeader type={type} setType={setType.bind(this, 'borrower')}/>
                     </div>
                 </div>
-
-                <AlreadyMember />
             </div>
         )
+    }
+}
+
+const OTPForm = ( {showOTPForm, phone, enableOTPButton, disableOTPButton, createUser, notifyOTPFormError, canSubmitOTP, otp, onChange} ) => {
+    if (showOTPForm) {
+        return (
+            <div className="opt-form">
+                <div className="header"> Verification Code </div>
+                <div className="info"> Please type the verification code sent to {phone} </div>
+                <div className="otp-input">
+                    <Row center="xs">
+                        <Col xs={6} sm={6} md={4} lg={4}>
+                            <Formsy.Form
+                                onValid={enableOTPButton}
+                                onInvalid={disableOTPButton}
+                                onValidSubmit={createUser}
+                                onInvalidSubmit={notifyOTPFormError}
+                            >
+                                <FormsyText
+                                    name="otp"
+                                    validations={{
+                                        otpValidation: function (values, value) {
+                                            return !isNaN(value) && value.length === 6
+                                        }
+                                    }}
+                                    validationError={errorMessages.otpError}
+                                    required
+                                    fullWidth={true}
+                                    className="text-align-center"
+                                    value={otp}
+                                    maxLength="6"
+                                    onChange={onChange}
+                                    style={ {fontSize: '30px', paddingBottom: '10px'} }
+                                    inputStyle={ {textAlign: 'center', letterSpacing: '3px'} }
+                                />
+
+                                <div className="login-button">
+                                    <RaisedButton label="Register" primary={true} type="submit" disabled={!canSubmitOTP}/>
+                                </div>
+                            </Formsy.Form>
+                        </Col>
+                    </Row>
+                </div>
+            </div>
+        )
+    } else {
+        return false;
     }
 }
 
 class Signup extends Component {
     constructor () {
         super();
-        this.state = {type: '', subType: '', email: '', phone: '', password: '', otp: '', canSubmit: false};
+        this.state = {type: '', subType: '', email: '', phone: '', password: '', otp: '', canSubmit: false, showOTPForm: false, canSubmitOTP: false};
     }
 
     setType = (type) => {
@@ -214,15 +266,16 @@ class Signup extends Component {
         });
     }
 
+    // Register form actions
     enableButton = () => {
         this.setState({
-            canSubmit: true,
+            canSubmit: true
         });
     }
 
     disableButton = () => {
         this.setState({
-            canSubmit: false,
+            canSubmit: false
         });
     }
 
@@ -235,8 +288,31 @@ class Signup extends Component {
     }
 
     registerUser = () => {
-        console.log(this.state);
-        // send the api call
+        this.setState({
+            showOTPForm: true
+        });
+        // Make api call for getting OTP
+    }
+
+    // OTP form actions
+    enableOTPButton = () => {
+        this.setState({
+            canSubmitOTP: true
+        });
+    }
+
+    disableOTPButton = () => {
+        this.setState({
+            canSubmitOTP: false
+        });
+    }
+
+    createUser = () => {
+        console.log("dispatch create user");
+    }
+
+    notifyOTPFormError = () => {
+
     }
 
     handleChange = (e) => {
@@ -244,7 +320,7 @@ class Signup extends Component {
     }
 
     render () {
-        let { type, subType, email, phone, password, canSubmit } = this.state;
+        let { type, subType, email, phone, password, canSubmit, showOTPForm, canSubmitOTP, otp } = this.state;
 
         return (
             <div className="signup">
@@ -253,7 +329,7 @@ class Signup extends Component {
                         <img src={logo} alt="logo" />
                     </div>
 
-                    <UserType type={type} subType={subType} setType={this.setType} setSubType={this.setSubType}/>
+                    <UserType type={type} subType={subType} setType={this.setType} setSubType={this.setSubType} showOTPForm={showOTPForm} />
 
                     <SignupForm
                         type={type}
@@ -267,6 +343,20 @@ class Signup extends Component {
                         phone={phone}
                         password={password}
                         register={this.registerUser}
+                        onChange={this.handleChange}
+                        showOTPForm={showOTPForm}
+                    />
+                    <AlreadyMember showOTPForm={showOTPForm} />
+
+                    <OTPForm
+                        showOTPForm={showOTPForm}
+                        phone={phone}
+                        enableOTPButton={this.enableOTPButton}
+                        disableOTPButton={this.disableOTPButton}
+                        createUser={this.createUser}
+                        notifyOTPFormError={this.notifyOTPFormError}
+                        canSubmitOTP={canSubmitOTP}
+                        opt={otp}
                         onChange={this.handleChange}
                     />
                 </div>
