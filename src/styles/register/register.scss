@@ -1,0 +1,73 @@
+.lender-register, .borrower-register {
+    .header {
+        height: $header-height;
+        width: 100%;
+        top: 0;
+        background-color: $header-bgcolor;
+        z-index: 1;
+
+        img {
+            margin: 7px 30px;
+        }
+
+        div {
+            position: absolute;
+            top: 18px;
+            font-size: 20px;
+            color: $text-header-grey;
+            left: 100px;
+        }
+    }
+}
+
+.register {
+    .register-form-holder {
+        width: 500px;
+        margin: auto;
+        left: 50%;
+        padding: 50px 0;
+
+
+        .label-header {
+            color: $text-header-grey;
+        }
+
+        .action-bar {
+            padding-top: 50px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .split-inputs {
+            display: flex;
+            justify-content: space-between;
+
+            & > div {
+                flex: 1;
+            }
+
+            div {
+                &:first-child {
+                    margin-right: 10px;
+                }
+            }
+        }
+
+        .group-label {
+            padding-top: 20px;
+            color: $text-header-grey;
+        }
+
+        .checkbox {
+            padding-top: 20px;
+        }
+
+        .add-button {
+            padding-top: 20px;
+        }
+
+        .deletable-table-container {
+            margin-top: 30px;
+        }
+    }
+}

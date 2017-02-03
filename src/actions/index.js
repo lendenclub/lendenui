@@ -35,6 +35,26 @@ export const loginUser = (username, password) => (dispatch, getState) => {
     dispatch(setUserCreds(responseObj));
 }
 
+export const setupUser = (user) => {
+    return {
+        type: 'SETUP_USER',
+        user
+    }
+}
+
+export const getUser = () => (dispatch, getState) => {
+    let user = {
+        username: 'abc@abc.com',
+        fname: 'Arjun',
+        lname: 'Sasikumar',
+        registered: false,
+        registrationStep: 0,
+        type: 'borrower',
+        subType: 'institution'
+    }
+    dispatch(setupUser(user));
+}
+
 /*
     Invest Actions
 */

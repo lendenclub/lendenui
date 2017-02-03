@@ -1,9 +1,13 @@
 @import "atomic.scss";
 
 @import "components/universal-loader";
+@import "components/deletable-table.scss";
 
 @import "login/login.scss";
 @import "signup/signup.scss";
+
+//Register Imports
+@import "register/register.scss";
 
 //Lender Imports
 @import "lender/header.scss";

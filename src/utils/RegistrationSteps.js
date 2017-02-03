@@ -1,0 +1,95 @@
+const RegistrationSteps = [{
+    type: 'lender',
+    subType: 'individual',
+    steps: [{
+        label: 'PAN',
+        step: 0,
+        endpoint: '/registration/individual/pan'
+    }, {
+        label: 'Aadhar',
+        step: 1,
+        endpoint: '/registration/individual/aadhar'
+    }, {
+        label: 'Address',
+        step: 2,
+        endpoint: '/registration/individual/address'
+    }, {
+        label: 'Personal',
+        step: 3,
+        endpoint: '/registration/individual/personal'
+    }, {
+        label: 'Bank',
+        step: 4,
+        endpoint: '/registration/individual/bank'
+    }, {
+        label: 'Documents',
+        step: 5,
+        endpoint: '/registration/individual/documents'
+    }]
+}, {
+    type: 'lender',
+    subType: 'institution',
+    steps: [{
+        label: 'PAN',
+        step: 0,
+        endpoint: '/registration/institution/pan'
+    }, {
+        label: 'Address',
+        step: 1,
+        endpoint: '/registration/institution/address'
+    }, {
+        label: 'Bank',
+        step: 2,
+        endpoint: '/registration/institution/bank'
+    }, {
+        label: 'Documents',
+        step: 3,
+        endpoint: '/registration/institution/documents'
+    }]
+}, {
+    type: 'borrower',
+    subType: '',
+    steps: [{
+        label: 'PAN',
+        step: 0,
+        endpoint: '/registration/borrower/pan'
+    }, {
+        label: 'Aadhar',
+        step: 1,
+        endpoint: '/registration/borrower/aadhar'
+    }, {
+        label: 'Address',
+        step: 2,
+        endpoint: '/registration/borrower/address'
+    }, {
+        label: 'Personal',
+        step: 3,
+        endpoint: '/registration/borrower/personal'
+    }, {
+        label: 'Professional',
+        step: 4,
+        endpoint: '/registration/borrower/professional'
+    }, {
+        label: 'Financial',
+        step: 5,
+        endpoint: '/registration/borrower/financial'
+    }, {
+        label: 'Bank',
+        step: 6,
+        endpoint: '/registration/borrower/bank'
+    }, {
+        label: 'Assets',
+        step: 7,
+        endpoint: '/registration/borrower/assets'
+    }, {
+        label: 'Loans',
+        step: 8,
+        endpoint: '/registration/borrower/loans'
+    }, {
+        label: 'Documents',
+        step: 9,
+        endpoint: '/registration/borrower/documents'
+    }]
+}];
+
+export default RegistrationSteps;

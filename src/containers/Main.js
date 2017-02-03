@@ -32,10 +32,17 @@ const muiTheme = getMuiTheme({
     },
     chip: {
       backgroundColor: '#182F39'
-  }
+    },
+    datePicker: {
+        selectColor: '#118a70'
+    }
 });
 
 class Main extends Component {
+    constructor (props) {
+        super();
+    }
+
     componentWillMount () {
         this.props.media({ maxWidth: 1230 }, () => {
             this.setState({
@@ -47,6 +54,13 @@ class Main extends Component {
                 isMobile: false
             });
         });
+        this.props.getUser();
+    }
+
+    componentDidMount () {
+        // if (this.props.router.getCurrentLocation().pathname === '/') {
+        //     this.props.router.push('/app');
+        // }
     }
 
     render () {
@@ -55,7 +69,12 @@ class Main extends Component {
             <MuiThemeProvider muiTheme={muiTheme}>
                 <div>
                     <LoadingPage showLoader={this.props.app.showLoader} />
-                    { React.cloneElement(this.props.children, {...this.props, isMobile}) }
+
+                    { this.props.children !== null ? (
+                        React.cloneElement(this.props.children, {...this.props, isMobile})
+                    ): (
+                        ''
+                    )}
                 </div>
             </MuiThemeProvider>
         );
