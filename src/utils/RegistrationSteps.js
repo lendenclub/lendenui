@@ -50,44 +50,48 @@ const RegistrationSteps = [{
     type: 'borrower',
     subType: '',
     steps: [{
-        label: 'PAN',
+        label: 'Requirements',
         step: 0,
+        endpoint: '/registration/borrower/requirements'
+    }, {
+        label: 'PAN',
+        step: 1,
         endpoint: '/registration/borrower/pan'
     }, {
         label: 'Aadhar',
-        step: 1,
+        step: 2,
         endpoint: '/registration/borrower/aadhar'
     }, {
         label: 'Address',
-        step: 2,
+        step: 3,
         endpoint: '/registration/borrower/address'
     }, {
         label: 'Personal',
-        step: 3,
+        step: 4,
         endpoint: '/registration/borrower/personal'
     }, {
         label: 'Professional',
-        step: 4,
+        step: 5,
         endpoint: '/registration/borrower/professional'
     }, {
         label: 'Financial',
-        step: 5,
+        step: 6,
         endpoint: '/registration/borrower/financial'
     }, {
         label: 'Bank',
-        step: 6,
+        step: 7,
         endpoint: '/registration/borrower/bank'
     }, {
         label: 'Assets',
-        step: 7,
+        step: 8,
         endpoint: '/registration/borrower/assets'
     }, {
         label: 'Loans',
-        step: 8,
+        step: 9,
         endpoint: '/registration/borrower/loans'
     }, {
         label: 'Documents',
-        step: 9,
+        step: 10,
         endpoint: '/registration/borrower/documents'
     }]
 }];

@@ -59,6 +59,10 @@ class Loans extends Component {
         })
     }
 
+    resetForm = () => {
+        this.refs.form.reset();
+    }
+
     render () {
         return (
             <div className="register-form">
@@ -119,21 +123,18 @@ class Loans extends Component {
                     </div>
 
                     <div className="add-button">
+                        <div className="reset-link" onClick={this.resetForm}>Reset</div>
                         <RaisedButton label="Add" type="submit" disabled={!this.state.canSubmit} backgroundColor={styleConstants.accentBlue} />
                     </div>
                 </Formsy.Form>
 
-                { this.state.addedLoans.length ? (
-                    <div className="deletable-table-container">
-                        <DeletableTable data={this.state.addedLoans} onDelete={this.deleteLoan.bind(this)} columns={columns} />
-                    </div>
-                ) : (
-                    ''
-                )}
+                <div className="deletable-table-container">
+                    <DeletableTable data={this.state.addedLoans} onDelete={this.deleteLoan.bind(this)} columns={columns} />
+                </div>
 
                 <div className="action-bar">
-                    <FlatButton label="Cancel" secondary={true} />
-                    <RaisedButton label="Continue" primary={true} type="submit"/>
+                    <FlatButton label="Back" onClick={this.props.gotoPreviousTab} secondary={true} />
+                    <RaisedButton label="Next" onClick={this.props.gotoNextTab} primary={true} type="submit"/>
                 </div>
             </div>
         )

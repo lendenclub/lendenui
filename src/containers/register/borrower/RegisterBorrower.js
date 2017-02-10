@@ -14,18 +14,18 @@ const Header = () => {
     )
 }
 
-
 class RegisterBorrower extends Component {
     render () {
         let registerObj = RegistrationSteps.find( (item) => item.type === 'borrower'),
-            steps = registerObj ? registerObj.steps : [];
+            steps = registerObj ? registerObj.steps : [],
+            registrationStep = this.props.app.user.registrationStep || 0;
 
         return (
             <div className="borrower-register">
                 <Header/>
 
                 <div className="register-component">
-                    <BorrowerRegister steps={steps} />
+                    <BorrowerRegister steps={steps} currentStep={registrationStep}/>
                 </div>
             </div>
         );

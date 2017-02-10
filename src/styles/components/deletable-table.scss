@@ -10,6 +10,12 @@
         }
     }
 
+    .no-records {
+        background-color: $color-palette-500;
+        text-align: center;
+        padding: 15px 10px;
+    }
+
     .content-row {
         background-color: $color-palette-500;
         display: flex;

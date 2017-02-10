@@ -5,6 +5,7 @@
         top: 0;
         background-color: $header-bgcolor;
         z-index: 1;
+        position: relative;
 
         img {
             margin: 7px 30px;
@@ -63,11 +64,21 @@
         }
 
         .add-button {
+            text-align: right;
             padding-top: 20px;
         }
 
         .deletable-table-container {
-            margin-top: 30px;
+            margin-top: 60px;
+        }
+
+        .reset-link {
+            color: $text-grey;
+            text-decoration: none;
+            font-weight: 400;
+            margin-right: 20px;
+            cursor: pointer;
+            display: inline-block;
         }
     }
 }

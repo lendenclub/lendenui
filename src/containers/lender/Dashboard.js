@@ -8,6 +8,7 @@ import MonthlySplit from '../../components/lender/dashboard/MonthlySplit';
 import MyInvestments from '../../components/lender/dashboard/MyInvestments';
 import PortfolioSummary from '../../components/lender/dashboard/PortfolioSummary';
 import ReferCode from '../../components/lender/dashboard/ReferCode';
+import Transactions from '../../components/lender/dashboard/Transactions';
 import { Row, Col } from 'react-flexbox-grid';
 
 const desktopDashboardStyle = {
@@ -20,11 +21,27 @@ const defaultRowStyle = {
 }
 
 class Dashboard extends Component {
+    componentWillMount () {
+        this.props.fetchDashboardData();
+    }
+
     render () {
         let isMobile = this.props.isMobile,
             dashboardStyle = isMobile ? {} : desktopDashboardStyle,
             colStyle = isMobile ? { marginBottom: '15px' } : {},
-            rowStyle = isMobile ? {...defaultRowStyle, marginBottom: 0} : defaultRowStyle;
+            rowStyle = isMobile ? {...defaultRowStyle, marginBottom: 0} : defaultRowStyle,
+            {   annual_average_return: annualizedReturn,
+                suggested_profiles: suggestedProfiles,
+                referral_code: referralCode,
+                roi: investmentSummary,
+                portfolio: portfolioAssetAllocation,
+                monthly_investments: monthlyInvestments,
+                monthly_repayments: monthlyRepayments,
+                investment_status_counts: myInvestments,
+                portfolio_summary: portfolioSummary,
+                transactions,
+                total_investment: totalInvestment
+            } = this.props.lender.dashboardData;
 
         return (
             <div style={dashboardStyle}>
@@ -33,37 +50,40 @@ class Dashboard extends Component {
                         <AccountBalance />
                     </Col>
                     <Col lg={3} xs={12} style={colStyle}>
-                        <AnnualizedReturns />
+                        <AnnualizedReturns totalInvestment={totalInvestment} annualizedReturn={annualizedReturn} />
                     </Col>
                     <Col lg={3} xs={12} style={colStyle}>
-                        <SuggestedProfiles />
+                        <SuggestedProfiles suggestedProfiles={suggestedProfiles} />
                     </Col>
                     <Col lg={3} xs={12} style={colStyle}>
-                        <ReferCode />
+                        <ReferCode referralCode={referralCode} />
                     </Col>
                 </Row>
 
                 <Row style={rowStyle}>
                     <Col lg={12} xs={12} style={colStyle}>
-                        <InvestmentSummary isMobile={isMobile}/>
+                        <InvestmentSummary investmentSummary={investmentSummary} isMobile={isMobile}/>
                     </Col>
                 </Row>
 
                 <Row style={rowStyle}>
                     <Col lg={3} xs={12} style={colStyle}>
-                        <ProfileAssetAllocation />
+                        <ProfileAssetAllocation portfolioAssetAllocation={portfolioAssetAllocation} />
                     </Col>
                     <Col lg={6} xs={12} style={colStyle}>
-                        <MonthlySplit isMobile={isMobile}/>
+                        <MonthlySplit isMobile={isMobile} monthlyInvestments={monthlyInvestments} monthlyRepayments={monthlyRepayments} />
                     </Col>
                     <Col lg={3} xs={12} style={colStyle}>
-                        <MyInvestments />
+                        <MyInvestments myInvestments={myInvestments} />
                     </Col>
                 </Row>
 
                 <Row style={rowStyle}>
                     <Col lg={6} xs={12} style={colStyle}>
-                        <PortfolioSummary />
+                        <PortfolioSummary portfolioSummary={portfolioSummary} />
+                    </Col>
+                    <Col lg={6} xs={12} style={colStyle}>
+                        <Transactions transactions={transactions} />
                     </Col>
                 </Row>
             </div>

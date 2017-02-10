@@ -27,19 +27,13 @@ const chartMobileStyle = {
 }
 
 const chartDesktopStyle = {
-    margin: '0 10px 0 -10px'
+    margin: '0 10px 0 -10px',
+    overflowY: 'hidden'
 }
 
-const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-
 /* Montly Return Chart Options */
-const monthlyReturnData = {
+const monthlyRepaymentsDataBase = {
     x : 'x',
-    columns: [
-        ['x', ...months],
-        ['Interest Paid', 50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600],
-        ['Principal Paid', 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200],
-    ],
     type: 'bar',
     groups: [
         ['Interest Paid', 'Principal Paid']
@@ -47,6 +41,27 @@ const monthlyReturnData = {
     selection: {
         draggable: true
     }
+}
+
+let repaymentMonths = [];
+
+const constructMonthlyRepaymentsData = (monthlyRepayments = []) => {
+    let months = ['x'], principal = ['Principal Paid'], interest = ['Interest Paid'];
+    monthlyRepayments.reverse().forEach( (item) => {
+        months.push(item.month.substring(0, 3));
+        repaymentMonths.push(item.month.substring(0, 3));
+        principal.push(item.principal || 0);
+        interest.push(item.interest || 0);
+    })
+
+    return {
+        ...monthlyRepaymentsDataBase,
+        columns: [
+            months,
+            principal,
+            interest
+        ]
+    };
 }
 
 const monthlyReturnColorArray = ['#1CB5B0', '#EBD24B']
@@ -69,7 +84,7 @@ const monthlyReturnDefaultAxis = {
 
 const monthlyReturnTooltip = {
     contents: function (d, defaultTitleFormat, defaultValueFormat, color) {
-        let month = months[d[0].x],
+        let month = repaymentMonths[d[0].x],
             html = `<div class="tooltip-container">
                         <div class="tooltip-header">
                             ${month}
@@ -98,26 +113,17 @@ const legend = {
 }
 
 /* Total Amount Invested Chart Options */
-const totalInvestedAmountData = {
+const totalInvestedAmountDataBase = {
     x : 'x',
-    columns: [
-        ['x', ...months],
-        ['Very Low Risk', 50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600],
-        ['Low Risk', 10, 20,30, 40, 50, 60, 70, 80, 90, 100, 110, 120],
-        ['Medium Risk', 15, 30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180],
-        ['High Risk', 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330, 360],
-        ['Very High Risk', 40, 80, 120, 160, 200, 240, 280, 320, 360, 400, 440, 480],
-        ['Montly Investment Count', 3, 5, 0, 6, 10, 2, 4, 7, 8, 9, 2, 5],
-    ],
     groups: [
-        ['Very Low Risk', 'Low Risk', 'Medium Risk', 'High Risk', 'Very High Risk']
+        ['Very Low Risk', 'Low Risk', 'Moderate Risk', 'High Risk', 'Very High Risk']
     ],
     order: null,
     type: 'bar',
     axes: {
         'Very Low Risk': 'y',
         'Low Risk': 'y',
-        'Medium Risk': 'y',
+        'Moderate Risk': 'y',
         'High Risk': 'y',
         'Very High Risk': 'y',
         'Montly Investment Count': 'y2',
@@ -125,6 +131,37 @@ const totalInvestedAmountData = {
     types: {
         'Montly Investment Count': 'line'
     }
+}
+
+let investedAmountMonths = []
+
+const constructMonthlyInvestmentsData = (monthlyInvestments = []) => {
+    let months = ['x'], very_low = ['Very Low Risk'], low = ['Low Risk'], moderate = ['Moderate Risk'], high = ['High Risk'], very_high = ['Very High Risk'], investment_count = ['Montly Investment Count'],
+        monthlyInvestmentsData = monthlyInvestments.slice();
+
+        monthlyInvestmentsData.reverse().forEach( (item) => {
+            months.push(item.month.substring(0, 3));
+            investedAmountMonths.push(item.month.substring(0, 3));
+            very_low.push(item[very_low] || 0);
+            low.push(item[low] || 0);
+            moderate.push(item[moderate] || 0);
+            high.push(item[high] || 0);
+            very_high.push(item[very_high] || 0);
+            investment_count.push(item[investment_count] || 0);
+        })
+
+    return {
+        ...totalInvestedAmountDataBase,
+        columns: [
+            months,
+            very_low,
+            low,
+            moderate,
+            high,
+            very_high,
+            investment_count
+        ]
+    };
 }
 
 const totalInvestedAmountDefaultAxis = {
@@ -155,7 +192,7 @@ const totalInvestedAmountColor = {
 
 const totalInvestedAmountTooltip = {
     contents: function (d, defaultTitleFormat, defaultValueFormat, color) {
-        let month = months[d[0].x],
+        let month = investedAmountMonths[d[0].x],
             html = `<div class="tooltip-container">
                         <div class="tooltip-header">
                             ${month}
@@ -195,10 +232,12 @@ class MonthlySplit extends Component {
     }
 
     render () {
-        let isMobile = this.props.isMobile,
+        let { isMobile, monthlyRepayments, monthlyInvestments } = this.props,
             monthlyReturnAxis = monthlyReturnDefaultAxis,
             totalInvestedAmountAxis = totalInvestedAmountDefaultAxis,
-            chartContainerStyle = isMobile ? chartMobileStyle : chartDesktopStyle;
+            chartContainerStyle = isMobile ? chartMobileStyle : chartDesktopStyle,
+            monthlyRepaymentsData = constructMonthlyRepaymentsData(monthlyRepayments),
+            monthlyInvestmentsData = constructMonthlyInvestmentsData(monthlyInvestments);
 
         if (isMobile) {
             monthlyReturnAxis.x.tick = { count: 5 };
@@ -214,10 +253,10 @@ class MonthlySplit extends Component {
 
                 <SwipeableViews index={this.state.tabIndex} onChangeIndex={this.handleTabChange} >
                     <div style={chartContainerStyle}>
-                        <C3Chart data={monthlyReturnData} size={ {height: 250} } padding={{top: 10}} bar={bar} color={monthlyReturnColor} axis={monthlyReturnAxis} tooltip={monthlyReturnTooltip} legend={legend}/>
+                        <C3Chart data={monthlyRepaymentsData} size={ {height: 250} } padding={{top: 10}} bar={bar} color={monthlyReturnColor} axis={monthlyReturnAxis} tooltip={monthlyReturnTooltip} legend={legend}/>
                     </div>
-                    <div  style={chartContainerStyle}>
-                        <C3Chart data={totalInvestedAmountData} size={ {height: 250} } padding={{top: 10}} color={totalInvestedAmountColor} axis={totalInvestedAmountAxis} bar={bar} tooltip={totalInvestedAmountTooltip} legend={legend}/>
+                    <div style={chartContainerStyle}>
+                        <C3Chart data={monthlyInvestmentsData} size={ {height: 250} } padding={{top: 10}} color={totalInvestedAmountColor} axis={totalInvestedAmountAxis} bar={bar} tooltip={totalInvestedAmountTooltip} legend={legend}/>
                     </div>
                 </SwipeableViews>
             </Card>

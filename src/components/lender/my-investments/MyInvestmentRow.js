@@ -4,7 +4,6 @@ import Paper from 'material-ui/Paper';
 import numeral from 'numeral';
 import { styleConstants } from '../../../utils/StyleConstants';
 import { RiskColors } from '../../../utils/RiskColors';
-import ProgressBar from '../../ProgressBar'
 import MyInvestmentRowCollapsible from './MyInvestmentRowCollapsible';
 
 const paperStyle = {
@@ -18,7 +17,7 @@ const riskIndicator = {
     width: 0,
 	height: 0,
 	borderTopWidth: '20px',
-    borderTopStyle: 'inset',
+    borderTopStyle: 'solid',
 	borderRight: '20px solid transparent'
 }
 
@@ -34,15 +33,17 @@ class MyInvestmentRow extends Component {
 
     onRowClicked = () => {
         let props = this.props;
-        props.toggleRowAction(props.myInvestment.required_loan_id);
+        props.toggleRowAction(props.myInvestment.loan.required_loan_id);
     }
 
     render () {
         let myInvestment = this.props.myInvestment,
+            loan = myInvestment.loan,
+            user = myInvestment.loan.user,
             collapsiblePaperState = this.props.rowActive ? 'show-collapsible' : 'hide-collapsible',
             collapsiblePaperStyle = `collapsible-pane ${collapsiblePaperState}`;
 
-        riskIndicator.borderTopColor = this.computeRiskStyle(myInvestment.interest_rate);
+        riskIndicator.borderTopColor = this.computeRiskStyle(loan.interest_rate);
 
         return (
             <div className="my-investment-row">
@@ -50,16 +51,13 @@ class MyInvestmentRow extends Component {
                     <div style={riskIndicator}></div>
 
                     <Row className="row" onClick={this.onRowClicked}>
-                        <Col lg={1} className="text-capitalize">{myInvestment.user.first_name}</Col>
-                        <Col lg={1}>{myInvestment.required_loan_id}</Col>
-                        <Col lg={1}>{myInvestment.interest_rate}%</Col>
-                        <Col lg={2}>₹ {numeral(myInvestment.amount).format('0,0.00')}</Col>
+                        <Col lg={1} className="text-capitalize">{user.first_name}</Col>
+                        <Col lg={1}>{loan.required_loan_id}</Col>
+                        <Col lg={1}>{loan.interest_rate}%</Col>
+                        <Col lg={2}>₹ {numeral(loan.amount).format('0,0.00')}</Col>
                         <Col lg={2}>₹ {numeral(myInvestment.emi).format('0,0.00')}</Col>
                         <Col lg={2} className="text-capitalize">
-                            {myInvestment.statusText} <span className="color-progress-blue">({myInvestment.statusPercentage}%)</span>
-                            <div className="progress-bar-container">
-                                <ProgressBar max={myInvestment.amount} value={myInvestment.amount - 50000} />
-                            </div>
+                            {myInvestment.status}
                         </Col>
                     </Row>
                 </Paper>

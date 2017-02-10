@@ -22,9 +22,9 @@ const RegisterPages = [
     Documents
 ]
 
-const TabComponent = ( {name} ) => {
+const TabComponent = ( {name, gotoNextTab, gotoPreviousTab} ) => {
     let RegisterComponent = RegisterPages.find( (item) => item.name === name);
-    return (<RegisterComponent />)
+    return (<RegisterComponent gotoNextTab={gotoNextTab} gotoPreviousTab={gotoPreviousTab} />)
 }
 
 
@@ -42,6 +42,18 @@ class InstitutionLenderRegister extends Component {
         });
     }
 
+    gotoNextTab = () => {
+        this.setState({
+            tabIndex: this.state.tabIndex + 1
+        })
+    }
+
+    gotoPreviousTab = () => {
+        this.setState({
+            tabIndex: this.state.tabIndex - 1
+        })
+    }
+
     render () {
         return (
             <div>
@@ -50,7 +62,7 @@ class InstitutionLenderRegister extends Component {
                         return (
                             <Tab key={idx} label={item.label} value={item.step}>
                                 <div className="register-form-holder">
-                                    <TabComponent name={item.label}/>
+                                    <TabComponent name={item.label} gotoNextTab={this.gotoNextTab} gotoPreviousTab={this.gotoPreviousTab} />
                                 </div>
                             </Tab>
                         )

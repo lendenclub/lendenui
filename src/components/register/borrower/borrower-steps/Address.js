@@ -23,8 +23,13 @@ class Address extends Component {
         });
     }
 
-    submitForm (data) {
+    submitForm = (data) => {
         console.log(JSON.stringify(data, null, 4));
+        this.gotoNextTab();
+    }
+
+    gotoNextTab = () => {
+        this.props.gotoNextTab();
     }
 
     notifyFormError (data) {
@@ -168,8 +173,8 @@ class Address extends Component {
                     </div>
 
                     <div className="action-bar">
-                        <FlatButton label="Cancel" secondary={true} />
-                        <RaisedButton label="Continue" primary={true} type="submit" disabled={!this.state.canSubmit}/>
+                        <FlatButton label="Back" onClick={this.props.gotoPreviousTab} secondary={true} />
+                        <RaisedButton label="Next" primary={true} type="submit" disabled={!this.state.canSubmit}/>
                     </div>
                 </Formsy.Form>
             </div>

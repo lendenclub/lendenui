@@ -53,9 +53,9 @@ class Invest extends Component {
         }
     }
 
-    toggleRowActive = (required_loan_id) => {
-        this.props.updateRowActive(required_loan_id);
-    }
+    // toggleRowActive = (required_loan_id) => {
+    //     this.props.updateRowActive(required_loan_id);
+    // }
 
     toggleFilterDrawer = () => {
         this.setState({ filterDrawerState: !this.state.filterDrawerState})
@@ -120,9 +120,8 @@ class Invest extends Component {
 
                         <div className="invest-table">
                             {this.props.lender.loans.map( (loan, idx) => {
-                                loan.active = loan.active || false;
                                 return (
-                                    <InvestRow key={idx} loan={loan} toggleRowAction={this.toggleRowActive.bind(this)} rowActive={loan.active} invest={this.showInvestModal.bind(this)} isMobile={this.props.isMobile}/>
+                                    <InvestRow key={idx} loan={loan} rowActive={loan.active} invest={this.showInvestModal.bind(this)} isMobile={this.props.isMobile}/>
                                 )
                             })}
                         </div>
@@ -152,9 +151,8 @@ class Invest extends Component {
                         <BorrowerFilter filterDrawerState={this.state.filterDrawerState} applyFilter={this.applyFilter} toggleFilterDrawer={this.toggleFilterDrawer.bind(this)} isMobile={this.props.isMobile}/>
 
                         {this.props.lender.loans.map( (loan, idx) => {
-                            loan.active = loan.active || false;
                             return (
-                                <InvestCard key={idx} loan={loan} toggleRowAction={this.toggleRowActive.bind(this)} rowActive={loan.active} invest={this.showInvestModal.bind(this)} isMobile={this.props.isMobile}/>
+                                <InvestCard key={idx} loan={loan} rowActive={loan.active} invest={this.showInvestModal.bind(this)} isMobile={this.props.isMobile}/>
                             )
                         })}
                     </div>

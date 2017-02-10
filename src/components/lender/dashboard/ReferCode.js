@@ -86,7 +86,7 @@ class ReferCode extends Component {
                 <div style={headerStyle}>Refer Code</div>
 
                 <div className="refer-code">
-                    LDC1
+                    LDC{this.props.referralCode}
                 </div>
 
                 <div className="invite" style={headerStyle}>

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Formsy from 'formsy-react';
 import { FormsyText, FormsySelect } from 'formsy-material-ui/lib';
 import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
 import MenuItem from 'material-ui/MenuItem';
 import Checkbox from 'material-ui/Checkbox';
 
@@ -23,8 +22,13 @@ class PAN extends Component {
         });
     }
 
-    submitForm (data) {
+    submitForm = (data) => {
         console.log(JSON.stringify(data, null, 4));
+        this.gotoNextTab();
+    }
+
+    gotoNextTab = () => {
+        this.props.gotoNextTab();
     }
 
     notifyFormError (data) {
@@ -92,8 +96,8 @@ class PAN extends Component {
                     />
 
                     <div className="action-bar">
-                        <FlatButton label="Cancel" secondary={true} />
-                        <RaisedButton label="Continue" primary={true} type="submit" disabled={!this.state.canSubmit}/>
+                        <div></div>
+                        <RaisedButton label="Next" primary={true} type="submit" disabled={!this.state.canSubmit}/>
                     </div>
                 </Formsy.Form>
             </div>

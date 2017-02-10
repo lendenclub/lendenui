@@ -1,7 +1,7 @@
 export const RiskColors = (interest) => {
     if (interest <= 15) return '#8BBE47'
-    else if (interest <= 20) return '#5A78CF'
-    else if (interest <= 25) return '#FDFB66'
+    else if (interest <= 18) return '#5A78CF'
+    else if (interest <= 22) return '#FDFB66'
     else if (interest <= 30) return '#FFA61A'
     else if (interest <= 35) return '#F76162'
     else return ''

@@ -53,8 +53,20 @@ const columnStyle = {
 }
 
 class MyInvestmentRowCollapsible extends Component {
+    openDocument = (documentObj) => {
+        window.open(documentObj.file, '_blank');
+    }
+
     render () {
-        let myInvestment = this.props.myInvestment;
+        let myInvestment = this.props.myInvestment,
+            repaymentList = myInvestment.repayment_list,
+            documentList = myInvestment.document_list,
+            emiPaid = repaymentList.reduce( (acc, item) => {
+                return acc + (item.status === 'Paid' ? item.emi : 0)
+            }, 0),
+            emiDue = repaymentList.reduce( (acc, item) => {
+                return acc + (item.status === 'Due' ? item.emi : 0)
+            }, 0);
 
 
         return (
@@ -65,39 +77,35 @@ class MyInvestmentRowCollapsible extends Component {
                             <div style={rowStyle}>
                                 <div className="text-header-grey">Documents</div>
                                 <div style={chipRowStyle}>
-                                    <Chip style={chipStyle} labelColor={styleConstants.textGrey}>
-                                        <Avatar icon={<FontIcon className="material-icons" style={fontStyle}>description</FontIcon>} />
-                                        Cheque
-                                    </Chip>
-                                    <Chip style={chipStyle} labelColor={styleConstants.textGrey}>
-                                        <Avatar icon={<FontIcon className="material-icons" style={fontStyle}>description</FontIcon>} />
-                                        Agreement
-                                    </Chip>
+                                    {documentList.map( (item) => {
+                                        return (
+                                            <Chip key={item.type} style={chipStyle} labelColor={styleConstants.textGrey} onClick={this.openDocument.bind(this, item)}>
+                                                <Avatar icon={<FontIcon className="material-icons" style={fontStyle}>description</FontIcon>} />
+                                                <span className="text-capitalize">{item.type}</span>
+                                            </Chip>
+                                        )
+                                    })}
                                 </div>
                             </div>
                             <div style={rowStyle}>
                                 <div className="text-header-grey">Disbursement Date</div>
-                                <div> {myInvestment.disbursementDate} </div>
+                                <div> {myInvestment.disbursement_date} </div>
                             </div>
                             <div style={rowStyle}>
                                 <div className="text-header-grey">Repayment Start Date</div>
-                                <div> {myInvestment.repaymentStartDate} </div>
-                            </div>
-                            <div style={rowStyle}>
-                                <div className="text-header-grey">Loan Date</div>
-                                <div> {myInvestment.loanCloseDate} </div>
+                                <div> {myInvestment.repayment_start_date.split('-').reverse().join('-')} </div>
                             </div>
                             <div style={rowStyle}>
                                 <div className="text-header-grey">Total EMI Paid</div>
-                                <div> ₹ {numeral(12345).format('0,0.00')} </div>
+                                <div> ₹ {numeral(emiPaid).format('0,0.00')} </div>
                             </div>
                             <div style={rowStyle}>
                                 <div className="text-header-grey">Total EMI Due</div>
-                                <div> ₹ {numeral(12345).format('0,0.00')} </div>
+                                <div> ₹ {numeral(emiDue).format('0,0.00')} </div>
                             </div>
                             <div style={rowStyle}>
                                 <div className="text-header-grey">Payment Status</div>
-                                <div> Processing </div>
+                                <div> {myInvestment.loan.status} </div>
                             </div>
                         </div>
                     </Col>
@@ -114,15 +122,15 @@ class MyInvestmentRowCollapsible extends Component {
                                 </TableRow>
                             </TableHeader>
                             <TableBody displayRowCheckbox={false}>
-                                {myInvestment.repayments.map( (repayment, idx) => {
+                                {myInvestment.repayment_list.map( (repayment, idx) => {
                                     return (
                                         <TableRow key={idx} style={tableColumnStyle}>
                                             <WebComponent style={tableColumnStyle}>
                                                 <TableRowColumn style={this.props.style}>{idx+1}</TableRowColumn>
                                             </WebComponent>
-                                            <TableRowColumn style={tableColumnStyle}>{repayment.emiDate}</TableRowColumn>
-                                            <TableRowColumn style={tableColumnStyle}>{repayment.emiAmount}</TableRowColumn>
-                                            <TableRowColumn style={tableColumnStyle} className="text-capitalize">{repayment.emiStatus}</TableRowColumn>
+                                            <TableRowColumn style={tableColumnStyle}>{repayment.due_date.split('-').reverse().join('-')}</TableRowColumn>
+                                            <TableRowColumn style={tableColumnStyle}>{repayment.emi}</TableRowColumn>
+                                            <TableRowColumn style={tableColumnStyle} className="text-capitalize">{repayment.status}</TableRowColumn>
                                         </TableRow>
                                     )
                                 })}

@@ -59,7 +59,7 @@ class MyInvestments extends Component {
                                     {this.props.lender.myInvestments.map( (myInvestment, idx) => {
                                         myInvestment.active = myInvestment.active || false;
                                         return (
-                                            <MyInvestmentRow key={idx} myInvestment={myInvestment} toggleRowAction={this.toggleRowActive} rowActive={myInvestment.active} isMobile={this.props.isMobile}/>
+                                            <MyInvestmentRow key={myInvestment.loan.required_loan_id} myInvestment={myInvestment} toggleRowAction={this.toggleRowActive} rowActive={myInvestment.active} isMobile={this.props.isMobile}/>
                                         )
                                     })}
                                 </Col>

@@ -27,7 +27,7 @@ class App extends Component {
 
     render () {
         const { children, ...otherProps } = this.props;
-        console.log("rendering component");
+
         return (
             <div style={style} className="app">
                 { children.props.children !== null ? (

@@ -60,6 +60,11 @@ const paperCollapsibleStyle = {
 }
 
 class InvestCard extends Component {
+    constructor () {
+        super();
+        this.state = {rowActive: false};
+    }
+
     computeRiskStyle = (interest) => {
         return RiskColors(interest);
     }
@@ -70,7 +75,7 @@ class InvestCard extends Component {
 
     render () {
         let loan = this.props.loan,
-            collapsiblePaperState = this.props.rowActive ? 'show-collapsible' : 'hide-collapsible',
+            collapsiblePaperState = this.state.rowActive ? 'show-collapsible' : 'hide-collapsible',
             collapsiblePaperStyle = `collapsible-pane ${collapsiblePaperState}`,
             investCardStyle = this.props.style ? {...cardStyle, ...this.props.style} : cardStyle;
 

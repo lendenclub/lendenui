@@ -1,5 +1,3 @@
-import investMockData from '../data/invest';
-import myInvestmentsMockData from '../data/my-investments';
 import AccountMockData from '../data/account';
 // These actions are typically called from the components
 // You need to make api calls, get the data and pass it on to the reducers so that the reducer will update the states which inturn will cause a re-render of relevant components
@@ -48,9 +46,9 @@ export const getUser = () => (dispatch, getState) => {
         fname: 'Arjun',
         lname: 'Sasikumar',
         registered: false,
-        registrationStep: 0,
+        registrationStep: 5,
         type: 'borrower',
-        subType: 'institution'
+        subType: 'individual'
     }
     dispatch(setupUser(user));
 }
@@ -66,7 +64,7 @@ export const receiveLoans = (response) => ({
 
 export const fetchLoans = (filterQuery) => (dispatch, getState) => {
     dispatch(pageLoading(true));
-    return fetch(`http://192.168.0.102:8000/api/invest-api?${filterQuery}`)
+    return fetch(`http://192.168.0.101:8000/api/listings?${filterQuery}`)
     .then( response => response.json() )
     .then( json => {
         dispatch(pageLoading(false));
@@ -91,7 +89,17 @@ export const receiveMyInvestments = (myInvestments) => ({
 })
 
 export const fetchMyInvestments = () => (dispatch, getState) => {
-    dispatch(receiveMyInvestments(myInvestmentsMockData))
+    dispatch(pageLoading(true));
+    return fetch(`http://192.168.0.101:8000/api/my-investments`, {
+        headers: {
+            'Authorization': 'Token dbfec9b49b7ac9be72fa1febafaa3d88e1826c3f'
+        }
+    })
+    .then( response => response.json() )
+    .then( json => {
+        dispatch(pageLoading(false));
+        dispatch(receiveMyInvestments(json.response.my_investments));
+    });
 }
 
 export const updateMyInvestmentRowActive = (loan_id) => ({
@@ -109,4 +117,28 @@ export const receiveAccountInfo = (accountInfo) => ({
 
 export const fetchAccountInfo = () => (dispatch, getState) => {
     dispatch(receiveAccountInfo(AccountMockData))
+}
+
+
+
+/*
+    Dashboard
+*/
+export const receiveDashboardData = (dashboardData) => ({
+    type: 'UPDATE_DASHBOARD_DATA',
+    dashboardData
+})
+
+export const fetchDashboardData = () => (dispatch, getState) => {
+    dispatch(pageLoading(true));
+    return fetch('http://192.168.0.101:8000/api/lender-dashboard', {
+        headers: {
+            'Authorization': 'Token dbfec9b49b7ac9be72fa1febafaa3d88e1826c3f'
+        }
+    })
+    .then( response => response.json() )
+    .then( json => {
+        dispatch(pageLoading(false));
+        dispatch(receiveDashboardData(json));
+    });
 }

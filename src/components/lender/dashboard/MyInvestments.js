@@ -13,22 +13,6 @@ const headerStyle = {
     color: styleConstants.textHeaderGrey
 }
 
-const data = {
-    columns: [
-        ['Funded', 10],
-        ['Active', 20],
-        ['Closed', 25]
-    ],
-    type: 'donut'
-}
-
-const donut = {
-    title: '92',
-    label: {
-        show: false
-    }
-}
-
 const color = {
     pattern: ['#15C3C9', '#D85876', '#69B440']
 }
@@ -56,15 +40,31 @@ const tooltip = {
     }
 }
 
+const constructChartData = (myInvestments) => {
+    let columnNames = { active_investments: 'Active', closed_investments: 'Closed', funded_investments: 'Funded' },
+        columns = Object.keys(myInvestments || []).map( (item) => {
+            return [ columnNames[item], myInvestments[item] ];
+        });
+
+    return {
+        columns,
+        type: 'donut'
+    }
+}
 
 class MyInvestments extends Component {
     render () {
+        let myInvestments = this.props.myInvestments || {},
+            chartData = constructChartData(myInvestments),
+            totalInvestments = myInvestments.active_investments || 0 + myInvestments.closed_investments || 0 + myInvestments.funded_investments || 0,
+            donut = { title: totalInvestments, label: {show: false} };
+
         return (
             <Card className="my-investments-chart" style={cardStyle}>
                 <div style={headerStyle}>My Investments</div>
 
                 <div>
-                    <C3Chart data={data} size={ {height: 250} } donut={donut} tooltip={tooltip} color={color} legend={legend}/>
+                    <C3Chart data={chartData} size={ {height: 250} } donut={donut} tooltip={tooltip} color={color} legend={legend}/>
                 </div>
             </Card>
         );

@@ -8,12 +8,6 @@ import numeral from 'numeral';
 import WebComponent from '../../WebComponent';
 import MobileComponent from '../../MobileComponent';
 
-const mockData = [
-    { "required_loan_id": "4F57CT4K", "amount": 125000.0, "interest_rate": 22.0, "remaining": 50000, "tenure": 12, "first_name": "Sherlock" },
-    { "required_loan_id": "4F57CT4K", "amount": 125000.0, "interest_rate": 16.0, "remaining": 50000, "tenure": 12, "first_name": "Watson" },
-    { "required_loan_id": "4F57CT4K", "amount": 125000.0, "interest_rate": 35.0, "remaining": 50000, "tenure": 12, "first_name": "Jim" }
-]
-
 /* STYLES */
 const cardStyle = {
     backgroundColor: styleConstants.cardBGColor
@@ -127,6 +121,8 @@ class SuggestedProfiles extends Component {
     }
 
     render () {
+        let suggestedProfiles = this.props.suggestedProfiles || [];
+
         return (
             <Card style={cardStyle} className="suggested-profiles">
                 <div style={headerStyle}>Suggested Live Profiles</div>
@@ -135,7 +131,7 @@ class SuggestedProfiles extends Component {
                     <HeaderRow />
                 </WebComponent>
 
-                {mockData.map( (loan, idx) => {
+                {suggestedProfiles.map( (loan, idx) => {
                     return (
                         <div key={idx}>
                             <WebComponent>

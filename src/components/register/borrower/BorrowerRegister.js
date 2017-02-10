@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import { styleConstants } from '../../../utils/StyleConstants';
+import Requirements from './borrower-steps/Requirements';
 import PAN from './borrower-steps/PAN';
 import Aadhar from './borrower-steps/Aadhar';
 import Address from './borrower-steps/Address';
@@ -22,6 +23,7 @@ const inkBarStyle = {
 }
 
 const RegisterPages = [
+    Requirements,
     PAN,
     Aadhar,
     Address,
@@ -34,23 +36,47 @@ const RegisterPages = [
     Documents
 ]
 
-const TabComponent = ( {name} ) => {
+const TabComponent = ( {name, gotoNextTab, gotoPreviousTab} ) => {
     let RegisterComponent = RegisterPages.find( (item) => item.name === name);
-    return (<RegisterComponent />)
+    return (<RegisterComponent gotoNextTab={gotoNextTab} gotoPreviousTab={gotoPreviousTab} />)
 }
 
 class BorrowerRegister extends Component {
-    constructor () {
-        super();
+    constructor (props) {
+        super(props);
         this.state = {
             tabIndex: 0
         };
     }
 
-    handleTabChange = (value) => {
+    componentWillReceiveProps (nextProps) {
         this.setState({
-            tabIndex: value
-        });
+            tabIndex: nextProps.currentStep
+        })
+    }
+
+    handleTabChange = (value) => {
+        if (value <= this.props.currentStep) {
+            this.setState({
+                tabIndex: value
+            });
+        } else {
+            this.setState({
+                tabIndex: this.state.tabIndex
+            });
+        }
+    }
+
+    gotoNextTab = () => {
+        this.setState({
+            tabIndex: this.state.tabIndex + 1
+        })
+    }
+
+    gotoPreviousTab = () => {
+        this.setState({
+            tabIndex: this.state.tabIndex - 1
+        })
     }
 
     render () {
@@ -60,7 +86,7 @@ class BorrowerRegister extends Component {
                     return (
                         <Tab key={idx} label={item.label} value={item.step}>
                             <div className="register-form-holder">
-                                <TabComponent name={item.label} />
+                                <TabComponent name={item.label} gotoNextTab={this.gotoNextTab} gotoPreviousTab={this.gotoPreviousTab} />
                             </div>
                         </Tab>
                     )

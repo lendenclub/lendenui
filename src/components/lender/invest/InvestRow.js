@@ -36,7 +36,7 @@ const paperCollapsibleStyle = {
 class InvestRow extends Component {
     constructor (props) {
         super(props);
-        this.state = { investmentAmount: '', buttonDisabled: true};
+        this.state = { investmentAmount: '', buttonDisabled: true, rowActive: false};
     }
 
     handleChange = (e) => {
@@ -51,9 +51,10 @@ class InvestRow extends Component {
         // Dont open the accordion if the invest button is clicked
         //TODO: Figure out a better solution - this will break if the button label changes
         if (e.target.parentElement.innerText.trim() !== 'INVEST') {
-            this.props.toggleRowAction(this.props.loan.required_loan_id);
+            // this.props.toggleRowAction(this.props.loan.required_loan_id);
             this.setState({
-                buttonDisabled: this.props.rowActive
+                rowActive: !this.state.rowActive,
+                buttonDisabled: this.state.rowActive
             });
         }
     }
@@ -65,7 +66,7 @@ class InvestRow extends Component {
     }
 
     disableButton = (event) => {
-        if (!this.props.rowActive) {
+        if (!this.state.rowActive) {
             this.setState({
                 buttonDisabled: true
             })
@@ -80,7 +81,7 @@ class InvestRow extends Component {
 
     render () {
         let loan = this.props.loan,
-            collapsiblePaperState = this.props.rowActive ? 'show-collapsible' : 'hide-collapsible',
+            collapsiblePaperState = this.state.rowActive ? 'show-collapsible' : 'hide-collapsible',
             collapsiblePaperStyle = `collapsible-pane ${collapsiblePaperState}`,
             riskIndicator = {...riskIndicatorBaseStyle, borderTopColor: this.computeRiskStyle(loan.interest_rate)};
 

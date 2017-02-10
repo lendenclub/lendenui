@@ -1,6 +1,6 @@
 .annualized-returns {
     height: 100%;
-    
+
     .header {
         padding-left: 15px;
         .label {
@@ -12,6 +12,12 @@
             font-size: 14px;
             color: $text-grey;
         }
+    }
+
+    .annualized-return-value {
+        font-size: 150px;
+        color: $text-header-grey;
+        text-align: center;
     }
 
     .c3-gauge-value {
