@@ -1,0 +1,39 @@
+.investment-summary {
+    .section-container {
+        display: flex;
+        justify-content: space-between;
+        margin: 0;
+        padding: 0 10px 10px 10px;
+
+        .section {
+            padding: 0 10px 0 10px;
+            border-radius: 5px;
+            background-color: $color-palette-400;
+            margin: 5px;
+            flex: 1;
+
+            .header {
+                padding: 10px 0;
+                color: $text-header-grey;
+            }
+
+            .content-container {
+                .content {
+                    padding: 10px 0;
+                    display: flex;
+                    justify-content: space-between;
+
+                    .key-label {
+                        color: $text-header-grey;
+                        padding-left: 10px;
+                    }
+
+                    .value-label {
+                        color: $text-grey;
+                        padding-right: 10px;
+                    }
+                }
+            }
+        }
+    }
+}

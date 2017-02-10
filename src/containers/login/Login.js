@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
-import logo from '../../assets/lendenclub.png';
-
+import logo from '../../assets/login-logo.png';
+import { Link } from 'react-router';
 import { Row, Col } from 'react-flexbox-grid';
-
-import { Card, CardText } from 'material-ui/Card';
-import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import Formsy from 'formsy-react';
+import { FormsyText } from 'formsy-material-ui/lib';
 
-const buttonStyle = {
-    width: '100%'
+const errorMessages = {
+    emailError: "Please enter a valid email address"
 }
 
 class Login extends Component {
     constructor (props) {
         super(props);
-        this.state = { username: '', password: '' };    // setting default props for the component
+        this.state = { username: '', password: '', canSubmit: false };    // setting default props for the component
     }
 
     handleChange = (e) => {
@@ -27,45 +26,75 @@ class Login extends Component {
         this.props.loginUser(this.state.username, this.state.password);     // get the submitted info and dispatch an action  - control will go to loginUser func in actions.js
     }
 
+    enableButton = () => {
+        this.setState({
+            canSubmit: true,
+        });
+    }
+
+    disableButton = () => {
+        this.setState({
+            canSubmit: false,
+        });
+    }
+
+    submitForm(data) {
+        alert(JSON.stringify(data, null, 4));
+    }
+
+    notifyFormError(data) {
+        console.error('Form error:', data);
+    }
+
     render () {
+        let { emailError } = errorMessages;
+
         return (
-            <Card className="card-center-holder">
+            <div className="card-center-holder">
                 <div className="app-logo">
                     <img src={logo} alt="logo" />
                 </div>
-                <CardText>
-                    <form onSubmit={this.handleSubmit}>
-                        <Row center="xs">
-                            <Col xs={12} md={7} lg={6}>
-                                <TextField
-                                    floatingLabelText="Email or Mobile Number"
-                                    fullWidth={true}
-                                    name="username"
-                                    value={this.state.username}
-                                    onChange={this.handleChange}
-                                />
-                            </Col>
-                        </Row>
-                        <Row center="xs">
-                            <Col xs={12} md={7} lg={6}>
-                                <TextField
-                                    floatingLabelText="Password"
-                                    type="password"
-                                    name="password"
-                                    fullWidth={true}
-                                    value={this.state.password}
-                                    onChange={this.handleChange}
-                                />
-                            </Col>
-                        </Row>
-                        <Row center="xs">
-                            <Col xs={12} md={7} lg={6}>
-                                <RaisedButton label="Login" primary={true} style={buttonStyle} type="submit"/>
-                            </Col>
-                        </Row>
-                    </form>
-                </CardText>
-            </Card>
+                <Formsy.Form
+                    onValid={this.enableButton}
+                    onInvalid={this.disableButton}
+                    onValidSubmit={this.submitForm}
+                    onInvalidSubmit={this.notifyFormError}
+                >
+                    <Row center="xs">
+                        <Col xs={10} sm={8} md={3} lg={3}>
+                            <FormsyText
+                                name="username"
+                                validations="isEmail"
+                                validationError={emailError}
+                                required
+                                floatingLabelText="Email ID"
+                                fullWidth={true}
+                                className="text-align-left"
+                            />
+                        </Col>
+                    </Row>
+                    <Row center="xs">
+                        <Col xs={10} sm={8} md={3} lg={3}>
+                            <FormsyText
+                                name="password"
+                                type="password"
+                                required
+                                floatingLabelText="Password"
+                                fullWidth={true}
+                                className="text-align-left"
+                            />
+                        </Col>
+                    </Row>
+
+                    <div className="login-button">
+                        <RaisedButton label="Login" primary={true} type="submit" disabled={!this.state.canSubmit}/>
+                    </div>
+
+                    <div className="signup-bar">
+                        Not a member yet? <Link className="href-link" to={'/app/signup'}> Register Now </Link>
+                    </div>
+                </Formsy.Form>
+            </div>
         )
     }
 }

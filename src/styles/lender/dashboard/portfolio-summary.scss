@@ -1,0 +1,28 @@
+.portfolio-summary {
+    padding-bottom: 10px;
+    
+    .content {
+        background-color: $color-palette-400;
+        border-radius: 5px;
+        margin: 0 15px 15px 15px;
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 20px;
+            border-bottom: 1px solid $border-grey;
+
+            &:last-child {
+                border: none;
+            }
+
+            .label {
+                color: $text-header-grey;
+            }
+
+            .value {
+                color: $text-grey;
+            }
+        }
+    }
+}

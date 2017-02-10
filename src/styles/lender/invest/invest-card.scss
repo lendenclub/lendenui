@@ -1,0 +1,43 @@
+.invest-card {
+    .collapsible-pane {
+        transition: all .5s ease !important;
+        overflow-y: hidden;
+        position: relative;
+        background-color: $accordion-bgcolor;
+        overflow-x: hidden;
+
+        .c3-chart-arc path {
+            stroke: transparent;
+        }
+
+        .c3-chart-arcs-title {
+            font-size: 35px;
+            stroke: $text-header-grey;
+            fill: $text-header-grey;
+        }
+
+        .c3-legend-item {
+            text {
+                stroke: $text-header-grey;
+                fill: $text-header-grey;
+            }
+        }
+
+        .tooltip-container {
+            background-color: $left-nav-bgcolor;
+            padding: 5px;
+            width: 150px;
+        }
+    }
+
+    .collapsible-pane.show-collapsible {
+        height: 350px;
+        overflow-y: auto;
+        border-top: 1px solid gray;
+        border-bottom: 1px solid gray;
+    }
+
+    .collapsible-pane.hide-collapsible {
+        height: 0;
+    }
+}

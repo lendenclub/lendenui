@@ -1,0 +1,45 @@
+.document-upload {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    .file-display {
+        flex: 1;
+        height: 60px;
+        overflow: hidden;
+        border-bottom: 1px solid #9e9e9e;
+        cursor: pointer;
+
+        .label {
+            padding-bottom: 5px;
+            transition: all .2s;
+        }
+
+        .small-label {
+            font-size: 12px;
+            padding-top: 0px;
+        }
+
+        .big-label {
+            font-size: 16px;
+            padding-top: 35px;
+        }
+    }
+
+    .upload-button {
+        margin-left: 10px;
+        align-self: flex-end;
+    }
+}
+
+.showError {
+    color: #f44336;
+}
+
+.dropzone {
+    width: 1px;
+    height: 1px;
+    border: none;
+    flex: 1;
+}

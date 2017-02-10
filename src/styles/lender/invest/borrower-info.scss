@@ -1,0 +1,36 @@
+.borrower-info {
+    .c3-chart-arc path {
+        stroke: transparent;
+    }
+
+    .c3-chart-arc .c3-gauge-value {
+        stroke: $text-header-grey;
+        fill: $text-header-grey;
+        font-size: 30px;
+    }
+
+    .c3-chart-arcs-gauge-min, .c3-chart-arcs-gauge-max {
+        stroke: $text-grey;
+        fill: $text-grey;
+    }
+
+    .c3-chart-arcs-title {
+        font-size: 35px;
+        stroke: $text-header-grey;
+        fill: $text-header-grey;
+    }
+
+    .c3-legend-item {
+        text {
+            stroke: $text-header-grey;
+            fill: $text-header-grey;
+        }
+    }
+
+    .tooltip-container {
+        background-color: $left-nav-bgcolor;
+        padding: 5px;
+        width: 150px;
+        opacity: 0.8;
+    }
+}

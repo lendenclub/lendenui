@@ -1,0 +1,51 @@
+.monthly-cash-flow {
+    height: 100%;
+    .c3-legend-item {
+        text {
+            stroke: $text-header-grey;
+            fill: $text-header-grey;
+        }
+    }
+
+    .c3 .c3-axis-x path, .c3 .c3-axis-y path, .c3 .c3-axis-y2 path, .c3 .c3-axis-x line {
+        stroke: $color-palette-500;
+    }
+
+    .c3 .c3-axis-x path, .c3 .c3-axis-y .tick, .c3 .c3-axis-y2 .tick, .c3 .c3-axis-x .tick {
+        line {
+            stroke: transparent;
+        }
+
+        text {
+            stroke: $color-palette-500;
+            fill: $text-header-grey;
+        }
+    }
+
+    .tooltip-container {
+        background-color: $left-nav-bgcolor;
+        padding: 5px;
+        width: 200px;
+        opacity: 0.9;
+
+        .tooltip-header {
+            color: $text-header-grey;
+        }
+
+        .value {
+            color: $text-grey;
+            font-size: 14px;
+
+            div {
+                padding: 5px 0;
+
+                .indicator-box {
+                    display: inline-block;
+                    height: 5px;
+                    width: 5px;
+                    margin-right: 2px;
+                }
+            }
+        }
+    }
+}

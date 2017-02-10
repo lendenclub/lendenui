@@ -1,0 +1,38 @@
+.filter-nav {
+    position: fixed;
+    right: 0;
+    top: 127px;
+    width: 120px;
+    height: 100%;
+    background-color: $right-nav-bgcolor;
+    padding-top: 20px;
+}
+
+.my-investments-drawer-filter {
+    .close-icon {
+        float: right;
+        color: $text-grey !important;
+        position: relative;
+        top: 20px;
+        right: 15px;
+        font-size: 20px !important;
+        cursor: pointer;
+
+        &:hover {
+            transform: rotate(90deg);
+        }
+    }
+
+    .main-header {
+        height: $header-height;
+        padding-left: 20px;
+        color: $text-grey;
+        background-color: $dark-grey-bgcolor;
+        border-bottom: 1px solid $border-grey;
+
+        span {
+            position: relative;
+            top: 20px;
+        }
+    }
+}

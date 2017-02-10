@@ -1,0 +1,70 @@
+.my-investments {
+    // Be very careful in changing any of the padding/margins as its position fixed
+    .header-row {
+        color: $text-header-grey;
+        border-bottom: 1px solid $dark-border-grey;
+        background-color: $page-header-bgcolor;
+        margin: 0;
+        position: fixed;
+        width: calc(100% - 80px);
+        z-index: 1000;
+        top: $header-height;
+
+        .row {
+            margin: 25px 155px 25px 25px;
+        }
+    }
+
+    .filler-header {
+        border-bottom: 1px solid $dark-border-grey;
+        background-color: $page-header-bgcolor;
+        padding: 25px 35px;
+        margin-left: -5px;
+        position: fixed;
+        z-index: 1000;
+        width: 100%;
+        right: 0;
+    }
+
+    .my-investment-table {
+        margin: 30px 10px;
+        margin-top: 90px;
+
+        .my-investment-row {
+            margin-bottom: 15px;
+            cursor: pointer;
+
+            .row {
+                padding: 20px 25px;
+                background-color: $collapsible-row-bgcolor;
+                margin: 0;
+
+                .progress-bar-container {
+                    padding-top: 5px;
+                }
+            }
+
+            .collapsible-pane {
+                transition: all .5s ease !important;
+                overflow-y: hidden;
+                position: relative;
+                margin: 0 4px;
+                border-radius: 0;
+                background-color: $accordion-bgcolor;
+
+                .my-investment-row-collapsible {
+                    padding: 20px;
+                }
+            }
+
+            .collapsible-pane.show-collapsible {
+                height: 350px;
+                overflow-y: auto;
+            }
+
+            .collapsible-pane.hide-collapsible {
+                height: 0;
+            }
+        }
+    }
+}

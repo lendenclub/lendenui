@@ -1,0 +1,15 @@
+.account {
+    padding: 20px;
+}
+
+.account-history {
+    .history-list {
+        & > div:nth-child(odd) {
+            background-color: $color-palette-400 !important;
+        }
+
+        & > div:nth-child(even) {
+            background-color: $color-palette-200 !important;
+        }
+    }
+}

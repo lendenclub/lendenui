@@ -1,0 +1,39 @@
+.refer-and-earn {
+    height: 100%;
+
+    .refer-code {
+        color: $accent-green;
+        padding: 0 15px 10px 15px;
+        border-bottom: 1px solid $border-grey;
+        font-size: 35px;
+    }
+
+    .invite {
+        .mode-selector {
+            position: relative;
+            bottom: 15px;
+            float: right;
+            right: -10px;
+        }
+    }
+
+    .footer {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 15px;
+
+        .t-and-c, .more-info-link {
+            font-size: 12px;
+            color: $color-palette-300;
+            margin-top: 10px;
+        }
+
+        .more-info-link {
+            cursor: pointer;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}

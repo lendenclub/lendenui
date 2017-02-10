@@ -1,0 +1,124 @@
+.signup {
+    padding-top: 100px;
+
+    .signup-header {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        background-color: $header-bgcolor !important;
+        height: $header-height;
+
+        .app-logo {
+            margin: 6px 30px;
+        }
+    }
+
+    .signup-container {
+        width: 500px;
+        margin: auto;
+        left: 50%;
+        top: 50%;
+
+        .app-logo {
+            text-align: center;
+            img {
+                width: 230px;
+            }
+        }
+
+        .handshake-image {
+            text-align: center;
+            img {
+                width: 100px;
+            }
+        }
+
+        .user-type-form {
+            text-align: center;
+
+            .register-header {
+                font-size: 30px;
+                padding-top: 20px;
+                color: $text-header-grey;
+            }
+
+            .borrower-header {
+                padding-bottom: 10px;
+                color: $text-header-grey;
+
+                span {
+                    color: $accent-blue;
+                    font-weight: 400;
+                }
+            }
+
+            .button-holder {
+                padding-top: 20px;
+                & > div {
+                    margin-bottom: 20px;
+                }
+
+                .lender-options {
+                    .options {
+                        display: flex;
+                        justify-content: space-between;
+                        padding: 0 40px;
+
+                        div {
+                            cursor: pointer;
+                            color: $text-header-grey;
+                        }
+                    }
+
+                    .or-option {
+                        padding: 30px;
+                    }
+                }
+            }
+        }
+
+        .signup-form {
+            .header {
+                text-align: center;
+                font-size: 15px;
+                color: $text-header-grey;
+            }
+
+            .login-button {
+                padding-top: 20px;
+                text-align: center;
+            }
+        }
+
+        .opt-form {
+            text-align: center;
+
+            .header {
+                font-size: 18px;
+                color: $text-header-grey;
+                padding: 10px;
+            }
+            .info {
+                padding: 10px;
+                color: $text-grey;
+            }
+            .otp-input {
+                text-align: center;
+                padding-top: 20px;
+
+                .login-button {
+                    padding-top: 20px;
+                }
+            }
+        }
+
+        .signin-bar {
+            padding: 20px;
+            text-align: center;
+
+            .href-link {
+                margin-left: 10px;
+            }
+        }
+    }
+}
