@@ -11,7 +11,7 @@ import WebComponent from '../../WebComponent';
 
 const modalBodyStyle = {
     padding: 0,
-    backgroundColor: styleConstants.bodyBackgroundColor
+    backgroundColor: styleConstants.bodyBgColor
 }
 
 const headerStyle = {

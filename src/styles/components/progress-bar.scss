@@ -1,10 +1,11 @@
 .progress-bar-holder {
     width: 100%;
     height: 3px;
-    background-color: black;
+    background-color: $color-palette-200;
+    overflow: hidden;
 
     .progress-bar {
         height: 100%;
-        background-color: $progress-blue;
+        background-color: $accent-green;
     }
 }

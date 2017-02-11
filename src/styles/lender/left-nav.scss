@@ -14,6 +14,7 @@
     }
 
     .nav-list-item {
+        line-height: 11px !important;
         & > div > div {
             padding: 0px !important;
         }
@@ -35,17 +36,17 @@
         .material-icons {
             top: 1px;
             margin-right: 20px;
-            color: $text-grey;
+            color: white !important;
         }
     }
 
     .left-nav-item.active {
         transition: background-color 0.5s ease 0s;
-        background-color: $accent-green;
+        background-color: white;
         color: white;
 
         .material-icons {
-            color: white !important;
+            color: $left-nav-bgcolor !important;
         }
     }
 }

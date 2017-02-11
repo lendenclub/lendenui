@@ -36,7 +36,7 @@ const paperCollapsibleStyle = {
 class InvestRow extends Component {
     constructor (props) {
         super(props);
-        this.state = { investmentAmount: '', buttonDisabled: true, rowActive: false};
+        this.state = { investmentAmount: '', rowActive: false};
     }
 
     handleChange = (e) => {
@@ -53,41 +53,22 @@ class InvestRow extends Component {
         if (e.target.parentElement.innerText.trim() !== 'INVEST') {
             // this.props.toggleRowAction(this.props.loan.required_loan_id);
             this.setState({
-                rowActive: !this.state.rowActive,
-                buttonDisabled: this.state.rowActive
+                rowActive: !this.state.rowActive
             });
         }
-    }
-
-    enableButton = (event) => {
-        this.setState({
-            buttonDisabled: false
-        })
-    }
-
-    disableButton = (event) => {
-        if (!this.state.rowActive) {
-            this.setState({
-                buttonDisabled: true
-            })
-        }
-    }
-
-    componentWillReceiveProps (nextProps) {
-        this.setState({
-            buttonDisabled: !nextProps.rowActive
-        });
     }
 
     render () {
         let loan = this.props.loan,
             collapsiblePaperState = this.state.rowActive ? 'show-collapsible' : 'hide-collapsible',
             collapsiblePaperStyle = `collapsible-pane ${collapsiblePaperState}`,
-            riskIndicator = {...riskIndicatorBaseStyle, borderTopColor: this.computeRiskStyle(loan.interest_rate)};
+            riskIndicator = {...riskIndicatorBaseStyle, borderTopColor: this.computeRiskStyle(loan.interest_rate)},
+            buttonDisabled = loan.amount_remaining <= 0,
+            buttonLabel = buttonDisabled ? 'Closed' : 'Invest';
 
         return (
             <div className="invest-row">
-                <Paper style={paperStyle} zDepth={1} className="invest-paper">
+                <div style={paperStyle} className="invest-paper">
 
                     <div style={riskIndicator}></div>
 
@@ -114,8 +95,9 @@ class InvestRow extends Component {
                         <Col lg={1} className="invest-button-column text-align-center">
                             <RaisedButton
                                 style={investButtonStyle}
-                                label="Invest" primary={true}
-                                disabled={this.state.buttonDisabled}
+                                label={buttonLabel}
+                                primary={true}
+                                disabled={buttonDisabled}
                                 onMouseLeave={this.disableButton}
                                 onMouseEnter={this.enableButton}
                                 type="submit"
@@ -124,11 +106,11 @@ class InvestRow extends Component {
                             />
                         </Col>
                     </Row>
-                </Paper>
+                </div>
 
                 <Paper zDepth={1} style={paperCollapsibleStyle} className={collapsiblePaperStyle}>
                     <div className="collapsible-content">
-                        <InvestRowCollapsible loan={loan} isMobile={this.props.isMobile}/>
+                        <InvestRowCollapsible key={loan.required_loan_id} loan={loan} isMobile={this.props.isMobile}/>
                     </div>
                 </Paper>
             </div>

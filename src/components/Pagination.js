@@ -19,7 +19,7 @@ const wrapperStyle = {
 }
 
 const Page = ({value, isActive, onClick}) => {
-    let buttonStyle = isActive ? { ...flatButtonStyle, color: styleConstants.primaryColor} : flatButtonStyle;
+    let buttonStyle = isActive ? { ...flatButtonStyle, color: styleConstants.accentBlue} : flatButtonStyle;
     return (
         <FlatButton style={buttonStyle} label={value.toString()} primary={isActive} onClick={onClick}/>
     );

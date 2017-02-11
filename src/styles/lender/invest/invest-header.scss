@@ -1,8 +1,8 @@
 .invest-header-row {
-    border-bottom: 1px solid $dark-border-grey;
     margin: 0;
-    color: $text-header-grey;
+    color: $gray-darker;
     background-color: $page-header-bgcolor;
+    font-weight: 400;
     position: fixed;
     width: calc(100% - 80px);
     top: $header-height;
@@ -16,6 +16,7 @@
         position: absolute;
         right: 30px;
         top: 15px;
+        background-color: $accent-orange;
 
         .material-icons {
             line-height: 1px;

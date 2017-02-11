@@ -29,8 +29,8 @@
     text-transform: capitalize;
 }
 
-.text-header-grey {
-    color: $text-header-grey;
+.text-key-grey {
+    color: $gray-light;
 }
 
 /* ALL PADDING AND MARGIN */
@@ -70,6 +70,10 @@
     color: $progress-blue
 }
 
+.text-gray-darker {
+    color: $gray-darker;
+}
+
 /* Borders */
 .border-right {
     border-right: 1px solid $border-grey;
@@ -87,7 +91,7 @@
 }
 
 .href-link {
-    color: $accent-green;
+    color: $color-palette-500;
     text-decoration: none;
     font-weight: 400;
 }

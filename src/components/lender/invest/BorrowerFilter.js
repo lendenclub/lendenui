@@ -3,6 +3,7 @@ import Drawer from 'material-ui/Drawer';
 import FontIcon from 'material-ui/FontIcon';
 import Checkbox from 'material-ui/Checkbox';
 import { RiskCategories } from '../../../utils/RiskColors';
+import { styleConstants } from '../../../utils/StyleConstants';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import Chip from 'material-ui/Chip';
@@ -13,6 +14,10 @@ import FlatButton from 'material-ui/FlatButton';
 const chipStyle = {
     display: 'inline-flex',
     margin: '0 10px 10px 0'
+}
+
+const resetButtonStyle = {
+    color: 'white'
 }
 
 const allLoanCategories = [ 'Home Renovation', 'Debt Consolidation', 'Medical Emergency', 'Rental Deposit', 'Wedding Loan', 'Vacation Loan', 'Family Function Loan', 'Advance Salary']
@@ -237,14 +242,15 @@ class BorrowerFilter extends Component {
                                 onChange={this.categorySelected.bind(this)}
                                 disabled={this.state.disableLoanCategory}
                                 fullWidth={true}
-                                floatingLabelStyle={ {marginTop: '-25px'} }
+                                floatingLabelStyle={ {marginTop: '-25px', color: styleConstants.darkGray} }
                                 iconStyle={ {marginTop: '-20px'} }
                                 style={ {height: '50px'} }
+                                listStyle={ {backgroundColor: styleConstants.selectListBgColor} }
                             >
                                 <MenuItem value={null} primaryText="" />
                                 {this.state.loanCategories.map( (item, index) => {
                                     return (
-                                        <MenuItem key={index} value={item} primaryText={item} />
+                                        <MenuItem key={index} value={item} primaryText={item} style={ {color: styleConstants.textWhite} }/>
                                     )
                                 })}
                             </SelectField>
@@ -252,7 +258,7 @@ class BorrowerFilter extends Component {
                             <div className="chips-list">
                                 {this.state.selectedLoanCategories.map( (item, index) => {
                                     return (
-                                        <Chip onRequestDelete={() => this.deleteSelectedLoanCategory(item)} key={item} style={chipStyle} labelColor='#B9B8B8'>
+                                        <Chip onRequestDelete={() => this.deleteSelectedLoanCategory(item)} key={item} style={chipStyle}>
                                             {item}
                                         </Chip>
                                     )
@@ -265,7 +271,7 @@ class BorrowerFilter extends Component {
 
                 <Paper zDepth={2} className="filter-bar">
                     <RaisedButton label="Apply" primary={true} onClick={this.applyFilter.bind(this)} className="float-right"/>
-                    <FlatButton label="Reset" secondary={true} onClick={this.resetFilters.bind(this)} className="float-left"/>
+                    <FlatButton label="Reset" secondary={true} onClick={this.resetFilters.bind(this)} style={resetButtonStyle} className="float-left"/>
                 </Paper>
             </Drawer>
         )

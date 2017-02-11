@@ -1,18 +1,9 @@
 import React, { Component } from 'react';
 import { Card } from 'material-ui/Card';
-import { styleConstants } from '../../../utils/StyleConstants';
+import { styleConstants, cardStyle, cardHeaderStyle } from '../../../utils/StyleConstants';
 import C3Chart from 'react-c3js';
 import 'c3/c3.css';
 import numeral from 'numeral';
-
-const cardStyle = {
-    backgroundColor: styleConstants.cardBGColor
-}
-
-const headerStyle = {
-    padding: '15px',
-    color: styleConstants.textHeaderGrey
-}
 
 const chartContainerStyle = {
     margin: '0 -20px'
@@ -46,7 +37,7 @@ const data = {
         value: ['value']
     },
     colors: {
-        value: '#63B51D'
+        value: styleConstants.accentGreen
     }
 };
 
@@ -90,14 +81,14 @@ class AccountBalance extends Component {
     render () {
         return (
             <Card className="account-balance" style={cardStyle}>
-                <div style={headerStyle}>Account Balance</div>
+                <div style={cardHeaderStyle}>Account Balance</div>
 
                 <div className="header">
                     <div className="label">
                         ₹ 1,75,000
                     </div>
                     <div className="sub-label">
-                        Invested 92 times
+                        Invested <span className="text-gray-darker">92 times</span>
                     </div>
                 </div>
 

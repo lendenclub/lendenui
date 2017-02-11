@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import { Row, Col } from 'react-flexbox-grid';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import FontIcon from 'material-ui/FontIcon';
+import { styleConstants } from '../../../utils/StyleConstants';
+
+const floatingButtonStyle = {
+    backgroundColor: styleConstants.accentOrange
+}
 
 class InvestHeaderRow extends Component {
     render () {
-        let backgroundColor = this.props.filterQuery ? '#FF9800' : '#1976D2';
         return (
             <div className="invest-header-row">
                 <Row className="row">
@@ -33,7 +37,7 @@ class InvestHeaderRow extends Component {
                     <Col lg={1} className="text-align-right position-relative">
 
                         {this.props.showFilterIcon ? (
-                            <FloatingActionButton backgroundColor={backgroundColor} className="filter-floating-button" onClick={this.props.toggleFilterDrawer}>
+                            <FloatingActionButton style={floatingButtonStyle} backgroundColor={styleConstants.accentOrange} className="filter-floating-button" onClick={this.props.toggleFilterDrawer}>
                                 <FontIcon className="material-icons">filter_list</FontIcon>
                             </FloatingActionButton>
                         ) : ''}

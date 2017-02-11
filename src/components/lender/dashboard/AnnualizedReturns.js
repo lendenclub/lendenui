@@ -1,22 +1,13 @@
 import React, { Component } from 'react';
 import { Card } from 'material-ui/Card';
-import { styleConstants } from '../../../utils/StyleConstants';
+import { styleConstants, cardStyle, cardHeaderStyle } from '../../../utils/StyleConstants';
 import numeral from 'numeral';
-
-const cardStyle = {
-    backgroundColor: styleConstants.cardBGColor
-}
-
-const headerStyle = {
-    padding: '15px',
-    color: styleConstants.textHeaderGrey
-}
 
 class AnnualizedReturns extends Component {
     render () {
         return (
             <Card className="annualized-returns" style={cardStyle}>
-                <div style={headerStyle}>Annualized Returns</div>
+                <div style={cardHeaderStyle}>Annualized Returns</div>
 
                 <div className="header">
                     <div className="label">

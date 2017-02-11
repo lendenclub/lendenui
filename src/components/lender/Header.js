@@ -18,6 +18,10 @@ const navigatorStyle = {
     cursor: 'pointer'
 }
 
+const personIconStyle = {
+    color: styleConstants.headerBgColor
+}
+
 class Header extends Component {
     componentWillMount () {
         // this.fetchUser();
@@ -33,7 +37,8 @@ class Header extends Component {
                 </MobileComponent>
                 <div className="user-circle">
                     <Avatar
-                        icon={<FontIcon className="material-icons">person</FontIcon>}
+                        icon={<FontIcon className="material-icons" style={personIconStyle}>person</FontIcon>}
+                        backgroundColor={styleConstants.textWhite}
                     />
                 </div>
 

@@ -4,18 +4,21 @@
     .invest-paper {
         margin-left: 25px;
         margin-right: 25px;
+        z-index: 1;
     }
 
     .collapsible-pane {
         transition: all .8s ease !important;
         overflow-y: hidden;
-        margin: 0 25px;
+        margin: 0 20px;
         position: relative;
         background-color: $accordion-bgcolor;
         overflow-x: hidden;
+        box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 1px, rgba(0, 0, 0, 0.117647) 0px 1px 1px !important;
 
         .collapsible-content {
             height: 100%;
+            margin-top: 0;
         }
 
         .c3-chart-arc path {
@@ -24,19 +27,19 @@
 
         .c3-chart-arcs-title {
             font-size: 35px;
-            stroke: $text-header-grey;
-            fill: $text-header-grey;
+            stroke: $gray-dark;
+            fill: $gray-dark;
         }
 
         .c3-legend-item {
             text {
-                stroke: $text-header-grey;
-                fill: $text-header-grey;
+                stroke: $gray-dark;
+                fill: $gray-dark;
             }
         }
 
         .tooltip-container {
-            background-color: $left-nav-bgcolor;
+            background-color: $tooltip-bg-color;
             padding: 5px;
             width: 150px;
         }
@@ -55,6 +58,7 @@
         background-color: $collapsible-row-bgcolor;
         cursor: pointer;
         padding: 10px 0;
+        box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 5px, rgba(0, 0, 0, 0.117647) 0px 1px 5px;
 
         .invest-loan-column {
             align-self: center;
@@ -67,6 +71,9 @@
 
         .interest-column {
             padding-left: 20px;
+            font-size: 16px;
+            color: $gray-darker;
+            font-weight: 400;
         }
 
         .invest-button-column {

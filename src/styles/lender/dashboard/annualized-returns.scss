@@ -4,20 +4,22 @@
     .header {
         padding-left: 15px;
         .label {
-            color: #63B51D;
-            font-size: 24px;
+            font-size: 18px;
+            color: $gray-dark;
         }
 
         .sub-label {
+            padding-top: 5px;
             font-size: 14px;
-            color: $text-grey;
+            color: $gray-darker;
         }
     }
 
     .annualized-return-value {
         font-size: 150px;
-        color: $text-header-grey;
+        color: $text-blue;
         text-align: center;
+        padding-top: 10px;
     }
 
     .c3-gauge-value {

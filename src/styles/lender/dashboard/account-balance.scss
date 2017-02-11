@@ -7,13 +7,13 @@
 
     .c3-circle {
         stroke-width: 2px;
-        stroke: #fff;
+        stroke: $light-green;
     }
 
     .c3 path, .c3 line, .tick {
         text {
-            stroke: $text-header-grey;
-            fill: $text-header-grey;
+            stroke: $gray-dark;
+            fill: $gray-dark;
         }
 
         line {
@@ -22,17 +22,16 @@
     }
 
     .tooltip-container {
-        background-color: $left-nav-bgcolor;
+        background-color: $tooltip-bg-color;
         padding: 5px;
         width: 100px;
-        opacity: 0.8;
 
         .tooltip-header {
-            color: $text-header-grey;
+            color: $text-white;
         }
 
         .value {
-            color: $text-grey;
+            color: $text-white;
             font-size: 14px;
         }
     }
@@ -40,13 +39,14 @@
     .header {
         padding-left: 15px;
         .label {
-            color: #63B51D;
+            color: $accent-green;
             font-size: 24px;
         }
 
         .sub-label {
+            padding-top: 5px;
             font-size: 14px;
-            color: $text-grey;
+            color: $gray-dark;
         }
     }
 }

@@ -1,21 +1,46 @@
 $header-height: 60px;
 
-$color-palette-200: #536C77;
-$color-palette-300: #95989A;
-$color-palette-400: #3A5763;
-$color-palette-500: #284752;
-$color-palette-600: #1E353F;
-$color-palette-700: #172E37;
+// $color-palette-200: #536C77;
+// $color-palette-300: #95989A;
+// $color-palette-400: #3A5763;
+// $color-palette-500: #284752;
+// $color-palette-600: #1E353F;
+// $color-palette-700: #172E37;
 
-$body-bg-color: $color-palette-400;
-$left-nav-bgcolor: $color-palette-700;
-$right-nav-bgcolor: $color-palette-500;
+$color-palette-100: #EFF0F3;
+$color-palette-200: #E4E5E8;
+$color-palette-300: #F8F6F6;
+$color-palette-400: #E6F4FB;
+$color-palette-500: #1F94D2;
+$color-palette-600: #0A5C89;
+
+$accent-orange: #FFA61A;
+$accent-green: #489D68;
+$light-green: #B1D5BE;
+
+$gray-light: #777777;
+$gray-dark: #7E8A97;
+$gray-darker: #6C7A8B;
+
+$body-bg-color: $color-palette-100;
+$left-nav-bgcolor: $color-palette-500;
+$right-nav-bgcolor: $color-palette-200;
 $header-bgcolor: $color-palette-600;
-$collapsible-row-bgcolor: $color-palette-700;
-$accordion-bgcolor: $color-palette-500;
-$table-header: $color-palette-600;
-$table-bgcolor: $color-palette-400;
-$page-header-bgcolor: $color-palette-500;
+$collapsible-row-bgcolor: white;
+$accordion-bgcolor: $color-palette-300;
+$table-header: $color-palette-400;
+$table-bgcolor: $color-palette-200;
+$page-header-bgcolor: $color-palette-200;
+$accordion-border: $color-palette-200;
+$tooltip-bg-color: #40414A;
+
+
+// Text Colors
+$text-white: white;
+$text-blue: $color-palette-500;
+
+
+
 
 
 $dark-grey-bgcolor: #23404a;
@@ -29,6 +54,5 @@ $text-header-grey: #ced0d4;
 $accordion-header-grey: #A6A6A6;
 $dark-border-grey: #253d48;
 $border-grey: #2D434D;
-$accordion-border: #25373e;
 $accent-blue: #1976D2;
 $accent-green: #74a647;

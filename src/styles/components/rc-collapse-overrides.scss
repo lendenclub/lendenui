@@ -7,12 +7,13 @@
         border-top: none !important;
         border-bottom: 1px solid transparent;
         transition: border-bottom 0.5s ease;
+        padding-left: 10px;
     }
 
     .rc-collapse-content {
         background-color: transparent !important;
         padding: 0 30px !important;
-        color: $text-grey !important;
+        color: $gray-dark !important;
 
         .rc-collapse-content-box {
             margin: 0;
@@ -26,19 +27,18 @@
     .rc-collapse-header {
         height: auto !important;
         line-height: 0 !important;
-        color: $accordion-header-grey !important;
+        color: $text-blue !important;
+        font-weight: 400;
         padding-top: 10px;
         text-indent: 0 !important;
 
         svg {
             vertical-align: middle;
-            color: $accordion-header-grey !important;
+            color: $text-blue !important;
         }
     }
 
     .rc-collapse-item-active {
-        border-bottom: 1px solid $accordion-border;
-
         .rc-collapse-header {
             span {
                 text-decoration: underline;
