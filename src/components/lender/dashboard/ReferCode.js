@@ -1,24 +1,15 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-flexbox-grid';
 import { Card } from 'material-ui/Card';
-import { styleConstants } from '../../../utils/StyleConstants';
+import { styleConstants, cardStyle, cardHeaderStyle } from '../../../utils/StyleConstants';
 import FontIcon from 'material-ui/FontIcon';
 import IconButton from 'material-ui/IconButton';
 import TextField from 'material-ui/TextField';
 import TermsAndConditionsModal from './TermsAndConditionsModal';
 import Avatar from 'material-ui/Avatar';
 
-const cardStyle = {
-    backgroundColor: styleConstants.cardBGColor
-}
-
 const containerStyle = {
     height: '100%'
-}
-
-const headerStyle = {
-    padding: '15px',
-    color: styleConstants.textHeaderGrey
 }
 
 const iconSelectedStyle = {
@@ -83,13 +74,14 @@ class ReferCode extends Component {
 
         return (
             <Card className="refer-and-earn" style={cardStyle} containerStyle={containerStyle}>
-                <div style={headerStyle}>Refer Code</div>
+                <div style={cardHeaderStyle}>Refer and Earn</div>
 
                 <div className="refer-code">
                     LDC{this.props.referralCode}
+                    <div className="sub-label">Referral Code</div>
                 </div>
 
-                <div className="invite" style={headerStyle}>
+                <div className="invite">
                     Invite Via
 
                     <div className="mode-selector">

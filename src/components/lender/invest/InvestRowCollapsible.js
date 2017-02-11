@@ -249,7 +249,7 @@ class InvestRowCollapsible extends Component {
                                 <Col lg={5} sm={12} xs={12} style={colPadding}>
                                     <Row style={rowPadding}>
                                         <Col lg={6} sm={6} xs={6} style={colPadding} className="text-key-grey"> Working Since </Col>
-                                        <Col lg={6} sm={6} xs={6} style={colValueStyle}> {userInfo.current_work_experience/12} Years  </Col>
+                                        <Col lg={6} sm={6} xs={6} style={colValueStyle}> {parseFloat(userInfo.current_work_experience/12).toFixed(2)} Years  </Col>
                                     </Row>
                                     <Row style={rowPadding}>
                                         <Col lg={6} sm={6} xs={6} style={colPadding} className="text-key-grey"> Total Experience </Col>

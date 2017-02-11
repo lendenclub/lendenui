@@ -8,7 +8,7 @@
     }
 
     .collapsible-pane {
-        transition: all .8s ease !important;
+        transition: all .5s ease !important;
         overflow-y: hidden;
         margin: 0 20px;
         position: relative;
@@ -19,6 +19,7 @@
         .collapsible-content {
             height: 100%;
             margin-top: 0;
+            overflow-x: hidden;
         }
 
         .c3-chart-arc path {

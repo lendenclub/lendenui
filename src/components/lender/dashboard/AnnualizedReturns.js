@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card } from 'material-ui/Card';
-import { styleConstants, cardStyle, cardHeaderStyle } from '../../../utils/StyleConstants';
+import { cardStyle, cardHeaderStyle } from '../../../utils/StyleConstants';
 import numeral from 'numeral';
 
 class AnnualizedReturns extends Component {
